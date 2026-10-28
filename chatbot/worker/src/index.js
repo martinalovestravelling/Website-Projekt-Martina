@@ -49,6 +49,7 @@ export default {
 
     const message = (body.message || "").toString().slice(0, 1000);
     const history = Array.isArray(body.history) ? body.history.slice(-12) : [];
+    const language = body.language === "de" ? "de" : "en";
 
     if (!message.trim()) {
       return new Response(JSON.stringify({ error: "Empty message" }), {
@@ -65,8 +66,13 @@ export default {
       { role: "user", parts: [{ text: message }] },
     ];
 
+    const languageInstruction =
+      language === "de"
+        ? "\n\nThe visitor's site language is currently set to German. Reply in German, regardless of what language their message is written in."
+        : "\n\nThe visitor's site language is currently set to English. Reply in English, regardless of what language their message is written in.";
+
     const requestBody = JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      system_instruction: { parts: [{ text: SYSTEM_PROMPT + languageInstruction }] },
       contents,
       generationConfig: { temperature: 0.2, maxOutputTokens: 300 },
     });
