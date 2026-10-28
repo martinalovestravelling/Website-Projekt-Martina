@@ -15,6 +15,10 @@ The website must **not** contain any personal data. In particular, do not includ
 
 Employers are described only by their industry or type (e.g. "global management consultancy").
 
+**Exception approved 2026-10-28 (provisional, "vorerst"):** the first name **"Martina"** and the city
+**"Munich/München"** may appear on the site. Surname, email address, phone number, postal address and
+every other item above remain excluded.
+
 ## 3. Language Requirements
 
 - **Bilingual: English (primary) and German (secondary).**

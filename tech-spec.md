@@ -19,6 +19,13 @@ Rein statische Website: nur HTML und CSS, kein Framework, kein Build-Prozess. L�
 ```
 Falls später Bilder/Assets dazukommen: eigener Ordner `/assets/`.
 
+**Update 2026-10-28:** `/assets/fonts/` enthält bereits zwei selbst gehostete Variable-Font-Dateien
+(Montserrat, Open Sans, `.woff2`, SIL Open Font License), eingebunden per `@font-face` in `styles.css`.
+Bewusst *nicht* über `fonts.googleapis.com` verlinkt — das würde bei jedem Seitenaufruf die
+IP-Adresse der Besucher an Google senden (DSGVO-Risiko laut LG München 2022). Self-Hosting braucht
+keinen externen Request zur Laufzeit und bleibt damit im Rahmen von "kein Framework, keine externen
+Dependencies".
+
 ## Sprachumschaltung ohne JavaScript
 EN/DE-Toggle wird rein mit CSS umgesetzt (Checkbox-Hack), kein JavaScript nötig:
 - Verstecktes `<input type="checkbox" id="lang-toggle">` plus sichtbares `<label>` als Schalter
