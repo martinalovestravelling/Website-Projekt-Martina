@@ -2,10 +2,8 @@ name = "portfolio-faq-chatbot"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 
-# Restrict this to your real site origin once deployed, e.g.
-# "https://yourusername.github.io" — avoids other sites calling your Worker.
 [vars]
-ALLOWED_ORIGIN = "*"
+ALLOWED_ORIGIN = "https://martinalovestravelling.github.io"
 
 # Secret (do NOT put this here, keep it out of git):
 #   wrangler secret put GEMINI_API_KEY
