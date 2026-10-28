@@ -38,3 +38,30 @@ EN/DE-Toggle wird rein mit CSS umgesetzt (Checkbox-Hack), kein JavaScript nötig
 ## Offene Punkte
 - Ablage im Repo: Root vs. `/docs` noch zu entscheiden
 - Spätere Erweiterungen laut Backlog (echtes Kontaktformular, Work-Samples-Inhalte) sind mit dem aktuellen "kein JS"-Ansatz nicht automatisch abgedeckt und müssten separat bewertet werden, sobald sie umgesetzt werden
+
+## Chat-Widget-Ausnahme (FAQ-Assistent)
+
+Einzige bewusste, dokumentierte Ausnahme vom "kein JavaScript"-Prinzip: ein
+schwebender FAQ-Chat-Button (`chat-widget.js`), der auf der gesamten Seite
+jederzeit erreichbar ist. Der Rest der Seite bleibt vollständig JS-frei.
+
+- **Warum eine Ausnahme nötig ist:** Ein dauerhaft erreichbarer, interaktiver
+  Chat-Button (öffnen/schließen, Nachricht senden, Antwort anzeigen) lässt
+  sich nicht mit dem CSS-Checkbox-Hack lösen, der für den Sprach-Toggle
+  funktioniert.
+- **Architektur:** `chat-widget.js` (einziges Skript im Repo, keine
+  Abhängigkeiten) sendet Fragen per `fetch` an einen separaten, extern
+  gehosteten Cloudflare Worker (`/chatbot/worker/`). Der Worker ruft die
+  Gemini-API (kostenloser Free-Tier) mit einem festen System-Prompt auf, der
+  ausschließlich auf bereits veröffentlichte Inhalte begrenzt ist (siehe
+  `/chatbot/knowledge-base.md`). Kein API-Key und keine Modell-Logik liegen
+  im ausgelieferten Seiten-Code.
+- **Kein eigener Server/Backend im Repo nötig:** Der Worker läuft unabhängig
+  bei Cloudflare (kostenloser Free-Tier, kein eigenes Hosting), die Seite
+  selbst bleibt rein statisch und ohne Build-Schritt.
+- **Kein-Hallucination-Prinzip gilt auch hier:** Der System-Prompt begrenzt
+  Antworten strikt auf Briefing.md-Inhalte plus explizit bereitgestellte
+  Zusatzdokumente (aktuell: n8n-Kursnotiz). Platzhalter-Sektionen
+  (Arbeitsproben, Kontakt) werden vom Assistenten als Platzhalter benannt,
+  nie mit erfundenen Inhalten gefüllt.
+- Details zu Setup, Kosten und Deployment: siehe `/chatbot/SETUP.md`.

@@ -14,7 +14,7 @@ Publish a single-page, bilingual (English/German) public website presenting a pr
 - No functioning contact form in this iteration — only a LinkedIn link placeholder. A real contact form is deferred and tracked in the backlog.
 - No populated work-samples content in this iteration — only a placeholder section structure, to be filled in later.
 - No references/testimonials section or content in this iteration.
-- No backend, server, or build pipeline — static HTML/CSS/JS only.
+- No backend, server, or build pipeline for the page itself — static HTML/CSS/JS only. Exception: a small externally-hosted FAQ chat assistant (see tech-spec.md, "Chat-Widget-Ausnahme") calls a separate, free-tier serverless backend; this backend is not part of the deployed page and introduces the only JavaScript on the site.
 
 ## Assumptions
 - The site is a single static page (HTML/CSS/JS) that can be hosted without a backend.
@@ -34,3 +34,4 @@ Publish a single-page, bilingual (English/German) public website presenting a pr
 6. A contact element exists: a link labeled for LinkedIn, containing no image/photo, visibly marked as a placeholder until a real LinkedIn URL is supplied. — *Verify: inspect the link's href, label, and surrounding markup.*
 7. The site runs by opening a single HTML file (or small set of static HTML/CSS/JS files) directly in a browser, with no build step, no server dependency, and no external backend required to render current content. — *Verify: open the file in a browser with no local server running.*
 8. No references/testimonials section or content appears anywhere on the page. — *Verify: inspect rendered sections against this list.*
+9. A FAQ chat assistant is reachable from anywhere on the page (floating control, not scroll-dependent); it answers only from Briefing.md content and the explicitly provided n8n course notes, states plainly when something isn't published on the site instead of guessing, and never outputs a name, photo, contact detail, employer name, or university name. — *Verify: test representative in-scope and out-of-scope questions against chatbot/knowledge-base.md.*

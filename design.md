@@ -61,3 +61,10 @@ Eine serifenlose Schrift, ohne externe Font-Abhängigkeit — das passt zum "kei
 ## Responsiveness
 - Mobile-first, einspaltig
 - Tabellarische Inhalte aus dem Briefing (Berufserfahrung, Internationale Erfahrung, Sprachen) werden auf schmalen Bildschirmen als gestapelte Karten statt als Tabelle dargestellt
+
+## Chat-Widget (FAQ-Assistent)
+- Schwebender Button unten rechts, fixiert (`position: fixed`), auf der gesamten Seite jederzeit sichtbar und erreichbar, unabhängig von der Scroll-Position — kein eigener Seitenabschnitt
+- Farbgebung aus denselben Tokens wie der Rest der Seite: Button-Hintergrund `--color-brand-primary`, Nutzer-Sprechblasen `--color-brand-secondary`, Bot-Sprechblasen `--color-surface`
+- Öffnet ein kompaktes Panel (max. 320px breit) mit Verlauf, Eingabefeld und Hinweistext, dass es sich um einen Demo-Assistenten mit auf die Seite begrenztem Wissen handelt
+- Sprachumschaltung folgt demselben Checkbox-Mechanismus wie der Rest der Seite (EN/DE-Textpaare innerhalb des Widgets)
+- Einzige Stelle der Seite mit JavaScript — siehe tech-spec.md, Abschnitt "Chat-Widget-Ausnahme"
