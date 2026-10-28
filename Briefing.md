@@ -40,6 +40,10 @@ E2E Process Design · Agile Delivery · Change Management
 **DE:** Beraterin für Business Transformation & Prozesse
 E2E-Prozessdesign · Agile Delivery · Change Management
 
+**Zusatz bestätigt 2026-10-28:** Der Seitentitel (`<title>`) führt "Senior" voran
+("Senior Business Transformation & Process Consultant") — ein vom Nutzer bestätigter Zusatz,
+nicht wörtlich so im Headline-Text oben.
+
 ### 4.2 Short Bio
 
 **EN:**
