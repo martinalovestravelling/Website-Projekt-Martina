@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A FAQ chat widget (`chat-widget.js`) has been added as a scoped, documented exception to the no-JavaScript rule — see `tech-spec.md` ("Chat-Widget-Ausnahme") and the `/chatbot/` folder (knowledge base, Cloudflare Worker backend, setup checklist). It is the only JavaScript on the site and the only thing that talks to an external backend; everything else stays static.
 
+A new "Erste Schritte" ("Getting Started") nav item links to `erste-schritte.html`, a hub page for short, standalone decision-aid tools (more are planned). The first one, `erste-schritte-servicemodelle.html` (SaaS/PaaS/IaaS/self-hosted + Public/Private/Hybrid/On-Premise decision aid), was adapted from a user-provided interactive Claude artifact that originally used JavaScript; per the user's explicit decision (2026-10-30), it was rebuilt CSS-only — radio-button tab hacks plus native `<details>`/`<summary>` for the branching wizard — so it needed no second JavaScript exception. Its content is German-only for now (clearly marked, also by the user's explicit decision), unlike the rest of the bilingual site; see design.md, "Erste Schritte".
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:

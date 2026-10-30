@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erste Schritte — Entscheidungshilfen</title>
+<meta name="description" content="Kurze, praktische Entscheidungshilfen zu einzelnen Themen.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<div class="page">
+
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="brand-link">
+        <span class="brand-logo-placeholder" aria-hidden="true">LOGO</span>
+        <span class="brand-name">MARTINA</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+          <span class="lang-en">Contact</span>
+          <span class="lang-de">Kontakt</span>
+        </a>
+        <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+          <span class="lang-switch-option lang-en-option">EN</span>
+          <span class="lang-switch-option lang-de-option">DE</span>
+        </label>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html#leistungen"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span></a>
+      <a href="index.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+      <a href="erste-schritte.html" aria-current="page"><span class="lang-en">Getting Started</span><span class="lang-de">Erste Schritte</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">News</span><span class="lang-de">News</span></a>
+    </nav>
+  </header>
+
+  <section class="overview" style="padding-top:56px;">
+    <p class="eyebrow">
+      <span class="lang-en">GETTING STARTED</span>
+      <span class="lang-de">ERSTE SCHRITTE</span>
+    </p>
+    <h1 class="section-heading">
+      <span class="lang-en">Decision Aids</span>
+      <span class="lang-de">Entscheidungshilfen</span>
+    </h1>
+    <p style="max-width:680px;">
+      <span class="lang-en">Short, practical guides that help with a single decision at a time — more topics will be added here over time.</span>
+      <span class="lang-de">Kurze, praktische Entscheidungshilfen zu einzelnen Themen — hier kommen mit der Zeit weitere Themen dazu.</span>
+    </p>
+
+    <div class="tile-grid" style="margin-top:32px;">
+      <div class="tile-row">
+        <a href="erste-schritte-servicemodelle.html" class="tile">
+          <span class="tile-image-placeholder tile-image-active">
+            <span class="lang-en">Decision aid</span>
+            <span class="lang-de">Entscheidungshilfe</span>
+          </span>
+          <span class="tile-body">
+            <span class="eyebrow">
+              <span class="lang-en">CLOUD &amp; AI</span>
+              <span class="lang-de">CLOUD &amp; KI</span>
+            </span>
+            <span class="tile-title">SaaS, PaaS, IaaS oder selbst betreiben?</span>
+            <span class="tile-tag">
+              <span class="lang-en">German only — click to open</span>
+              <span class="lang-de">Nur auf Deutsch — zum Öffnen klicken</span>
+            </span>
+          </span>
+        </a>
+        <a href="#" class="tile" aria-disabled="true">
+          <span class="tile-image-placeholder">
+            <span class="lang-en">[Placeholder — coming soon]</span>
+            <span class="lang-de">[Platzhalter — folgt]</span>
+          </span>
+          <span class="tile-body">
+            <span class="eyebrow">
+              <span class="lang-en">AI</span>
+              <span class="lang-de">KI</span>
+            </span>
+            <span class="tile-title">
+              <span class="lang-en">Choosing an AI Provider</span>
+              <span class="lang-de">KI-Anbieter im Vergleich</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="brand-name">MARTINA</span>
+    <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    <span>Impressum · Datenschutz</span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>

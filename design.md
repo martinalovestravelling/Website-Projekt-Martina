@@ -115,6 +115,37 @@ gesetzt hatte):
 - Mobile-first, Navigation horizontal scrollbar bei wenig Platz
 - Kein `<h1>`-Overflow auf kleinen Screens (Schriftgröße reduziert sich per Media Query)
 
+## Erste Schritte (Entscheidungshilfen)
+
+**Hinzugefügt 2026-10-30.** Neuer, aktivierter Nav-Punkt "Erste Schritte" (zwischen Werkzeugkasten
+und News) verlinkt auf `erste-schritte.html`, eine Hub-Seite mit einer Kachel-Übersicht über
+einzelne Entscheidungshilfen (weitere Themen, z. B. "KI-Anbieter im Vergleich", sind als
+Platzhalter-Kachel vorgesehen, bis sie tatsächlich gebaut werden). Von dort verlinkt die erste
+echte Entscheidungshilfe, `erste-schritte-servicemodelle.html` (SaaS/PaaS/IaaS/Selbst betreiben ×
+Public/Private/Hybrid/On-Premise).
+
+**Herkunft und Abweichungen vom Original:** Der Inhalt stammt aus einem vom Nutzer in Claude
+erstellten, interaktiven HTML-Artefakt (Entscheidungsassistent, Matrizen, Checklisten), das
+eigenes JavaScript verwendete. Zwei Entscheidungen des Nutzers (2026-10-30) bestimmen die
+Umsetzung hier:
+
+- **Kein JavaScript, auch nicht als zweite Ausnahme.** Die Seite wurde komplett ohne Script
+  nachgebaut: Die vier Servicemodell- bzw. Bereitstellungs-Tabs nutzen den CSS-Radiobutton-Hack
+  (analog zum Sprach-Toggle), die 16 Kombinationen sind eine statische Tabelle plus aufklappbare
+  `<details>`-Begründungen, und der verzweigte Entscheidungsassistent ist eine verschachtelte
+  `<details>`/`<summary>`-Baumstruktur. Gegenüber dem Original vereinfacht: keine dynamische
+  Matrix-Hervorhebung, kein Status-Speichern der Checkbox-Haken über einen Seitenaufruf hinaus,
+  und die ursprünglich zweistufige erste Assistenten-Frage ("fertiges Produkt nutzen" → "deckt es
+  die Anforderungen ab?") wurde zu einer Frage zusammengefasst, um doppelte Astzweige zu vermeiden.
+- **Nur Deutsch, klar markiert.** Anders als der Rest der Seite ist der Inhalt dieser beiden Seiten
+  (noch) nicht ins Englische übersetzt — ein sichtbarer Hinweis dazu steht direkt unter der
+  Einleitung. Header, Navigation und Footer bleiben wie überall zweisprachig per
+  `.lang-en`/`.lang-de` und Sprach-Toggle.
+
+Farben und Schriften verwenden ausschließlich die bestehenden Tokens (`--color-brand-primary`,
+`--color-brand-secondary`, `--color-surface(-alt)`, `--font-display`/`--font-sans`) — keine neuen
+Hex-Werte, keine zusätzliche Google-Fonts-Einbindung aus dem Original-Artefakt.
+
 ## Chat-Widget (FAQ-Assistent)
 
 Unverändert gegenüber der vorherigen Version — Design, Verhalten und Token-Nutzung bleiben

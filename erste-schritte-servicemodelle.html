@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS, PaaS, IaaS oder selbst betreiben? — Entscheidungshilfe</title>
+<meta name="description" content="Entscheidungshilfe: Welches Servicemodell passt, und wo soll es laufen (Public Cloud, Private Cloud, Hybrid oder On-Premise)?">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<div class="page">
+
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="brand-link">
+        <span class="brand-logo-placeholder" aria-hidden="true">LOGO</span>
+        <span class="brand-name">MARTINA</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+          <span class="lang-en">Contact</span>
+          <span class="lang-de">Kontakt</span>
+        </a>
+        <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+          <span class="lang-switch-option lang-en-option">EN</span>
+          <span class="lang-switch-option lang-de-option">DE</span>
+        </label>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html#leistungen"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span></a>
+      <a href="index.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+      <a href="erste-schritte.html" aria-current="page"><span class="lang-en">Getting Started</span><span class="lang-de">Erste Schritte</span></a>
+      <a href="#" aria-disabled="true"><span class="lang-en">News</span><span class="lang-de">News</span></a>
+    </nav>
+  </header>
+
+  <div class="dh-hero">
+    <span class="dh-pill">KI in der Cloud · Stand 23.10.2026</span>
+    <h1 class="section-heading">SaaS, PaaS, IaaS oder selbst betreiben?</h1>
+    <p class="dh-lead">Eine Entscheidungshilfe: Welches Servicemodell passt zum Vorhaben, und wo soll es laufen (Public Cloud, Private Cloud, Hybrid oder On-Premise)?</p>
+    <p class="dh-lang-note">
+      <span class="lang-en">This decision aid is currently available in German only.</span>
+      <span class="lang-de">Diese Entscheidungshilfe ist aktuell nur auf Deutsch verfügbar.</span>
+    </p>
+    <nav class="dh-jumpnav" aria-label="Abschnitte">
+      <a href="#assistent">Entscheidungsassistent</a>
+      <a href="#service">Servicemodelle</a>
+      <a href="#deploy">Bereitstellung</a>
+      <a href="#combo">Kombinationen</a>
+      <a href="#beachten">Beachten &amp; Risiken</a>
+      <a href="#quellen">Quellen</a>
+    </nav>
+  </div>
+
+  <main>
+
+  <section class="dh-section" id="assistent">
+    <p class="eyebrow">ENTSCHEIDUNGSASSISTENT</p>
+    <h2 class="section-heading">Drei Fragen zur Empfehlung</h2>
+    <p class="dh-sub">Klicke dich durch die Fragen. Jede Antwort öffnet die nächste Frage, bis am Ende eine Empfehlung für Servicemodell und Bereitstellungsform steht.</p>
+
+    <div class="dh-card dh-wiz-root">
+
+      <details class="dh-wiz">
+        <summary>Ein fertiges Produkt nutzen, das die Anforderungen abdeckt (z. B. E-Mail, CRM, KI-Assistent)</summary>
+        <div class="dh-wiz-body">
+          <p class="dh-wiz-hint">Vorläufige Einschätzung: <strong>SaaS</strong>. Wie streng sind die Anforderungen an Datenhoheit, Regulierung und Latenz?</p>
+
+          <details class="dh-wiz">
+            <summary>Normal — Auftragsverarbeitungsvertrag und Zertifikate reichen</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-T">Typisch</span>
+              <p><strong>SaaS in der Public Cloud.</strong> Der Standardfall: Der Anbieter betreibt die Anwendung in seiner Public Cloud. Zu prüfen sind Auftragsverarbeitungsvertrag, Sicherheitsnachweis (z. B. BSI C5) und Ausstiegsplan.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu SaaS</a> · <a href="#deploy">Mehr zur Public Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Erhöht — sensible Daten, aber Cloud-Komfort gewünscht</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-S">Selten</span>
+              <p><strong>SaaS in der Private Cloud.</strong> Manche Anbieter bieten abgeschottete Single-Tenant-Varianten oder Hosting für einzelne Kunden an. Das ist meist teurer und nicht für jedes Produkt verfügbar.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu SaaS</a> · <a href="#deploy">Mehr zur Private Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Gemischt — manches muss intern bleiben, manches darf in die Cloud</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-M">Möglich</span>
+              <p><strong>SaaS in der Hybrid Cloud.</strong> SaaS lässt sich mit internen Systemen verbinden. Der Erfolg hängt an Schnittstellen, Datenabgleich und einheitlicher Anmeldung.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu SaaS</a> · <a href="#deploy">Mehr zur Hybrid Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Zwingend lokal — Vorschrift, Spezialhardware oder Offline-Betrieb</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-N">Passt kaum</span>
+              <p><strong>SaaS und On-Premise schließen sich aus.</strong> SaaS läuft beim Anbieter. Bei zwingend lokalem Betrieb kommt eher lizenzierte Software zum Selbstbetrieb in Frage, die dann kein SaaS mehr ist.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu SaaS</a> · <a href="#deploy">Mehr zu On-Premise</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="dh-wiz">
+        <summary>Eine eigene Anwendung oder KI-Lösung entwickeln</summary>
+        <div class="dh-wiz-body">
+          <p class="dh-wiz-hint">Wie viel Kontrolle über Betriebssystem, Laufzeitumgebung und Netzwerk wird gebraucht?</p>
+
+          <details class="dh-wiz">
+            <summary>Code und Daten genügen — der Betrieb darf der Anbieter übernehmen</summary>
+            <div class="dh-wiz-body">
+              <p class="dh-wiz-hint">Vorläufige Einschätzung: <strong>PaaS</strong>. Wie streng sind die Anforderungen an Datenhoheit, Regulierung und Latenz?</p>
+              <details class="dh-wiz">
+                <summary>Normal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-T">Typisch</span>
+                  <p><strong>PaaS in der Public Cloud.</strong> Der Standardfall: verwaltete Plattformen der großen Anbieter. Auf plattformspezifische Dienste achten, denn sie erschweren einen späteren Wechsel.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu PaaS</a> · <a href="#deploy">Mehr zur Public Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Erhöht</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-M">Möglich</span>
+                  <p><strong>PaaS in der Private Cloud.</strong> Möglich mit eigenen Plattformen, etwa Container-Umgebungen. Der Betriebsaufwand steigt deutlich, weil die Plattform selbst betrieben wird.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu PaaS</a> · <a href="#deploy">Mehr zur Private Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Gemischt</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-M">Möglich</span>
+                  <p><strong>PaaS in der Hybrid Cloud.</strong> Eine einheitliche Plattform über mehrere Umgebungen kann Anwendungen verschiebbar machen. Das braucht Know-how und oft Umbauten (Deloitte).</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu PaaS</a> · <a href="#deploy">Mehr zur Hybrid Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Zwingend lokal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-S">Selten</span>
+                  <p><strong>PaaS On-Premise.</strong> Die Plattform wird selbst betrieben. Faktisch ist das Selbstbetrieb mit dem Komfort einer Plattform für die Entwickler.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu PaaS</a> · <a href="#deploy">Mehr zu On-Premise</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="dh-wiz">
+            <summary>Voller Zugriff auf Betriebssystem und Netzwerk nötig — eigener Software-Stack in gemieteter Infrastruktur</summary>
+            <div class="dh-wiz-body">
+              <p class="dh-wiz-hint">Vorläufige Einschätzung: <strong>IaaS</strong>. Wie streng sind die Anforderungen an Datenhoheit, Regulierung und Latenz?</p>
+              <details class="dh-wiz">
+                <summary>Normal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-T">Typisch</span>
+                  <p><strong>IaaS in der Public Cloud.</strong> Der Standardfall: gemietete virtuelle Maschinen, Speicher und Netzwerk. Betriebssystem, Patches und Absicherung liegen beim Kunden.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Public Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Erhöht</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-T">Typisch</span>
+                  <p><strong>IaaS in der Private Cloud.</strong> Klassisch: virtualisierte Infrastruktur in einer eigenen oder gehosteten Private Cloud mit Cloud-Werkzeugen.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Private Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Gemischt</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-T">Typisch</span>
+                  <p><strong>IaaS in der Hybrid Cloud.</strong> Häufig für schrittweise Verlagerung, etwa Altsysteme nach und nach in die Cloud bringen oder Lastspitzen per Cloud Bursting in die Public Cloud geben.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Hybrid Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Zwingend lokal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-M">Möglich</span>
+                  <p><strong>IaaS On-Premise.</strong> Virtualisierung im eigenen Rechenzentrum entspricht weitgehend dem Selbstbetrieb, ohne Cloud-Anbieter.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zu On-Premise</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="dh-wiz">
+            <summary>Zusätzlich eigene Hardware nötig — z. B. Spezialhardware oder Vorgaben zum Standort</summary>
+            <div class="dh-wiz-body">
+              <p class="dh-wiz-hint">Vorläufige Einschätzung: <strong>Selbst betreiben</strong>. Wie streng sind die Anforderungen an Datenhoheit, Regulierung und Latenz?</p>
+              <details class="dh-wiz">
+                <summary>Normal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-N">Passt kaum</span>
+                  <p><strong>Selbst betreiben und Public Cloud schließen sich aus.</strong> Zu prüfen ist stattdessen IaaS in der Public Cloud oder ein Hybrid-Modell.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu Selbst betreiben</a> · <a href="#deploy">Mehr zur Public Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Erhöht</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-M">Möglich</span>
+                  <p><strong>Selbstbetrieb mit Cloud-Werkzeugen, also eine eigene Private Cloud.</strong> Der Aufwand bleibt hoch.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu Selbst betreiben</a> · <a href="#deploy">Mehr zur Private Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Gemischt</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-M">Möglich</span>
+                  <p><strong>Kernsysteme bleiben im Haus, ausgewählte Teile gehen in die Cloud.</strong> Das gilt laut Studien als verbreitetes Modell.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu Selbst betreiben</a> · <a href="#deploy">Mehr zur Hybrid Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+              <details class="dh-wiz">
+                <summary>Zwingend lokal</summary>
+                <div class="dh-wiz-result">
+                  <span class="dh-lvl dh-lvl-T">Typisch</span>
+                  <p><strong>Vollständig eigener Betrieb.</strong> Maximale Kontrolle, aber Personal, Sicherheit und Ausfallsicherheit liegen komplett beim Kunden.</p>
+                  <p class="dh-wiz-links"><a href="#service">Mehr zu Selbst betreiben</a> · <a href="#deploy">Mehr zu On-Premise</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+                </div>
+              </details>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="dh-wiz">
+        <summary>Bestehende Software oder ein Altsystem weiterbetreiben</summary>
+        <div class="dh-wiz-body">
+          <p class="dh-wiz-hint">Vorläufige Einschätzung: <strong>IaaS</strong>. Wie streng sind die Anforderungen an Datenhoheit, Regulierung und Latenz?</p>
+          <details class="dh-wiz">
+            <summary>Normal</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-T">Typisch</span>
+              <p><strong>IaaS in der Public Cloud.</strong> Der Standardfall: gemietete virtuelle Maschinen, Speicher und Netzwerk. Betriebssystem, Patches und Absicherung liegen beim Kunden.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Public Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Erhöht</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-T">Typisch</span>
+              <p><strong>IaaS in der Private Cloud.</strong> Klassisch: virtualisierte Infrastruktur in einer eigenen oder gehosteten Private Cloud mit Cloud-Werkzeugen.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Private Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Gemischt</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-T">Typisch</span>
+              <p><strong>IaaS in der Hybrid Cloud.</strong> Häufig für schrittweise Verlagerung, etwa Altsysteme nach und nach in die Cloud bringen oder Lastspitzen per Cloud Bursting in die Public Cloud geben.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zur Hybrid Cloud</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+          <details class="dh-wiz">
+            <summary>Zwingend lokal</summary>
+            <div class="dh-wiz-result">
+              <span class="dh-lvl dh-lvl-M">Möglich</span>
+              <p><strong>IaaS On-Premise.</strong> Virtualisierung im eigenen Rechenzentrum entspricht weitgehend dem Selbstbetrieb, ohne Cloud-Anbieter.</p>
+              <p class="dh-wiz-links"><a href="#service">Mehr zu IaaS</a> · <a href="#deploy">Mehr zu On-Premise</a> · <a href="#beachten">Offene Punkte &amp; Risiken</a></p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <section class="dh-section" id="service">
+    <p class="eyebrow">SERVICEMODELLE</p>
+    <h2 class="section-heading">Die vier Servicemodelle</h2>
+    <p class="dh-sub">Wer macht was? Nach Microsofts Shared-Responsibility-Modell, vereinfacht. Bei SaaS bleiben Daten und Zugriffe immer beim Kunden.</p>
+
+    <div class="dh-table-scroll">
+      <table class="dh-matrix">
+        <thead>
+          <tr><th scope="col"></th><th scope="col">Selbst betreiben</th><th scope="col">IaaS</th><th scope="col">PaaS</th><th scope="col">SaaS</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Daten und Zugriffe</th><td class="dh-cell-K">Kunde</td><td class="dh-cell-K">Kunde</td><td class="dh-cell-K">Kunde</td><td class="dh-cell-K">Kunde</td></tr>
+          <tr><th scope="row">Anwendung</th><td class="dh-cell-K">Kunde</td><td class="dh-cell-K">Kunde</td><td class="dh-cell-G">geteilt</td><td class="dh-cell-G">geteilt</td></tr>
+          <tr><th scope="row">Betriebssystem, Laufzeit</th><td class="dh-cell-K">Kunde</td><td class="dh-cell-K">Kunde</td><td class="dh-cell-A">Anbieter</td><td class="dh-cell-A">Anbieter</td></tr>
+          <tr><th scope="row">Server, Netzwerk, Rechenzentrum</th><td class="dh-cell-K">Kunde</td><td class="dh-cell-A">Anbieter</td><td class="dh-cell-A">Anbieter</td><td class="dh-cell-A">Anbieter</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dh-legend">
+      <span class="dh-legend-item dh-cell-K">Kunde</span>
+      <span class="dh-legend-item dh-cell-A">Anbieter</span>
+      <span class="dh-legend-item dh-cell-G">geteilt</span>
+    </p>
+
+    <div class="dh-tabs">
+      <input type="radio" name="svc-tab" id="svc-tab-onprem" class="dh-tab-input" checked>
+      <input type="radio" name="svc-tab" id="svc-tab-iaas" class="dh-tab-input">
+      <input type="radio" name="svc-tab" id="svc-tab-paas" class="dh-tab-input">
+      <input type="radio" name="svc-tab" id="svc-tab-saas" class="dh-tab-input">
+      <div class="dh-tab-labels">
+        <label for="svc-tab-onprem">Selbst betreiben</label>
+        <label for="svc-tab-iaas">IaaS</label>
+        <label for="svc-tab-paas">PaaS</label>
+        <label for="svc-tab-saas">SaaS</label>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-svc-onprem">
+        <h3>Selbst betreiben — alles im eigenen Haus</h3>
+        <p class="dh-meter"><span class="dh-meter-label">Kontrolle</span><span class="dh-meter-bar"><span style="width:100%"></span></span></p>
+        <p class="dh-meter"><span class="dh-meter-label">Aufwand</span><span class="dh-meter-bar"><span style="width:100%"></span></span></p>
+        <p>Eigene Hardware, eigenes Rechenzentrum und eigenes Team. Maximale Kontrolle bei maximalem Aufwand.</p>
+        <div class="dh-callout"><strong>Was es genau ist</strong>Hardware, Betriebssystem und Software laufen in eigenen Räumen und unter eigener Verantwortung. Kein Cloud-Anbieter übernimmt Teile davon. Nach NIST ist das kein Cloud-Servicemodell, sondern klassischer Eigenbetrieb.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Gesetzliche oder vertragliche Vorgaben verlangen lokale Datenhaltung</li>
+            <li>Spezialhardware, sehr niedrige Latenz oder Betrieb ohne Internetverbindung</li>
+            <li>Dauerhaft stabile Last, bei der eigener Betrieb günstiger sein kann</li>
+            <li>Vorhandene Investitionen in Rechenzentrum und Know-how</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Kein Fachpersonal für Betrieb, Sicherheit, Updates und Ausfallsicherheit</li>
+            <li>Stark schwankender Bedarf, der flexible Skalierung braucht</li>
+            <li>Schneller Start ist wichtig</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Das bleibt beim Kunden</h4><ul>
+            <li>Gebäude, Strom, Kühlung und physische Sicherheit</li>
+            <li>Hardware beschaffen, warten und erneuern</li>
+            <li>Betriebssystem, Software, Updates und Patches</li>
+            <li>Datensicherung, Notfallplan und Ausfallsicherheit</li>
+            <li>Informationssicherheit und Compliance</li>
+          </ul></div>
+          <div><h4>Im KI-Kontext</h4><ul>
+            <li>Eigene GPU-Server, etwa für sensible Trainingsdaten oder Offline-Betrieb</li>
+            <li>Beschaffung, Betrieb und Auslastung der KI-Hardware liegen vollständig beim Betreiber</li>
+            <li>Sinnvoll vor allem bei dauerhaft hoher und planbarer Last</li>
+          </ul></div>
+        </div>
+        <h4>Typische Bausteine</h4>
+        <p class="dh-chips">
+          <span class="dh-chip">Server und Speicher</span>
+          <span class="dh-chip">Netzwerk und Firewalls</span>
+          <span class="dh-chip">Virtualisierung</span>
+          <span class="dh-chip">Strom, Kühlung, Zutrittsschutz</span>
+          <span class="dh-chip">Monitoring und Backup</span>
+        </p>
+        <h4>Beispiele</h4>
+        <p class="dh-chips"><span class="dh-chip">Serverraum im Unternehmen</span><span class="dh-chip">Eigenes Rechenzentrum</span></p>
+        <p class="dh-fit-note"><strong>Übliche Umgebung:</strong> Typisch: On-Premise · Möglich: Private Cloud, Hybrid Cloud · Passt kaum: Public Cloud</p>
+        <p class="dh-study">Deloitte: Ab etwa 60 bis 70 Prozent der Kosten vergleichbarer eigener Hardware sollten Unternehmen Alternativen zur Cloud ernsthaft prüfen. Führende Unternehmen kombinieren laut Deloitte Cloud und eigene Infrastruktur, statt sich für eines zu entscheiden.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-svc-iaas">
+        <h3>IaaS — Software betreiben</h3>
+        <p class="dh-meter"><span class="dh-meter-label">Kontrolle</span><span class="dh-meter-bar"><span style="width:80%"></span></span></p>
+        <p class="dh-meter"><span class="dh-meter-label">Aufwand</span><span class="dh-meter-bar"><span style="width:80%"></span></span></p>
+        <p>Infrastructure as a Service: Der Anbieter stellt Server, Speicher und Netzwerk bereit. Betriebssystem und alles darüber gehören dem Kunden.</p>
+        <div class="dh-callout"><strong>Was es genau ist</strong>Der Anbieter stellt Rechenleistung, Speicher und Netzwerke bereit. Darauf läuft beliebige Software, auch eigene Betriebssysteme. Nach NIST kontrolliert der Kunde Betriebssystem, Speicher und Anwendungen sowie begrenzt einzelne Netzwerkkomponenten wie Firewalls auf dem Host.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Bestehende Software oder Altsysteme sollen in die Cloud verlagert werden</li>
+            <li>Volle Kontrolle über Betriebssystem, Software-Stack und Netzwerk ist nötig</li>
+            <li>Rechenleistung wird flexibel gebraucht, etwa für Lastspitzen oder Tests</li>
+            <li>Spezialsoftware läuft nicht auf den Plattformen eines PaaS-Angebots</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Kein Team für Betrieb, Patches und Absicherung des Betriebssystems</li>
+            <li>Ein fertiges SaaS- oder PaaS-Angebot würde ausreichen</li>
+            <li>Der Betriebsaufwand soll möglichst klein bleiben</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Das bleibt beim Kunden</h4><ul>
+            <li>Betriebssystem installieren, patchen und absichern</li>
+            <li>Eigene Software und Middleware betreiben</li>
+            <li>Netzwerk-, Firewall- und Zugriffskonfiguration</li>
+            <li>Backups, Monitoring und Hochverfügbarkeit planen</li>
+            <li>Kosten überwachen und ungenutzte Ressourcen abschalten</li>
+          </ul></div>
+          <div><h4>Im KI-Kontext</h4><ul>
+            <li>GPU-Instanzen für Training und Betrieb eigener Modelle mit voller Kontrolle über Software-Stack und Treiber</li>
+            <li>Eigene Inferenz-Server, wenn Modelle nicht über fertige Dienste laufen sollen</li>
+            <li>Deloitte beschreibt stark wachsenden Bedarf an KI-Rechenleistung, der Kosten und Kapazitätsplanung wichtig macht</li>
+          </ul></div>
+        </div>
+        <h4>Typische Bausteine</h4>
+        <p class="dh-chips">
+          <span class="dh-chip">Virtuelle Maschinen</span>
+          <span class="dh-chip">Block- und Objektspeicher</span>
+          <span class="dh-chip">Virtuelle Netzwerke und Firewalls</span>
+          <span class="dh-chip">Load Balancer</span>
+          <span class="dh-chip">GPU-Instanzen</span>
+        </p>
+        <h4>Beispiele</h4>
+        <p class="dh-chips"><span class="dh-chip">Amazon EC2</span><span class="dh-chip">Azure Virtual Machines</span><span class="dh-chip">Google Compute Engine</span></p>
+        <p class="dh-fit-note"><strong>Übliche Umgebung:</strong> Typisch: Public Cloud, Private Cloud, Hybrid Cloud · Möglich: On-Premise</p>
+        <p class="dh-study">PwC berichtet aus eigener Projekterfahrung, dass Einführungen mit verwalteten Cloud-Diensten typischerweise etwa ein Drittel schneller und mit weniger technischen Problemen laufen als vergleichbare Lösungen auf virtuellen Maschinen. Die Quelle gehört zu einer Herstellerpartnerschaft und ist entsprechend einzuordnen.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-svc-paas">
+        <h3>PaaS — Anwendung entwickeln</h3>
+        <p class="dh-meter"><span class="dh-meter-label">Kontrolle</span><span class="dh-meter-bar"><span style="width:60%"></span></span></p>
+        <p class="dh-meter"><span class="dh-meter-label">Aufwand</span><span class="dh-meter-bar"><span style="width:40%"></span></span></p>
+        <p>Platform as a Service: Der Anbieter stellt Betriebssystem und Laufzeitumgebung bereit. Das Team konzentriert sich auf Code, Daten und Konfiguration.</p>
+        <div class="dh-callout"><strong>Was es genau ist</strong>Der Anbieter stellt Betriebssystem, Laufzeitumgebung und Dienste bereit. Der Kunde bringt eigene oder erworbene Anwendungen ein, die mit vom Anbieter unterstützten Sprachen und Werkzeugen gebaut sind. Nach NIST steuert der Kunde die Anwendung und gegebenenfalls Einstellungen der Hosting-Umgebung.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Eine eigene Anwendung oder KI-Lösung soll entwickelt werden, ohne Server zu verwalten</li>
+            <li>Deployment, Skalierung und Laufzeitumgebung sollen vom Anbieter kommen</li>
+            <li>Das Team soll sich auf Anwendungslogik statt auf Betrieb konzentrieren</li>
+            <li>Mehrere Entwickler arbeiten an derselben Plattform zusammen</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Besondere Anforderungen an Betriebssystem oder Netzwerk</li>
+            <li>Die Laufzeitumgebung des Anbieters passt nicht zur Software</li>
+            <li>Portabilität ist wichtig, denn plattformspezifische Dienste binden an den Anbieter</li>
+            <li>Ein fertiges SaaS-Produkt deckt den Bedarf bereits ab</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Das bleibt beim Kunden</h4><ul>
+            <li>Anwendungscode und Architektur</li>
+            <li>Daten, Zugriffe und Geheimnisse wie Schlüssel und Passwörter</li>
+            <li>Konfiguration der Hosting-Umgebung</li>
+            <li>Absicherung der Schnittstellen</li>
+            <li>Kosten- und Skalierungseinstellungen</li>
+          </ul></div>
+          <div><h4>Im KI-Kontext</h4><ul>
+            <li>Eigene KI-Anwendungen auf verwalteten Plattformen bauen, ohne Server zu betreiben</li>
+            <li>Modelle über Schnittstellen einbinden, Daten aufbereiten und Anwendungen ausrollen</li>
+            <li>Deloitte nennt als Herausforderung, dass Lösungen über mehrere Cloud-Umgebungen oft stark umgebaut werden müssen</li>
+          </ul></div>
+        </div>
+        <h4>Typische Bausteine</h4>
+        <p class="dh-chips">
+          <span class="dh-chip">App-Hosting</span>
+          <span class="dh-chip">Verwaltete Datenbanken</span>
+          <span class="dh-chip">Container- und Serverless-Dienste</span>
+          <span class="dh-chip">Entwicklungs- und Deployment-Werkzeuge</span>
+          <span class="dh-chip">Verwaltete KI- und Datenplattformen</span>
+        </p>
+        <h4>Beispiele</h4>
+        <p class="dh-chips"><span class="dh-chip">Azure App Service</span><span class="dh-chip">Google App Engine</span><span class="dh-chip">AWS Elastic Beanstalk</span></p>
+        <p class="dh-fit-note"><strong>Übliche Umgebung:</strong> Typisch: Public Cloud · Möglich: Private Cloud, Hybrid Cloud · Selten: On-Premise</p>
+        <p class="dh-study">PwC berichtet aus eigener Projekterfahrung, dass Einführungen mit verwalteten Cloud-Diensten typischerweise etwa ein Drittel schneller laufen als vergleichbare Lösungen auf virtuellen Maschinen. Die Quelle gehört zu einer Herstellerpartnerschaft und ist entsprechend einzuordnen.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-svc-saas">
+        <h3>SaaS — Produkt nutzen</h3>
+        <p class="dh-meter"><span class="dh-meter-label">Kontrolle</span><span class="dh-meter-bar"><span style="width:20%"></span></span></p>
+        <p class="dh-meter"><span class="dh-meter-label">Aufwand</span><span class="dh-meter-bar"><span style="width:20%"></span></span></p>
+        <p>Software as a Service: Der Anbieter betreibt die komplette Anwendung. Genutzt wird sie im Browser oder per Schnittstelle, meist im Abo.</p>
+        <div class="dh-callout"><strong>Was es genau ist</strong>Der Anbieter betreibt die komplette Anwendung auf seiner Cloud-Infrastruktur. Nach NIST verwaltet der Kunde weder Netzwerk, Server, Betriebssystem noch Speicher, abgesehen von begrenzten Nutzereinstellungen. Updates und Patches kommen zentral für alle Kunden.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Ein fertiges Produkt deckt den Bedarf ab, etwa E-Mail, CRM, Zusammenarbeit oder ein KI-Assistent</li>
+            <li>Ein schneller Start mit wenig eigenem IT-Betrieb ist wichtig</li>
+            <li>Standardprozesse genügen, Anpassung über Konfiguration reicht</li>
+            <li>Updates und Sicherheitspatches sollen automatisch kommen</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Sehr spezielle Prozesse, die das Produkt nicht abbildet</li>
+            <li>Daten dürfen den eigenen Verantwortungsbereich nicht verlassen</li>
+            <li>Abhängigkeit vom Anbieter (Vendor Lock-in) ist nicht tragbar</li>
+            <li>Die Integration scheitert an fehlenden APIs oder Aufruflimits</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Das bleibt beim Kunden</h4><ul>
+            <li>Daten und Zugriffe, auch bei SaaS immer beim Kunden</li>
+            <li>Konfiguration der Anwendung und Rechtevergabe</li>
+            <li>Absicherung der Endgeräte</li>
+            <li>Auswahl und Prüfung des Anbieters</li>
+            <li>Integration in bestehende Systeme</li>
+          </ul></div>
+          <div><h4>Im KI-Kontext</h4><ul>
+            <li>KI-Assistenten und eingebettete KI-Funktionen im Abo</li>
+            <li>Schneller Einstieg ohne eigene Modell- oder Infrastrukturarbeit</li>
+            <li>Wichtig: Welche Daten fließen an den Anbieter, und wie werden sie genutzt?</li>
+          </ul></div>
+        </div>
+        <h4>Typische Bausteine</h4>
+        <p class="dh-chips">
+          <span class="dh-chip">Fertige Anwendung im Abo</span>
+          <span class="dh-chip">Mandantenfähige Plattform</span>
+          <span class="dh-chip">Schnittstellen (APIs)</span>
+          <span class="dh-chip">Zentrale Updates und Backups</span>
+        </p>
+        <h4>Beispiele</h4>
+        <p class="dh-chips"><span class="dh-chip">Microsoft 365</span><span class="dh-chip">Salesforce</span><span class="dh-chip">Videokonferenz-Tools</span><span class="dh-chip">KI-Assistenten im Abo</span></p>
+        <p class="dh-fit-note"><strong>Übliche Umgebung:</strong> Typisch: Public Cloud · Möglich: Hybrid Cloud · Selten: Private Cloud · Passt kaum: On-Premise</p>
+        <p class="dh-study">CIO.de berichtet, dass seit Februar 2026 die Kurse mehrerer bekannter SaaS-Anbieter stark gefallen sind, weil Analysten vermuten, dass KI-Agenten Teile von SaaS ersetzen könnten. Das ist eine Markteinschätzung und kein Beleg für eine Entwicklung.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="deploy">
+    <p class="eyebrow">BEREITSTELLUNG</p>
+    <h2 class="section-heading">Wo soll es laufen?</h2>
+    <p class="dh-sub">Das Bereitstellungsmodell beantwortet eine andere Frage als das Servicemodell: nicht „Wer betreibt was?", sondern „In welcher Umgebung?".</p>
+
+    <div class="dh-tabs">
+      <input type="radio" name="dep-tab" id="dep-tab-public" class="dh-tab-input" checked>
+      <input type="radio" name="dep-tab" id="dep-tab-private" class="dh-tab-input">
+      <input type="radio" name="dep-tab" id="dep-tab-hybrid" class="dh-tab-input">
+      <input type="radio" name="dep-tab" id="dep-tab-onprem" class="dh-tab-input">
+      <div class="dh-tab-labels">
+        <label for="dep-tab-public">Public Cloud</label>
+        <label for="dep-tab-private">Private Cloud</label>
+        <label for="dep-tab-hybrid">Hybrid Cloud</label>
+        <label for="dep-tab-onprem">On-Premise</label>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-dep-public">
+        <h3>Public Cloud — geteilte Infrastruktur eines Anbieters</h3>
+        <p>Die Infrastruktur gehört einem Cloud-Anbieter und wird von vielen Kunden gemeinsam genutzt. Der Zugriff läuft über das Internet.</p>
+        <div class="dh-callout"><strong>Definition nach NIST</strong>Die Infrastruktur ist für die offene Nutzung durch die Allgemeinheit bereitgestellt und liegt in den Räumen des Anbieters.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Schnelle Skalierung und geringe Startkosten sind gefragt</li>
+            <li>Die Datenschutzanforderungen lassen sich mit Auftragsverarbeitungsvertrag und Zertifikaten erfüllen</li>
+            <li>Das Vorhaben ist neu und der Bedarf noch schwer planbar</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Daten müssen zwingend im eigenen Verantwortungsbereich bleiben</li>
+            <li>Die Abhängigkeit von einem Anbieter ist nicht tragbar</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Worauf zu achten ist</h4><ul>
+            <li>Datenstandort und Zugriffsmöglichkeiten, auch aus Drittländern, klären</li>
+            <li>Kosten bei wachsender Last überwachen, denn Deloitte warnt, dass Public-Cloud-Kosten bei großen Workloads das Budget sprengen können</li>
+            <li>Abhängigkeit von einem Anbieter durch offene Standards oder Multi-Cloud begrenzen</li>
+          </ul></div>
+          <div><h4>Beispiele</h4>
+            <p class="dh-chips"><span class="dh-chip">AWS</span><span class="dh-chip">Microsoft Azure</span><span class="dh-chip">Google Cloud</span></p>
+          </div>
+        </div>
+        <p class="dh-fit-note"><strong>Welche Servicemodelle laufen hier?</strong> Typisch: IaaS, PaaS, SaaS · Passt kaum: Selbst betreiben</p>
+        <p class="dh-study">NIST kennt zusätzlich die Community Cloud für eine bestimmte Gemeinschaft von Organisationen mit gemeinsamen Anforderungen. Sovereign Cloud ist kein NIST-Modell, sondern eine Zusatzanforderung an Ort, Zugriff und Verarbeitung der Daten.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-dep-private">
+        <h3>Private Cloud — exklusive Cloud für eine Organisation</h3>
+        <p>Die Umgebung wird exklusiv für eine Organisation betrieben, im eigenen Haus oder bei einem Dienstleister. Sie bietet Cloud-Komfort mit mehr Kontrolle.</p>
+        <div class="dh-callout"><strong>Definition nach NIST</strong>Die Infrastruktur ist für die exklusive Nutzung durch eine einzelne Organisation bereitgestellt. Sie kann der Organisation oder einem Dritten gehören, von ihnen betrieben werden und innerhalb oder außerhalb der eigenen Räume liegen.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Sensible Daten brauchen mehr Kontrolle als in der Public Cloud</li>
+            <li>Intern soll Selbstbedienung und Automatisierung wie in der Cloud angeboten werden</li>
+            <li>Regulatorische Vorgaben verlangen eine abgeschottete Umgebung</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Hohe Kosten und hoher Aufwand sind nicht vertretbar</li>
+            <li>Der Bedarf schwankt stark und braucht fast unbegrenzte Skalierung</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Worauf zu achten ist</h4><ul>
+            <li>Betriebsaufwand und Fachpersonal einplanen, oder einen Dienstleister beauftragen</li>
+            <li>Skalierungsgrenzen der eigenen Kapazität beachten</li>
+            <li>Cloud-typische Selbstbedienung und Automatisierung wirklich einführen, sonst bleibt es klassische Virtualisierung</li>
+          </ul></div>
+          <div><h4>Beispiele</h4>
+            <p class="dh-chips"><span class="dh-chip">VMware-basierte Umgebungen</span><span class="dh-chip">OpenStack</span><span class="dh-chip">Dedizierte Hosting-Angebote</span></p>
+          </div>
+        </div>
+        <p class="dh-fit-note"><strong>Welche Servicemodelle laufen hier?</strong> Typisch: IaaS · Möglich: PaaS, Selbst betreiben · Selten: SaaS</p>
+        <p class="dh-study">NIST kennt zusätzlich die Community Cloud für eine bestimmte Gemeinschaft von Organisationen mit gemeinsamen Anforderungen. Sovereign Cloud ist kein NIST-Modell, sondern eine Zusatzanforderung an Ort, Zugriff und Verarbeitung der Daten.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-dep-hybrid">
+        <h3>Hybrid Cloud — mehrere Umgebungen, verbunden</h3>
+        <p>Mehrere Umgebungen, etwa Private und Public Cloud oder Vor-Ort-Systeme und Cloud, werden über definierte Schnittstellen verbunden.</p>
+        <div class="dh-callout"><strong>Definition nach NIST</strong>Eine Hybrid Cloud besteht aus zwei oder mehr eigenständigen Cloud-Infrastrukturen, die durch Technik verbunden sind, welche die Übertragbarkeit von Daten und Anwendungen ermöglicht, etwa Cloud Bursting zum Lastausgleich.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Manche Daten oder Systeme müssen intern bleiben, andere profitieren von der Public Cloud</li>
+            <li>Die Migration soll schrittweise erfolgen</li>
+            <li>Lastspitzen sollen in die Public Cloud ausgelagert werden</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Das Team kann die Komplexität von Integration, Sicherheit und Betrieb nicht tragen</li>
+            <li>Die Gesamtkosten für zwei Welten sind nicht gerechtfertigt</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Worauf zu achten ist</h4><ul>
+            <li>Einheitliche Sicherheits- und Zugriffskonzepte über alle Umgebungen hinweg</li>
+            <li>Zuverlässige, schnelle Verbindung zwischen den Umgebungen, denn Deloitte nennt Konnektivität als Herausforderung</li>
+            <li>Anwendungen müssen oft umgebaut werden, damit sie über mehrere Umgebungen laufen (Deloitte)</li>
+            <li>Klare Regel, welche Daten wo liegen</li>
+          </ul></div>
+          <div><h4>Beispiele</h4>
+            <p class="dh-chips"><span class="dh-chip">Kernsysteme intern, Webanwendungen in der Public Cloud</span><span class="dh-chip">Backup in der Cloud, Produktion im Haus</span></p>
+          </div>
+        </div>
+        <p class="dh-fit-note"><strong>Welche Servicemodelle laufen hier?</strong> Typisch: IaaS · Möglich: PaaS, SaaS, Selbst betreiben</p>
+        <p class="dh-study">NIST kennt zusätzlich die Community Cloud für eine bestimmte Gemeinschaft von Organisationen mit gemeinsamen Anforderungen. Sovereign Cloud ist kein NIST-Modell, sondern eine Zusatzanforderung an Ort, Zugriff und Verarbeitung der Daten.</p>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-dep-onprem">
+        <h3>On-Premise — eigene Räume, eigene Hardware</h3>
+        <p>Betrieb in eigenen Räumen mit eigener Hardware und eigenem Personal, ohne Cloud-Anbieter.</p>
+        <div class="dh-callout"><strong>Definition nach NIST</strong>Kein NIST-Bereitstellungsmodell. Eine Private Cloud kann ebenfalls im eigenen Haus stehen, On-Premise meint dagegen den klassischen Eigenbetrieb ohne Cloud-Eigenschaften wie Selbstbedienung.</div>
+        <div class="dh-two-col">
+          <div><h4>Wann es passt</h4><ul>
+            <li>Harte Vorgaben verlangen lokale Datenhaltung</li>
+            <li>Spezialhardware, sehr niedrige Latenz oder Offline-Betrieb sind nötig</li>
+            <li>Vorhandene Systeme sollen weiter genutzt werden</li>
+          </ul></div>
+          <div><h4>Wann eher nicht</h4><ul>
+            <li>Es fehlt Fachpersonal für Betrieb und Absicherung</li>
+            <li>Schnelle Skalierung oder ein schneller Start sind wichtig</li>
+          </ul></div>
+        </div>
+        <div class="dh-two-col">
+          <div><h4>Worauf zu achten ist</h4><ul>
+            <li>Gebäude, Strom, Kühlung und Zutrittsschutz sicherstellen</li>
+            <li>Notfallplan und getestete Wiederherstellung vorhalten</li>
+            <li>Hardware modernisieren, auch im Hinblick auf KI-Lasten</li>
+          </ul></div>
+          <div><h4>Beispiele</h4>
+            <p class="dh-chips"><span class="dh-chip">Serverraum</span><span class="dh-chip">Eigenes Rechenzentrum</span></p>
+          </div>
+        </div>
+        <p class="dh-fit-note"><strong>Welche Servicemodelle laufen hier?</strong> Typisch: Selbst betreiben · Möglich: IaaS · Selten: PaaS · Passt kaum: SaaS</p>
+        <p class="dh-study">NIST kennt zusätzlich die Community Cloud für eine bestimmte Gemeinschaft von Organisationen mit gemeinsamen Anforderungen. Sovereign Cloud ist kein NIST-Modell, sondern eine Zusatzanforderung an Ort, Zugriff und Verarbeitung der Daten.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">Was Studien und Beratungshäuser berichten</h3>
+    <p class="dh-sub" style="margin-bottom:0;">Stand der Recherche: 23.10.2026. Die Zahlen stammen aus den jeweils verlinkten Quellen im Abschnitt „Quellen".</p>
+    <div class="dh-facts-grid">
+      <div class="dh-fact"><strong>Bitkom Cloud Report 2026</strong><span>86 Prozent der deutschen Unternehmen ab 20 Beschäftigten nutzen Cloud-Dienste. Private Cloud liegt mit 64 Prozent vor der Public Cloud mit 53 Prozent, 34 Prozent nutzen Hybrid.</span></div>
+      <div class="dh-fact"><strong>Bitkom Cloud Report 2026</strong><span>37 Prozent der Unternehmen würden für mehr digitale Souveränität höhere Kosten oder weniger Funktionen akzeptieren. Im Vorjahr waren es 27 Prozent.</span></div>
+      <div class="dh-fact"><strong>KPMG Cloud-Monitor 2026, Deutschland</strong><span>Die Public Cloud bleibt die bevorzugte Zielplattform. 42 Prozent nennen die Anpassung der bestehenden IT-Infrastruktur als größte Hürde bei der Cloud-Integration.</span></div>
+      <div class="dh-fact"><strong>KPMG Cloud-Monitor 2026, Österreich</strong><span>34 Prozent nutzen überwiegend Public Cloud, 45 Prozent einen ausgewogenen hybriden Ansatz, 76 Prozent verfolgen Multi-Cloud. 50 Prozent suchen wegen geopolitischer Entwicklungen nach Alternativen.</span></div>
+      <div class="dh-fact"><strong>PwC EMEA Cloud Business Survey 2025</strong><span>94 Prozent der Organisationen wollen ihre Cloud-Architektur anpassen oder ausweiten, getrieben von Skalierung, Flexibilität und Souveränität.</span></div>
+      <div class="dh-fact"><strong>PwC, wiedergegeben von CIO.com</strong><span>Nur 18 Prozent der Unternehmen verlassen sich auf eine einzige Cloud-Umgebung. Das gilt laut PwC als Zeichen geringerer Reife bei KI und FinOps.</span></div>
+      <div class="dh-fact"><strong>Deloitte Tech Trends 2026</strong><span>Führende Unternehmen bauen Hybrid-Architekturen, statt zwischen Cloud und eigener Infrastruktur zu wählen. Ab etwa 60 bis 70 Prozent der Kosten vergleichbarer Hardware sollten Alternativen zur Cloud geprüft werden.</span></div>
+      <div class="dh-fact"><strong>Deloitte TMT Predictions 2026</strong><span>Europäische Anbieter haben weniger als 20 Prozent Marktanteil. Deloitte empfiehlt, die Balance aus Public und Private Cloud zu überprüfen und Multi-Cloud oder Sovereign-Cloud-Modelle zu erwägen.</span></div>
+      <div class="dh-fact"><strong>Accenture Sovereign Cloud PoV 2023</strong><span>50 Prozent der europäischen Führungskräfte nennen Datensouveränität als zentrales Thema bei der Wahl von Cloud-Anbietern. Sovereign Cloud bedeutet laut Accenture Kontrolle über Ort, Zugriff und Verarbeitung der Daten.</span></div>
+      <div class="dh-fact"><strong>GSA Cloud Information Center</strong><span>Keine Kombination aus Service- und Bereitstellungsmodell ist grundsätzlich besser. Die Wahl hängt von den Anforderungen ab, hybride Modelle mit mehreren Servicemodellen werden häufiger.</span></div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="combo">
+    <p class="eyebrow">KOMBINATIONEN</p>
+    <h2 class="section-heading">Welches Servicemodell passt in welche Umgebung?</h2>
+    <p class="dh-sub">Die Tabelle zeigt die Einschätzung auf einen Blick, die aufklappbaren Felder darunter liefern die Begründung.</p>
+
+    <div class="dh-table-scroll">
+      <table class="dh-compat-table">
+        <thead>
+          <tr><th scope="col"></th><th scope="col">Public Cloud</th><th scope="col">Private Cloud</th><th scope="col">Hybrid Cloud</th><th scope="col">On-Premise</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Selbst betreiben</th><td class="dh-lvl-N">Passt kaum</td><td class="dh-lvl-M">Möglich</td><td class="dh-lvl-M">Möglich</td><td class="dh-lvl-T">Typisch</td></tr>
+          <tr><th scope="row">IaaS</th><td class="dh-lvl-T">Typisch</td><td class="dh-lvl-T">Typisch</td><td class="dh-lvl-T">Typisch</td><td class="dh-lvl-M">Möglich</td></tr>
+          <tr><th scope="row">PaaS</th><td class="dh-lvl-T">Typisch</td><td class="dh-lvl-M">Möglich</td><td class="dh-lvl-M">Möglich</td><td class="dh-lvl-S">Selten</td></tr>
+          <tr><th scope="row">SaaS</th><td class="dh-lvl-T">Typisch</td><td class="dh-lvl-S">Selten</td><td class="dh-lvl-M">Möglich</td><td class="dh-lvl-N">Passt kaum</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dh-legend">
+      <span class="dh-legend-item dh-lvl-T">Typisch</span>
+      <span class="dh-legend-item dh-lvl-M">Möglich</span>
+      <span class="dh-legend-item dh-lvl-S">Selten</span>
+      <span class="dh-legend-item dh-lvl-N">Passt kaum</span>
+    </p>
+
+    <h3 style="margin-top:24px;">Begründungen</h3>
+
+    <div class="dh-combo-group">
+      <h4>Selbst betreiben</h4>
+      <details><summary>Public Cloud — Passt kaum</summary><p>Selbst betreiben und Public Cloud schließen sich aus. Zu prüfen ist stattdessen IaaS in der Public Cloud oder ein Hybrid-Modell.</p></details>
+      <details><summary>Private Cloud — Möglich</summary><p>Selbstbetrieb mit Cloud-Werkzeugen, also eine eigene Private Cloud. Der Aufwand bleibt hoch.</p></details>
+      <details><summary>Hybrid Cloud — Möglich</summary><p>Kernsysteme bleiben im Haus, ausgewählte Teile gehen in die Cloud. Das gilt laut Studien als verbreitetes Modell.</p></details>
+      <details><summary>On-Premise — Typisch</summary><p>Vollständig eigener Betrieb. Maximale Kontrolle, aber Personal, Sicherheit und Ausfallsicherheit liegen komplett beim Kunden.</p></details>
+    </div>
+
+    <div class="dh-combo-group">
+      <h4>IaaS</h4>
+      <details><summary>Public Cloud — Typisch</summary><p>Der Standardfall: gemietete virtuelle Maschinen, Speicher und Netzwerk. Betriebssystem, Patches und Absicherung liegen beim Kunden.</p></details>
+      <details><summary>Private Cloud — Typisch</summary><p>Klassisch: virtualisierte Infrastruktur in einer eigenen oder gehosteten Private Cloud mit Cloud-Werkzeugen.</p></details>
+      <details><summary>Hybrid Cloud — Typisch</summary><p>Häufig für schrittweise Verlagerung, etwa Altsysteme nach und nach in die Cloud bringen oder Lastspitzen per Cloud Bursting in die Public Cloud geben.</p></details>
+      <details><summary>On-Premise — Möglich</summary><p>Virtualisierung im eigenen Rechenzentrum entspricht weitgehend dem Selbstbetrieb, ohne Cloud-Anbieter.</p></details>
+    </div>
+
+    <div class="dh-combo-group">
+      <h4>PaaS</h4>
+      <details><summary>Public Cloud — Typisch</summary><p>Der Standardfall: verwaltete Plattformen der großen Anbieter. Auf plattformspezifische Dienste achten, denn sie erschweren einen späteren Wechsel.</p></details>
+      <details><summary>Private Cloud — Möglich</summary><p>Möglich mit eigenen Plattformen, etwa Container-Umgebungen. Der Betriebsaufwand steigt deutlich, weil die Plattform selbst betrieben wird.</p></details>
+      <details><summary>Hybrid Cloud — Möglich</summary><p>Eine einheitliche Plattform über mehrere Umgebungen kann Anwendungen verschiebbar machen. Das braucht Know-how und oft Umbauten (Deloitte).</p></details>
+      <details><summary>On-Premise — Selten</summary><p>Die Plattform wird selbst betrieben. Faktisch ist das Selbstbetrieb mit dem Komfort einer Plattform für die Entwickler.</p></details>
+    </div>
+
+    <div class="dh-combo-group">
+      <h4>SaaS</h4>
+      <details><summary>Public Cloud — Typisch</summary><p>Der Standardfall: Der Anbieter betreibt die Anwendung in seiner Public Cloud. Zu prüfen sind Auftragsverarbeitungsvertrag, Sicherheitsnachweis (z. B. BSI C5) und Ausstiegsplan.</p></details>
+      <details><summary>Private Cloud — Selten</summary><p>Manche Anbieter bieten abgeschottete Single-Tenant-Varianten oder Hosting für einzelne Kunden an. Das ist meist teurer und nicht für jedes Produkt verfügbar.</p></details>
+      <details><summary>Hybrid Cloud — Möglich</summary><p>SaaS lässt sich mit internen Systemen verbinden. Der Erfolg hängt an Schnittstellen, Datenabgleich und einheitlicher Anmeldung.</p></details>
+      <details><summary>On-Premise — Passt kaum</summary><p>SaaS läuft beim Anbieter. Bei zwingend lokalem Betrieb kommt eher lizenzierte Software zum Selbstbetrieb in Frage, die dann kein SaaS mehr ist.</p></details>
+    </div>
+  </section>
+
+  <section class="dh-section" id="beachten">
+    <p class="eyebrow">BEACHTEN &amp; RISIKEN</p>
+    <h2 class="section-heading">Zusätzlich beachten</h2>
+    <p class="dh-sub">Wähle ein Servicemodell, um die passenden offenen Punkte und Risiken zu sehen. Die Kästchen lassen sich zur eigenen Orientierung abhaken.</p>
+
+    <div class="dh-tabs">
+      <input type="radio" name="beachten-tab" id="beachten-tab-saas" class="dh-tab-input" checked>
+      <input type="radio" name="beachten-tab" id="beachten-tab-paas" class="dh-tab-input">
+      <input type="radio" name="beachten-tab" id="beachten-tab-iaas" class="dh-tab-input">
+      <input type="radio" name="beachten-tab" id="beachten-tab-onprem" class="dh-tab-input">
+      <div class="dh-tab-labels">
+        <label for="beachten-tab-saas">SaaS</label>
+        <label for="beachten-tab-paas">PaaS</label>
+        <label for="beachten-tab-iaas">IaaS</label>
+        <label for="beachten-tab-onprem">Selbst betreiben</label>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-beachten-saas">
+        <h3>Bei SaaS zusätzlich beachten</h3>
+        <h4>Offene Punkte vor dem Start</h4>
+        <ul class="dh-checks">
+          <li><label><input type="checkbox"><div><strong>Bedarf und Erfolgsmaß</strong><span>Welches Problem soll gelöst werden, woran wird der Nutzen gemessen?</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Auftragsverarbeitungsvertrag</strong><span>Art. 28 DSGVO, Unterauftragnehmer prüfen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Sicherheitsnachweis</strong><span>z. B. BSI-C5-Testat, regelmäßig kontrollieren</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Datenlage und Rechte</strong><span>Welche Daten fließen, wer darf was sehen?</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Anbindung</strong><span>Schnittstellen und Anmeldung zu bestehenden Systemen klären</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Ausstiegsplan</strong><span>Datenexport und Wechselkosten vorab klären</span></div></label></li>
+        </ul>
+        <h4 style="margin-top:20px;">Einschränkungen und Risiken</h4>
+        <div class="dh-risks">
+          <div class="dh-risk"><strong>Vendor Lock-in</strong><span>Ein Anbieterwechsel wird teuer oder aufwendig, etwa durch proprietäre Datenformate, vertragliche Bindung und eigene Integrationen.</span></div>
+          <div class="dh-risk"><strong>Begrenzte Anpassbarkeit</strong><span>Kunden können nur eingeschränkt konfigurieren, der Funktionsumfang liegt beim Anbieter.</span></div>
+          <div class="dh-risk"><strong>Datenschutz</strong><span>Daten liegen beim Anbieter, oft mit vielen Unterauftragnehmern in verschiedenen Ländern.</span></div>
+          <div class="dh-risk"><strong>Integrationsgrenzen</strong><span>API-Funktionen und Aufruflimits unterscheiden sich je Anbieter.</span></div>
+          <div class="dh-risk"><strong>Laufende Kosten</strong><span>Abo-Preise können sich ändern, ein Ausstieg verursacht oft versteckte Kosten.</span></div>
+        </div>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-beachten-paas">
+        <h3>Bei PaaS zusätzlich beachten</h3>
+        <h4>Offene Punkte vor dem Start</h4>
+        <ul class="dh-checks">
+          <li><label><input type="checkbox"><div><strong>Zielbild und Betrieb</strong><span>Welche Anwendung wird gebaut, und wer betreibt sie später?</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Plattformeignung</strong><span>Unterstützte Sprachen, Versionen und Dienste müssen zur Software passen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Datenschutz und Vertrag</strong><span>Auftragsverarbeitungsvertrag, Datenstandort und Unterauftragnehmer prüfen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Sicherheit der Anwendung</strong><span>Eigenen Code, Zugriffsrechte, Schlüssel und Schnittstellen absichern</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Kosten und Skalierung</strong><span>Nutzungsabhängige Preise, Obergrenzen und Kostenüberwachung (FinOps) einrichten</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Portabilität und Ausstieg</strong><span>Plattformspezifische Dienste bewusst wählen, Standards wie Container bevorzugen, Exportwege klären</span></div></label></li>
+        </ul>
+        <h4 style="margin-top:20px;">Einschränkungen und Risiken</h4>
+        <div class="dh-risks">
+          <div class="dh-risk"><strong>Plattform-Lock-in</strong><span>Plattformspezifische Dienste und Schnittstellen erschweren einen Wechsel. Portabilität sollte früh mitgedacht werden.</span></div>
+          <div class="dh-risk"><strong>Begrenzte Kontrolle über die Laufzeit</strong><span>Unterstützte Sprachen, Versionen und Konfigurationen gibt der Anbieter vor.</span></div>
+          <div class="dh-risk"><strong>Kosten bei wachsender Last</strong><span>Nutzungsabhängige Preise können mit der Skalierung stark steigen. Deloitte warnt bei großen Workloads vor Budgetdruck.</span></div>
+          <div class="dh-risk"><strong>Sicherheit der eigenen Anwendung</strong><span>Code, Konfiguration und Zugriffe bleiben Aufgabe des Kunden, auch wenn der Anbieter die Plattform betreibt.</span></div>
+          <div class="dh-risk"><strong>Wenig Einblick in die Technik</strong><span>Fehlersuche und Leistungsoptimierung sind eingeschränkt, weil die zugrunde liegende Technik verborgen bleibt.</span></div>
+        </div>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-beachten-iaas">
+        <h3>Bei IaaS zusätzlich beachten</h3>
+        <h4>Offene Punkte vor dem Start</h4>
+        <ul class="dh-checks">
+          <li><label><input type="checkbox"><div><strong>Betriebskonzept</strong><span>Wer patcht Betriebssysteme, überwacht Systeme und prüft Backups?</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Sicherheitskonfiguration</strong><span>Netzwerk, Firewalls, Zugriffe und Verschlüsselung korrekt einrichten</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Architektur und Verfügbarkeit</strong><span>Redundanz, Regionen und Notfallwiederherstellung planen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Kompetenz im Team</strong><span>Fachwissen für Betriebssysteme, Netzwerk und Automatisierung sicherstellen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Kostenkontrolle</strong><span>Dauerhaft laufende Ressourcen, Reservierungen und Auslastung prüfen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Datenschutz und Ausstieg</strong><span>Auftragsverarbeitungsvertrag, Datenstandort und Migrationsweg klären</span></div></label></li>
+        </ul>
+        <h4 style="margin-top:20px;">Einschränkungen und Risiken</h4>
+        <div class="dh-risks">
+          <div class="dh-risk"><strong>Hoher Betriebsaufwand</strong><span>Betriebssystem, Patches, Backups und Monitoring liegen beim Kunden.</span></div>
+          <div class="dh-risk"><strong>Fehlkonfiguration</strong><span>Offene Zugänge oder falsche Rechte sind ein typisches Risiko, weil die Sicherheit der Umgebung beim Kunden liegt.</span></div>
+          <div class="dh-risk"><strong>Kostenfallen</strong><span>Vergessene oder überdimensionierte Ressourcen verursachen laufende Kosten. FinOps-Disziplin ist nötig, wie PwC betont.</span></div>
+          <div class="dh-risk"><strong>Fachkräftebedarf</strong><span>Der Betrieb braucht Know-how in Betriebssystemen, Netzwerk und Automatisierung.</span></div>
+          <div class="dh-risk"><strong>Weniger Komfort als bei verwalteten Diensten</strong><span>PwC beobachtet, dass verwaltete Dienste typischerweise schneller eingeführt sind als VM-Lösungen (Herstellerumfeld).</span></div>
+        </div>
+      </div>
+
+      <div class="dh-tab-panel" id="panel-beachten-onprem">
+        <h3>Beim Selbstbetrieb zusätzlich beachten</h3>
+        <h4>Offene Punkte vor dem Start</h4>
+        <ul class="dh-checks">
+          <li><label><input type="checkbox"><div><strong>Personal und Know-how</strong><span>Fachkräfte für Betrieb, Sicherheit und Vertretung sicherstellen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Standort und Infrastruktur</strong><span>Strom, Kühlung, Brandschutz und Zutrittsschutz prüfen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Sicherheit und Updates</strong><span>Patch-Management, Monitoring und Angriffserkennung einrichten</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Ausfallsicherheit</strong><span>Redundanz, Backup und einen getesteten Notfallplan vorhalten</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Kosten über die Laufzeit</strong><span>Hardwareerneuerung, Lizenzen und Energie gegen Cloud-Kosten vergleichen</span></div></label></li>
+          <li><label><input type="checkbox"><div><strong>Kapazität und Lebenszyklus</strong><span>Wachstum, Ersatzteile und Hardware-Lebensdauer planen</span></div></label></li>
+        </ul>
+        <h4 style="margin-top:20px;">Einschränkungen und Risiken</h4>
+        <div class="dh-risks">
+          <div class="dh-risk"><strong>Hohe Fixkosten</strong><span>Hardware, Räume und Lizenzen binden Kapital, auch wenn die Auslastung schwankt.</span></div>
+          <div class="dh-risk"><strong>Abhängigkeit von Personal</strong><span>Wissen konzentriert sich oft auf wenige Personen, Ausfälle treffen den Betrieb direkt.</span></div>
+          <div class="dh-risk"><strong>Begrenzte Skalierung</strong><span>Zusätzliche Kapazität braucht Beschaffung und Zeit.</span></div>
+          <div class="dh-risk"><strong>Volle Verantwortung für Sicherheit und Ausfall</strong><span>Alle Schutzmaßnahmen, Wiederherstellung und Compliance liegen beim Betreiber.</span></div>
+          <div class="dh-risk"><strong>Langsamer Zugang zu neuer Technik</strong><span>Aktuelle KI-Hardware wie GPUs ist aufwendig zu beschaffen und zu betreiben.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="quellen">
+    <p class="eyebrow">QUELLEN</p>
+    <h2 class="section-heading">Quellen und Einordnung</h2>
+
+    <div class="dh-source-group">
+      <h3>Definitionen und Grundlagen</h3>
+      <ul class="dh-source-list">
+        <li><a href="https://csrc.nist.gov/glossary/term/software_as_a_service" target="_blank" rel="noopener">NIST: Definition Software as a Service</a></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/platform_as_a_service" target="_blank" rel="noopener">NIST: Definition Platform as a Service</a></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/infrastructure_as_a_service" target="_blank" rel="noopener">NIST: Definition Infrastructure as a Service</a></li>
+        <li><a href="https://csrc.nist.gov/pubs/sp/800/145/final" target="_blank" rel="noopener">NIST SP 800-145: The NIST Definition of Cloud Computing</a></li>
+        <li><a href="https://cic.gsa.gov/basics/cloud-basics" target="_blank" rel="noopener">GSA Cloud Information Center: Cloud Basics</a></li>
+        <li><a href="https://learn.microsoft.com/en-ca/Azure/security/fundamentals/shared-responsibility" target="_blank" rel="noopener">Microsoft Learn: Shared Responsibility</a></li>
+        <li><a href="https://learn.microsoft.com/azure/architecture/guide/saas/overview" target="_blank" rel="noopener">Microsoft Learn: SaaS und mandantenfähige Architektur</a></li>
+        <li><a href="https://aws.amazon.com/de/what-is/saas-integration/" target="_blank" rel="noopener">AWS: Was ist SaaS-Integration?</a></li>
+        <li><a href="https://technav.ieee.org/topic/software-as-a-service/" target="_blank" rel="noopener">IEEE Technology Navigator: SaaS</a></li>
+      </ul>
+    </div>
+
+    <div class="dh-source-group">
+      <h3>Beratungshäuser und Studien</h3>
+      <ul class="dh-source-list">
+        <li><a href="https://bitkom-research.de/studien/cloud-report-2026-status-quo-und-trends-wirtschaft-und-politik" target="_blank" rel="noopener">Bitkom Research: Cloud Report 2026</a></li>
+        <li><a href="https://kpmg.com/de/de/themen/digital-transformation/cloud-transformation/cloud-monitor-2026.html" target="_blank" rel="noopener">KPMG: Cloud-Monitor 2026 (Deutschland)</a></li>
+        <li><a href="https://www.ots.at/presseaussendung/OTS_20261014_OTS0029/kpmg-cloud-monitor-2026-digitale-souveraenitaet-wird-zum-schluesselfaktor-moderner-cloud-strategien" target="_blank" rel="noopener">KPMG: Cloud-Monitor 2026 (Österreich, Pressemeldung)</a></li>
+        <li><a href="https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/ai-infrastructure-compute-strategy.html" target="_blank" rel="noopener">Deloitte: The AI infrastructure reckoning (Tech Trends 2026)</a></li>
+        <li><a href="https://www.deloitte.com/us/en/insights/topics/digital-transformation/future-ready-ai-infrastructure.html" target="_blank" rel="noopener">Deloitte: Is your organization's infrastructure ready for the new hybrid cloud?</a></li>
+        <li><a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/tech-sovereignty.html" target="_blank" rel="noopener">Deloitte: Tech sovereignty (TMT Predictions 2026)</a></li>
+        <li><a href="https://www.deloitte.com/us/en/insights/topics/emerging-technologies/growing-demand-ai-computing.html" target="_blank" rel="noopener">Deloitte: The growing demand for AI computing</a></li>
+        <li><a href="https://www.pwc.com/gx/en/services/consulting/cloud-transformation/emea-cloud-survey-tech-leaders.html" target="_blank" rel="noopener">PwC: 2025 EMEA Cloud Business Survey</a></li>
+        <li><a href="https://www.cio.com/article/4119786/cloud-sovereignty-squaring-compliance-with-innovation.html" target="_blank" rel="noopener">CIO.com: Cloud sovereignty (zitiert PwC)</a></li>
+        <li><a href="https://www.pwc.com/us/en/technology/alliances/library/beyond-vms-cloud-native-transformation.html" target="_blank" rel="noopener">PwC: Cloud-native transformation beyond VMs (mit AWS)</a></li>
+        <li><a href="https://www.accenture.com/content/dam/accenture/final/accenture-com/document/Accenture-Sovereign-Cloud-PoV-Short-2023.pdf" target="_blank" rel="noopener">Accenture: Sovereign Cloud PoV 2023 (PDF)</a></li>
+      </ul>
+    </div>
+
+    <div class="dh-source-group">
+      <h3>Sicherheit, Risiken, Markt</h3>
+      <ul class="dh-source-list">
+        <li><a href="https://www.it-finanzmagazin.de/?p=242392" target="_blank" rel="noopener">IT-Finanzmagazin: BSI C5:2026</a></li>
+        <li><a href="https://www.nedigital.com/en/blog/assessing-vendor-lock-in-and-exit-costs-in-saas-centric-it-environments" target="_blank" rel="noopener">NE Digital: Vendor Lock-in und Exit-Kosten</a></li>
+        <li><a href="https://www.cio.de/article/4169439/ist-ki-das-ende-von-saas-wie-wir-es-kennen.html" target="_blank" rel="noopener">CIO.de: Ist KI das Ende von SaaS?</a></li>
+      </ul>
+    </div>
+
+    <div class="dh-callout">
+      <strong>Was belegt ist und was nicht</strong>
+      Definitionen der Service- und Bereitstellungsmodelle stammen von NIST. Marktzahlen kommen aus den genannten Studien von Bitkom, KPMG, Deloitte, PwC und Accenture. Die Entscheidungsregeln des Assistenten, die Einstufung „typisch, möglich, selten, passt kaum" und die Listen zu Einsatzfällen und Risiken sind eine Einordnung auf Basis dieser Quellen und allgemeinen Fachwissens. Von EY wurde bei der Recherche keine belastbare Primärquelle gefunden. Einige Beratungshäuser verkaufen Cloud-Leistungen und haben damit ein Eigeninteresse an bestimmten Aussagen.
+    </div>
+  </section>
+
+  </main>
+
+  <p class="dh-footnote">Inhaltlich erstellt mit Claude, Stand 23.10.2026, hier als statische HTML/CSS-Fassung ohne JavaScript umgesetzt (der ursprüngliche interaktive Assistent nutzte JavaScript; diese Seite bildet ihn stattdessen mit CSS-Tabs und aufklappbaren <code>&lt;details&gt;</code>-Elementen nach). Die Empfehlungen ersetzen keine Rechts- oder Sicherheitsprüfung.</p>
+
+  <footer class="site-footer">
+    <span class="brand-name">MARTINA</span>
+    <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    <span>Impressum · Datenschutz</span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>
