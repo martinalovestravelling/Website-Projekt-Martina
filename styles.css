@@ -585,6 +585,29 @@ a:focus-visible {
   color: var(--color-text-muted);
 }
 
+.tool-item-link {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  padding: 8px;
+  margin: -8px;
+}
+
+.tool-item-link:hover,
+.tool-item-link:focus-visible {
+  background-color: var(--color-surface);
+}
+
+.tool-item-link:hover .tool-name {
+  color: var(--color-brand-primary);
+}
+
+.tool-item-cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-brand-secondary);
+}
+
 /* ---------- Kontakt ---------- */
 .contact-section {
   padding: 0 24px 72px;
@@ -1334,4 +1357,95 @@ details.dh-wiz > summary {
 
 .dh-wiz-links a {
   font-weight: 700;
+}
+
+/* Generic left-aligned info table (pricing, integration, privacy comparisons) */
+.dh-info-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 720px;
+}
+
+.dh-info-table th,
+.dh-info-table td {
+  border: 1px solid var(--color-border);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.dh-info-table thead th {
+  background-color: var(--color-surface-alt);
+  color: var(--color-brand-primary);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dh-info-table tbody th {
+  text-align: left;
+  font-weight: 700;
+  background-color: var(--color-surface);
+  white-space: nowrap;
+}
+
+/* Dark emphasis callout (reuses brand-primary, like the header/footer bands) */
+.dh-callout-dark {
+  background-color: var(--color-brand-primary);
+  color: var(--color-background);
+  border-radius: 14px;
+  padding: 22px 26px;
+  margin: 16px 0;
+}
+
+.dh-callout-dark strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+/* Per-tool best-case / critical cards */
+.dh-tool-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dh-tool-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dh-tool-card h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--color-brand-primary);
+  margin: 0;
+}
+
+.dh-tag-good {
+  color: var(--color-brand-primary);
+  font-weight: 700;
+}
+
+.dh-tag-bad {
+  color: var(--color-brand-secondary);
+  font-weight: 700;
+}
+
+/* External link callout (e.g. Arena rankings) */
+.dh-external-note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
 }

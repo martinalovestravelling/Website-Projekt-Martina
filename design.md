@@ -146,6 +146,30 @@ Farben und Schriften verwenden ausschließlich die bestehenden Tokens (`--color-
 `--color-brand-secondary`, `--color-surface(-alt)`, `--font-display`/`--font-sans`) — keine neuen
 Hex-Werte, keine zusätzliche Google-Fonts-Einbindung aus dem Original-Artefakt.
 
+**Zweite Entscheidungshilfe, hinzugefügt 2026-10-30:** `erste-schritte-ki-anbieter.html`
+("KI-Tools im Vergleich") vergleicht ChatGPT, Claude, Gemini, Copilot, Perplexity und Mistral nach
+Kosten, Token/Credits-Logik, Integration/Outputs, Datenschutz, Best-Case/Kritik und
+Szenario-Empfehlung. Quelle ist ein zweites, vom Nutzer bereitgestelltes Claude-Artefakt, das
+bereits rein statisch war (keine Interaktivität, kein JavaScript) — die Übertragung war daher ohne
+CSS-Tricks möglich, nur mit den bestehenden Design-Tokens statt der Artefakt-eigenen Inline-Styles.
+
+- **Arena/lmarena.ai nur als ausgehender Link.** Auf Wunsch des Nutzers sollten aktuelle,
+  live gepflegte Modell-Rankings von Arena (ehem. LMArena/Chatbot Arena) verfügbar sein. Recherche
+  ergab: kein offizielles Embed-Widget, keine öffentliche API, nur ein inoffizieller iframe-Trick
+  einzelner Drittseiten. Entscheidung des Nutzers (2026-10-30): **kein iframe**, stattdessen ein klar
+  beschrifteter, extern öffnender Link/Button zu `lmarena.ai/leaderboard` — dieselbe
+  Datenschutz-Überlegung wie beim bereits vermiedenen direkten Google-Fonts-Request (siehe oben,
+  Abschnitt "Typografie").
+- **Verlinkung aus dem Werkzeugkasten.** Die "KI-Assistenten"-Kachel im Werkzeugkasten auf
+  `index.html` ist jetzt ein Link auf diese Seite (`.tool-item-link` in `styles.css`), statt rein
+  dekorativ zu bleiben — vermeidet, dieselben Tool-Infos an zwei Stellen gepflegt vorzuhalten.
+
+**Aktualität (offene Frage, keine Automatisierung möglich):** Da die Seite bewusst ohne Backend/Build
+läuft, kann nichts automatisch aktuell gehalten werden — Preise und Limits bei KI-Anbietern ändern
+sich laut der Quelle selbst teils monatlich. Empfehlung an den Nutzer: regelmäßiger manueller Review
+(z. B. vierteljährlich), Stand-Datum pro Seite sichtbar halten und bei Unsicherheit auf die
+offizielle Anbieterseite statt auf diese Seite verweisen (steht bereits als Hinweis auf der Seite).
+
 ## Chat-Widget (FAQ-Assistent)
 
 Unverändert gegenüber der vorherigen Version — Design, Verhalten und Token-Nutzung bleiben
