@@ -1449,3 +1449,389 @@ details.dh-wiz > summary {
   color: var(--color-text-muted);
   margin-top: 8px;
 }
+
+/* ---------- AI Transformation & Enablement sections (added 2026-11-02) ---------- */
+/* Shared generic section wrapper for the new index.html topics */
+.topic-section {
+  padding: 72px 24px;
+}
+
+.topic-section-alt {
+  background-color: var(--color-surface-alt);
+}
+
+.topic-intro {
+  max-width: 760px;
+  font-size: 17px;
+  margin-bottom: 36px;
+}
+
+/* Starting Point: two segment cards */
+.segment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.segment-card {
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 28px;
+  border-top: 4px solid var(--color-brand-primary);
+}
+
+.segment-card:nth-child(2) {
+  border-top-color: var(--color-brand-secondary);
+}
+
+.segment-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.segment-question {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-brand-primary);
+  margin: 6px 0 16px;
+}
+
+.segment-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.segment-card li {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Capabilities: two pillar cards */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.pillar-card {
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 28px;
+  border-top: 4px solid var(--color-brand-primary);
+}
+
+.pillar-card.pillar-card-alt {
+  border-top-color: var(--color-brand-secondary);
+}
+
+.pillar-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-brand-primary);
+  margin: 0 0 8px;
+}
+
+.pillar-focus {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-brand-secondary);
+  margin-bottom: 16px;
+}
+
+.pillar-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.pillar-card li {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.pillar-bridge {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.pillar-bridge a {
+  font-weight: 700;
+}
+
+/* Accelerator teaser: phase row + streams */
+.phase-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.phase-box {
+  flex: 1 1 110px;
+  background-color: var(--color-surface);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.phase-box-accent {
+  background-color: var(--color-brand-secondary);
+  color: var(--color-background);
+}
+
+.phase-number {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.phase-name {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.stream-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stream-item {
+  background-color: var(--color-surface);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.stream-label {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin-right: 8px;
+}
+
+.stream-chain {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+/* Delivery models: three option cards */
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.delivery-option {
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 24px;
+  border-top: 4px solid var(--color-border);
+}
+
+.delivery-option-highlight {
+  border-top-color: var(--color-brand-secondary);
+}
+
+.delivery-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.delivery-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--color-brand-primary);
+  margin: 6px 0 10px;
+}
+
+.delivery-option p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* About Me: two-column layout with facts list */
+.about-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.about-text {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-text p {
+  font-size: 17px;
+  margin: 0;
+}
+
+.about-photo-placeholder {
+  flex: 0 0 220px;
+  width: 220px;
+  height: 260px;
+  border: 2px dashed var(--color-text-muted);
+  border-radius: 16px;
+  background-color: var(--color-surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.about-facts {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-fact {
+  border-top: 2px solid var(--color-border);
+  padding: 16px 0;
+}
+
+.about-fact:first-child {
+  border-top: none;
+}
+
+.about-fact-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.about-fact-value {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Accelerator subpage (accelerator.html): journey boxes + module cards */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.journey-box {
+  display: block;
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-decoration: none;
+  color: var(--color-text);
+  min-height: 44px;
+}
+
+.journey-box:hover,
+.journey-box:focus-visible {
+  background-color: var(--color-surface-alt);
+}
+
+.journey-box-accent {
+  background-color: var(--color-brand-secondary);
+  color: var(--color-background);
+}
+
+.journey-box-accent:hover,
+.journey-box-accent:focus-visible {
+  background-color: #74543c;
+}
+
+.journey-box .phase-number {
+  color: inherit;
+}
+
+.journey-box .phase-name {
+  color: inherit;
+  font-size: 16px;
+}
+
+.journey-box-count {
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+.module-phase-group {
+  margin-bottom: 36px;
+}
+
+.module-phase-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.module-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.module-card-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-brand-secondary);
+  font-size: 14px;
+}
+
+.module-card-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-brand-primary);
+  margin: 4px 0 8px;
+}
+
+.module-card p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.back-home-link {
+  display: inline-block;
+  color: var(--color-background);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+}

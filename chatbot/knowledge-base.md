@@ -78,6 +78,39 @@ version with full EN/DE pairs.)
 - Work Samples section: placeholder, no content yet.
 - Contact: LinkedIn link placeholder, no real URL yet.
 
+## AI Transformation & Enablement offering
+
+(Added 2026-11-02, mirrors the new `index.html` sections — see design.md, "AI Transformation &
+Enablement" — and `accelerator.html`.)
+
+- Positioning: AI Transformation & Enablement Consultant. Connects business, process and
+  technology to develop AI initiatives in a structured way and enable people to use them
+  sustainably.
+- Starting Point: two segments visitors may recognize themselves in — "AI Starter" (little
+  structured AI activity yet, few defined use cases, first tool usage, unsure where to
+  begin) and "AI Explorer" (many use case ideas, first pilots possible, missing
+  prioritization/scaling, business value not always clearly measurable). Existing use cases
+  are picked up; new ones are developed together if none exist yet.
+- Two capability pillars: (1) AI Management — AI Strategy, AI Portfolio Management, AI
+  Maturity Assessment, Use Case Prioritization, Governance & Responsible AI, KPI & Value
+  Management, Tool & Vendor Evaluation; (2) AI Transformation & Enablement — Process
+  Analysis & AI Opportunity Identification, Use Case Development, Prompting & Tool
+  Enablement, Workflow Design, Change Management & Adoption, Training & Coaching, Sustain &
+  Scale. Both build on the Process Excellence & Transformation services listed above under
+  "What I Take Care Of".
+- AI Transformation Accelerator: a modular, not-necessarily-linear 7-phase offering — Assess,
+  Learn, Practice, Apply, Validate, Implement, Sustain & Scale — with two streams running
+  throughout: Change Management (Awareness → Understanding → Involvement → Capability →
+  Adoption → Reinforcement) and Responsible AI (Legal, Privacy, Ethics, Human Oversight).
+  11 modules in total (00 Assessment & Setup, 01 AI Fundamentals, 02 Prompting Fundamentals,
+  03 AI Tools & Capabilities, 04 Prompting Practice Lab, 05 Business Problem & Process, 06
+  Use Case Discovery, 07 Prioritization & Validation, 08 Business Case & Value, 09 Solution
+  Design & Prototype, 10 Change, Sustain & Scale), detailed on the `accelerator.html` page.
+- Delivery models (no prices published): Option A "Workshop Sprint" (8 weeks, one workshop
+  per week); Option B "Transformation Accelerator" (10-12 weeks, one workshop plus one
+  working session per week); Option C "Modular Academy" (1-2 hours daily or several
+  sessions per week).
+
 ## n8n course notes
 
 Source: `n8n_Uebersicht_Workflow_vs_KI_Agent.md` (course KI2, day 10/11).

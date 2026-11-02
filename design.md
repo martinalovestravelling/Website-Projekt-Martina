@@ -170,6 +170,76 @@ sich laut der Quelle selbst teils monatlich. Empfehlung an den Nutzer: regelmä�
 (z. B. vierteljährlich), Stand-Datum pro Seite sichtbar halten und bei Unsicherheit auf die
 offizielle Anbieterseite statt auf diese Seite verweisen (steht bereits als Hinweis auf der Seite).
 
+## AI Transformation & Enablement (hinzugefügt 2026-11-02)
+
+**Herkunft:** Inhaltlich übernommen aus `Offering webseite_V2_Martina_Hanner_Claude_Code.md`
+(abgeleitet aus `Personal_Branding_AI_Transformation_Enablement.md` und
+`Superprompt_AI_Consulting_Website_HTML_Download.md`, vom Nutzer bereitgestellt). Die Design- und
+Farbvorgaben dieser drei Dateien (eigene Navy/Mint/Teal-Palette, Inter-Schriftart) wurden auf
+ausdrücklichen Wunsch des Nutzers **nicht** übernommen — stattdessen verwenden alle neuen Abschnitte
+ausschließlich die bestehenden Tokens (`--color-brand-primary`, `--color-brand-secondary`,
+`--color-surface(-alt)`, `--font-display`/`--font-sans`).
+
+Fünf neue Abschnitte auf `index.html`, zwischen "Leistungen" (bleibt unverändert bestehen) und
+"Werkzeugkasten" eingefügt:
+
+1. **Ausgangslage** (`#starting-point`) — zwei Kundensegmente (AI Starter / AI Explorer)
+2. **Kompetenzfelder** (`#capabilities`) — zwei Säulen (KI Management, AI Transformation &
+   Enablement). Bewusst *nicht* "Portfolio" genannt wie im Quelldokument, um keine Namenskollision
+   mit der bereits bestehenden, weiterhin unveränderten "Portfolio"-Kachel (zukünftige
+   Arbeitsproben-Unterseite, siehe PRD.md) zu erzeugen. Die "Foundation"-Chip-Zeile aus dem
+   Quelldokument wurde weggelassen (Dopplung mit "Leistungen") und durch einen Verweislink ersetzt.
+3. **AI Transformation Accelerator** (`#accelerator`) — 7-Phasen-Übersicht + 2 Streams (Change
+   Management, Responsible AI) als kompakter Teaser; Button verlinkt auf die neue Unterseite
+   `accelerator.html` mit allen 11 Modulen im Detail (Nutzer-Entscheidung: eigene Unterseite statt
+   alles auf `index.html`).
+4. **Delivery Models** (`#delivery`) — drei Formate, keine Preise.
+5. **Über mich** (`#about`) — ersetzt das bisherige "noch nicht gebaut"-Konzept einer separaten
+   Unterseite für diesen kondensierten Teil; die Kurzbio stammt aus Briefing.md 4.2, die
+   Erfahrungs-/Rollen-/Branchen-/Zertifizierungs-Fakten aus Briefing.md 4.3/4.4/4.8 (gekürzt, analog
+   zur Verdichtung im Quelldokument). **Wichtig:** die vollständigen Detailtabellen aus
+   Briefing.md 4.3–4.10 (komplette Erfahrungstabelle, internationale Erfahrung, vollständige
+   Skill-Tabelle, Tools, Ausbildung, Sprachen) sind damit weiterhin **nicht** auf der Seite — das
+   PRD-Akzeptanzkriterium 4 bleibt also weiterhin offen, nur in reduzierterem Umfang als zuvor.
+   AI-Manager- und Coach-Qualifikation werden bewusst als "in Ausbildung" formuliert (siehe
+   Briefing.md 4.8), nicht als abgeschlossen — das Quelldokument hatte diese Nuance nicht.
+
+**Markenname:** Header-Wortmarke und Footer zeigen jetzt sitweit "MARTINA HANNER" statt "MARTINA"
+(Nutzer-Entscheidung 2026-11-02, siehe Briefing.md Abschnitt 2).
+
+**Portraitfoto:** Noch nicht geliefert. Der "Über mich"-Abschnitt hat eine Bildplatzhalterfläche
+(`.about-photo-placeholder`, gleiche gestrichelte Optik wie die übrigen Bildplatzhalter) mit dem
+Hinweis "[Portrait – Platzhalter]". Sobald eine Datei vorliegt (z. B. unter
+`images/martina-portrait.jpg`), kann sie dort eingesetzt werden.
+
+**`accelerator.html`:** neue Unterseite, gleiches Grundgerüst wie `erste-schritte.html`
+(Header/Nav/Footer/Chat-Widget identisch). Enthält die 7 Journey-Boxen als Sprunglinks (Anker je
+Phase) sowie alle 11 Module, nach Phase gruppiert, als nicht aufklappbare Karten (Inhalte direkt
+sichtbar, wie im Quelldokument gefordert). Abschließender CTA verlinkt zurück auf
+`index.html#kontakt`.
+
+## Erste Schritte (Entscheidungshilfen) — jetzt intern (aktualisiert 2026-11-02)
+
+Der Nutzer hat entschieden, dass die Entscheidungshilfen (`erste-schritte.html`,
+`erste-schritte-servicemodelle.html`, `erste-schritte-ki-anbieter.html`) thematisch nicht mehr zur
+neuen "AI Transformation & Enablement"-Positionierung passen. Sie bleiben im Repo bestehen, wurden
+aber:
+
+- aus der Hauptnavigation entfernt (der Menüpunkt "Erste Schritte"/"Getting Started" existiert auf
+  keiner Seite mehr)
+- von keiner anderen Seite mehr verlinkt (auch die "AI Assistants"-Kachel im Werkzeugkasten verlinkt
+  wieder nicht, wie ursprünglich vor dem 2026-10-30-Update)
+- mit `<meta name="robots" content="noindex, nofollow">` versehen
+- mit einem sichtbaren Hinweis ("Internal page — not linked from the public site") direkt unter dem
+  Header markiert
+
+**Wichtige Einschränkung (dem Nutzer kommuniziert und von ihm akzeptiert):** GitHub Pages liefert
+jede Datei im Repo über ihre direkte URL aus, unabhängig von Verlinkung oder `noindex`. "Intern"
+bedeutet hier technisch **"nicht auffindbar/nicht indexiert"**, nicht "wirklich privat". Wer die
+exakte URL kennt (z. B. über die Browser-Historie oder einen geteilten Link), kann die Seite weiterhin
+öffnen. Echte Privatsphäre würde ein separates privates Repository erfordern — das war ausdrücklich
+nicht die vom Nutzer gewählte Option.
+
 ## Chat-Widget (FAQ-Assistent)
 
 Unverändert gegenüber der vorherigen Version — Design, Verhalten und Token-Nutzung bleiben

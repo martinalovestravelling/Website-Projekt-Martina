@@ -19,6 +19,15 @@ Employers are described only by their industry or type (e.g. "global management 
 **"Munich/München"** may appear on the site. Surname, email address, phone number, postal address and
 every other item above remain excluded.
 
+**Update 2026-11-02:** the user explicitly approved extending this exception to the **full name
+"Martina Hanner"** (header wordmark and footer on all public pages), sourced from
+`Offering webseite_V2_Martina_Hanner_Claude_Code.md`. Employer names remain excluded — that same
+source document named two employers directly ("Accenture", "IABG"); these were replaced with the
+existing anonymized descriptions below ("global management consultancy" / "technology & engineering
+services company") rather than carried over literally, since the user did not separately approve
+naming employers. A professional portrait photo is also approved in principle (not yet supplied —
+see design.md, "AI Transformation & Enablement").
+
 ## 3. Language Requirements
 
 - **Bilingual: English (primary) and German (secondary).**
