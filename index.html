@@ -13,8 +13,8 @@
 
   <header class="site-header">
     <div class="header-top">
-      <a href="#" class="brand-link">
-        <span class="brand-logo-placeholder" aria-hidden="true">LOGO</span>
+      <a href="#home" class="brand-link">
+        <img src="Foto.webp" alt="Martina Hanner" class="brand-photo">
         <span class="brand-name">MARTINA HANNER</span>
       </a>
       <div class="header-actions">
@@ -29,22 +29,36 @@
       </div>
     </div>
     <nav class="site-nav">
-      <a href="#leistungen"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
-      <a href="#starting-point"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
-      <a href="#capabilities"><span class="lang-en">Capabilities</span><span class="lang-de">Kompetenzfelder</span></a>
-      <a href="#accelerator"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
-      <a href="#delivery"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
-      <a href="#about"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span></a>
-      <a href="#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+      <a href="#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+      <div class="nav-item">
+        <a href="#capabilities" class="nav-item-toggle"><span class="lang-en">Discover</span><span class="lang-de">Entdecken</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+        <div class="nav-submenu">
+          <a href="#capabilities"><span class="lang-en">Skills &amp; Capabilities</span><span class="lang-de">Skills &amp; Kompetenzfelder</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#starting-point" class="nav-item-toggle"><span class="lang-en">Offering</span><span class="lang-de">Angebot</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+        <div class="nav-submenu">
+          <a href="#starting-point"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+          <a href="#accelerator"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+          <a href="#delivery"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+          <a href="#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+        </div>
+      </div>
+      <a href="#ueberblick"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+      <div class="nav-item">
+        <a href="#about" class="nav-item-toggle"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+        <div class="nav-submenu">
+          <a href="#leistungen"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span></a>
+        </div>
+      </div>
       <a href="#" aria-disabled="true"><span class="lang-en">News</span><span class="lang-de">News</span></a>
     </nav>
   </header>
 
-  <section class="hero">
-    <span class="hero-photo-placeholder">
-      <span class="lang-en">[Background photo — placeholder]</span>
-      <span class="lang-de">[Hintergrundfoto – Platzhalter]</span>
-    </span>
+  <section class="hero" id="home">
+    <img src="hintergrundbild.png" alt="" class="hero-bg-image">
+    <span class="hero-overlay" aria-hidden="true"></span>
     <div class="hero-content">
       <h1>
         <span class="lang-en block">CHANGE,<br>TOGETHER.</span>
@@ -79,13 +93,13 @@
     </h2>
     <div class="tile-grid">
       <div class="tile-row">
-        <a href="#" class="tile" aria-disabled="true">
+        <a href="#capabilities" class="tile">
           <span class="tile-image-placeholder">
             <span class="lang-en">[Image — placeholder]</span>
             <span class="lang-de">[Bild – Platzhalter]</span>
           </span>
           <span class="tile-body">
-            <span class="eyebrow"><span class="lang-en">SKILLS</span><span class="lang-de">KOMPETENZEN</span></span>
+            <span class="eyebrow"><span class="lang-en">SKILLS &amp; CAPABILITIES</span><span class="lang-de">SKILLS &amp; KOMPETENZFELDER</span></span>
             <span class="tile-title"><span class="lang-en">Process, Agility, Change</span><span class="lang-de">Prozesse, Agilität, Change</span></span>
           </span>
         </a>
@@ -99,14 +113,14 @@
             <span class="tile-title"><span class="lang-en">International. Curious. Pragmatic.</span><span class="lang-de">International. Neugierig. Pragmatisch.</span></span>
           </span>
         </a>
-        <a href="#" class="tile" aria-disabled="true">
+        <a href="#starting-point" class="tile">
           <span class="tile-image-placeholder">
             <span class="lang-en">[Image — placeholder]</span>
             <span class="lang-de">[Bild – Platzhalter]</span>
           </span>
           <span class="tile-body">
-            <span class="eyebrow"><span class="lang-en">PORTFOLIO</span><span class="lang-de">PORTFOLIO</span></span>
-            <span class="tile-title"><span class="lang-en">From Analysis to Hypercare</span><span class="lang-de">Von der Analyse bis zur Hypercare</span></span>
+            <span class="eyebrow"><span class="lang-en">OFFERING</span><span class="lang-de">OFFERING</span></span>
+            <span class="tile-title">From Assessment to AI Adoption</span>
           </span>
         </a>
       </div>
@@ -119,8 +133,269 @@
         <a href="#" class="tile-wide tile-wide-light" aria-disabled="true">
           <span class="eyebrow"><span class="lang-en">RESOURCES</span><span class="lang-de">RESSOURCEN</span></span>
           <span class="tile-title"><span class="lang-en">Community &amp; Peers</span><span class="lang-de">Community &amp; Kolleg:innen</span></span>
-          <span class="tile-cta tile-cta-solid"><span class="lang-en">Discover</span><span class="lang-de">Entdecken</span></span>
+          <span class="tile-note"><span class="lang-en">Coming soon</span><span class="lang-de">Demnächst</span></span>
+          <span class="tile-cta tile-cta-solid"><span class="lang-en">Learn</span><span class="lang-de">Mehr erfahren</span></span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-section topic-section-alt" id="capabilities">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">SKILLS &amp; CAPABILITIES</span>
+        <span class="lang-de">SKILLS &amp; KOMPETENZFELDER</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">Two pillars. One foundation.</span>
+        <span class="lang-de">Zwei Säulen. Ein Fundament.</span>
+      </h2>
+      <p class="topic-intro">
+        <span class="lang-en">Two independent, combinable pillars — built on my experience from global transformation programs.</span>
+        <span class="lang-de">Zwei eigenständige, kombinierbare Säulen — aufbauend auf meiner Erfahrung aus globalen Transformationsprogrammen.</span>
+      </p>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <p class="pillar-title"><span class="lang-en">Pillar 1 — AI Management</span><span class="lang-de">Säule 1 — KI Management</span></p>
+          <p class="pillar-focus"><span class="lang-en">Orient · Structure · Prioritize · Steer · Measure impact</span><span class="lang-de">Orientieren · Strukturieren · Priorisieren · Steuern · Wirkung messen</span></p>
+          <ul>
+            <li>AI Strategy</li>
+            <li>AI Portfolio Management</li>
+            <li>AI Maturity Assessment</li>
+            <li>Use Case Prioritization</li>
+            <li>Governance &amp; Responsible AI</li>
+            <li>KPI &amp; Value Management</li>
+            <li><span class="lang-en">Tool &amp; Vendor Evaluation</span><span class="lang-de">Tool- &amp; Vendor-Evaluation</span></li>
+          </ul>
+        </div>
+        <div class="pillar-card pillar-card-alt">
+          <p class="pillar-title"><span class="lang-en">Pillar 2 — AI Transformation &amp; Enablement</span><span class="lang-de">Säule 2 — AI Transformation &amp; Enablement</span></p>
+          <p class="pillar-focus"><span class="lang-en">Understand processes · Implement · Enable · Embed change</span><span class="lang-de">Prozesse verstehen · Umsetzen · Befähigen · Veränderung verankern</span></p>
+          <ul>
+            <li><span class="lang-en">Process Analysis &amp; AI Opportunity Identification</span><span class="lang-de">Process Analysis &amp; AI Opportunity Identification</span></li>
+            <li>Use Case Development</li>
+            <li>Prompting &amp; Tool Enablement</li>
+            <li>Workflow Design</li>
+            <li><span class="lang-en">Change Management &amp; Adoption</span><span class="lang-de">Change Management &amp; Adoption</span></li>
+            <li><span class="lang-en">Training &amp; Coaching</span><span class="lang-de">Training &amp; Coaching</span></li>
+            <li>Sustain &amp; Scale</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pillar-bridge">
+        <span class="lang-en">Both pillars build on my foundational Process Excellence &amp; Transformation services — see <a href="#leistungen">Services</a>.</span>
+        <span class="lang-de">Beide Säulen bauen auf meinen Leistungen im Bereich Process Excellence &amp; Transformation auf — siehe <a href="#leistungen">Leistungen</a>.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="topic-section" id="starting-point">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">01 — STARTING POINT</span>
+        <span class="lang-de">01 — AUSGANGSLAGE</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">Where do you stand with AI?</span>
+        <span class="lang-de">Wo stehst du mit KI?</span>
+      </h2>
+      <p class="topic-intro">
+        <span class="lang-en">Whether you are just getting started or already have plenty of ideas: existing use cases are picked up. If there are none yet, we develop them together.</span>
+        <span class="lang-de">Egal ob du gerade erst startest oder schon viele Ideen hast: Bestehende Use Cases werden aufgegriffen. Gibt es noch keine, entwickeln wir sie gemeinsam.</span>
+      </p>
+      <div class="segment-grid">
+        <div class="segment-card">
+          <p class="segment-eyebrow"><span class="lang-en">Segment A — AI Starter</span><span class="lang-de">Segment A — KI-Einsteiger:in</span></p>
+          <p class="segment-question"><span class="lang-en">"Where do we start?"</span><span class="lang-de">„Wo fangen wir an?"</span></p>
+          <ul>
+            <li><span class="lang-en">Little structured AI activity, few defined use cases</span><span class="lang-de">Wenig strukturierte KI-Aktivität, kaum definierte Use Cases</span></li>
+            <li><span class="lang-en">First tool usage in place</span><span class="lang-de">Erste Tool-Nutzung vorhanden</span></li>
+            <li><span class="lang-en">Uncertainty about governance, value and where to begin</span><span class="lang-de">Unsicherheit bei Governance, Nutzen und Einstieg</span></li>
+          </ul>
+        </div>
+        <div class="segment-card">
+          <p class="segment-eyebrow"><span class="lang-en">Segment B — AI Explorer</span><span class="lang-de">Segment B — KI-Explorer:in</span></p>
+          <p class="segment-question"><span class="lang-en">"What should we scale?"</span><span class="lang-de">„Was sollten wir skalieren?"</span></p>
+          <ul>
+            <li><span class="lang-en">Many use case ideas, first pilots possible</span><span class="lang-de">Viele Use-Case-Ideen, erste Piloten möglich</span></li>
+            <li><span class="lang-en">Missing prioritization and scaling, inconsistent governance</span><span class="lang-de">Fehlende Priorisierung und Skalierung, uneinheitliche Governance</span></li>
+            <li><span class="lang-en">Business value often not clearly measurable</span><span class="lang-de">Business Value oft nicht klar messbar</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-section topic-section-alt" id="accelerator">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">02 — AI TRANSFORMATION ACCELERATOR</span>
+        <span class="lang-de">02 — AI TRANSFORMATION ACCELERATOR</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">From first idea to sustainable AI adoption.</span>
+        <span class="lang-de">Von der ersten Idee zu nachhaltiger KI-Nutzung.</span>
+      </h2>
+      <p class="topic-intro">
+        <span class="lang-en">A modular consulting offering: practical, people-centered and tailored to each client. Not necessarily linear — iterations and loops are part of the journey.</span>
+        <span class="lang-de">Ein modulares Beratungsangebot: praxisnah, menschenzentriert und auf jeden Kunden zugeschnitten. Nicht zwingend linear — Iterationen und Rücksprünge gehören dazu.</span>
+      </p>
+      <div class="phase-row">
+        <div class="phase-box"><span class="phase-number">01</span><span class="phase-name">Assess</span></div>
+        <div class="phase-box"><span class="phase-number">02</span><span class="phase-name">Learn</span></div>
+        <div class="phase-box"><span class="phase-number">03</span><span class="phase-name">Practice</span></div>
+        <div class="phase-box"><span class="phase-number">04</span><span class="phase-name">Apply</span></div>
+        <div class="phase-box"><span class="phase-number">05</span><span class="phase-name">Validate</span></div>
+        <div class="phase-box"><span class="phase-number">06</span><span class="phase-name">Implement</span></div>
+        <div class="phase-box phase-box-accent"><span class="phase-number">07</span><span class="phase-name"><span class="lang-en">Sustain &amp; Scale</span><span class="lang-de">Sustain &amp; Scale</span></span></div>
+      </div>
+      <div class="stream-list">
+        <div class="stream-item">
+          <span class="stream-label">Change Management</span>
+          <span class="stream-chain">Awareness → Understanding → Involvement → Capability → Adoption → Reinforcement</span>
+        </div>
+        <div class="stream-item">
+          <span class="stream-label">Responsible AI</span>
+          <span class="stream-chain">
+            <span class="lang-en">Legal · Privacy · Ethics · Human Oversight — throughout the entire journey</span>
+            <span class="lang-de">Legal · Privacy · Ethics · Human Oversight — über die gesamte Journey hinweg</span>
+          </span>
+        </div>
+      </div>
+      <a href="accelerator.html" class="btn-pill btn-pill-dark">
+        <span class="lang-en">View all 11 modules →</span>
+        <span class="lang-de">Alle 11 Module ansehen →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="topic-section" id="delivery">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">03 — DELIVERY MODELS</span>
+        <span class="lang-de">03 — DELIVERY MODELS</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">Choose the format that fits.</span>
+        <span class="lang-de">Das passende Format wählen.</span>
+      </h2>
+      <p class="topic-intro">
+        <span class="lang-en">Three ways to run the Accelerator — adapted to your team's capacity and goals.</span>
+        <span class="lang-de">Drei Wege, den Accelerator umzusetzen — angepasst an Kapazität und Ziele des Teams.</span>
+      </p>
+      <div class="delivery-grid">
+        <div class="delivery-option">
+          <p class="delivery-label"><span class="lang-en">Option A</span><span class="lang-de">Option A</span></p>
+          <p class="delivery-title">Workshop Sprint</p>
+          <p><span class="lang-en">8 weeks · one workshop per week</span><span class="lang-de">8 Wochen · ein Workshop pro Woche</span></p>
+        </div>
+        <div class="delivery-option delivery-option-highlight">
+          <p class="delivery-label"><span class="lang-en">Option B</span><span class="lang-de">Option B</span></p>
+          <p class="delivery-title">Transformation Accelerator</p>
+          <p><span class="lang-en">10–12 weeks · workshop plus working session per week</span><span class="lang-de">10–12 Wochen · Workshop plus Arbeitssession pro Woche</span></p>
+        </div>
+        <div class="delivery-option">
+          <p class="delivery-label"><span class="lang-en">Option C</span><span class="lang-de">Option C</span></p>
+          <p class="delivery-title">Modular Academy</p>
+          <p><span class="lang-en">1–2 hours daily or several sessions per week</span><span class="lang-de">1–2 Stunden täglich oder mehrere Sessions pro Woche</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools-section" id="werkzeugkasten">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">04 — TOOLKIT</span>
+        <span class="lang-de">04 — WERKZEUGKASTEN</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">Tools I Work With</span>
+        <span class="lang-de">Tools, mit denen ich arbeite</span>
+      </h2>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <span class="tool-icon tool-icon-dark" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>
+          </span>
+          <span class="tool-name"><span class="lang-en">AI Assistants</span><span class="lang-de">KI-Assistenten</span></span>
+          <span class="tool-tags">ChatGPT, Claude, Gemini, Mistral</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon tool-icon-light" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1B3A5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"></circle><circle cx="19" cy="5" r="2.5"></circle><circle cx="19" cy="19" r="2.5"></circle><path d="M7.5 12h4M11.5 12l5-6M11.5 12l5 6"></path></svg>
+          </span>
+          <span class="tool-name"><span class="lang-en">Automation</span><span class="lang-de">Automatisierung</span></span>
+          <span class="tool-tags">n8n</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon tool-icon-dark" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="5" rx="1"></rect><rect x="15" y="4" width="6" height="5" rx="1"></rect><rect x="9" y="15" width="6" height="5" rx="1"></rect><path d="M9 6.5h6M6 9v3h12V9M12 12v3"></path></svg>
+          </span>
+          <span class="tool-name"><span class="lang-en">Process Modeling</span><span class="lang-de">Prozessmodellierung</span></span>
+          <span class="tool-tags">Signavio, BPMN, LeanIX</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon tool-icon-light" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1B3A5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1"></rect><rect x="10" y="4" width="5" height="10" rx="1"></rect><rect x="17" y="4" width="4" height="7" rx="1"></rect></svg>
+          </span>
+          <span class="tool-name"><span class="lang-en">Agile Tools</span><span class="lang-de">Agile Tools</span></span>
+          <span class="tool-tags">JIRA, Confluence</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon tool-icon-dark" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5M14 15.2c.9-.8 1.9-1.2 3-1.2 2 0 3.7 1.4 4.3 4"></path></svg>
+          </span>
+          <span class="tool-name"><span class="lang-en">Collaboration</span><span class="lang-de">Zusammenarbeit</span></span>
+          <span class="tool-tags">M365, MS CRM, SAP C/4HANA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-section" id="about">
+    <div class="container">
+      <p class="eyebrow">
+        <span class="lang-en">ABOUT ME</span>
+        <span class="lang-de">ÜBER MICH</span>
+      </p>
+      <h2 class="section-heading">
+        <span class="lang-en">International. Curious. Pragmatic.</span>
+        <span class="lang-de">International. Neugierig. Pragmatisch.</span>
+      </h2>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            <span class="lang-en">I'm Martina, a business transformation consultant based in Munich. For over six years at a global management consultancy, I supported global transformation and sales programs — from ideation and requirements analysis through E2E process analysis and multi-market rollouts to hypercare.</span>
+            <span class="lang-de">Ich bin Martina, Beraterin für Business Transformation mit Sitz in München. Über sechs Jahre habe ich in einer globalen Unternehmensberatung globale Transformations- und Vertriebsprogramme begleitet — von Ideenfindung und Anforderungsanalyse über die E2E-Prozessanalyse bis zu Multi-Market-Rollouts und der Hypercare-Phase.</span>
+          </p>
+          <p>
+            <span class="lang-en">Today I combine this experience with AI, building on my AI Manager qualification (AI Consultancy, AI Enterprise, AI Change Management) and a certified coaching education — both currently in progress.</span>
+            <span class="lang-de">Heute verbinde ich diese Erfahrung mit KI — aufbauend auf meiner laufenden Ausbildung zum AI Manager (AI Consultancy, AI Enterprise, AI Change Management) und einer laufenden Ausbildung zum zertifizierten Coach.</span>
+          </p>
+          <span class="about-photo-placeholder">
+            <span class="lang-en">[Portrait — placeholder]</span>
+            <span class="lang-de">[Portrait – Platzhalter]</span>
+          </span>
+        </div>
+        <div class="about-facts">
+          <div class="about-fact">
+            <span class="about-fact-label"><span class="lang-en">Experience</span><span class="lang-de">Erfahrung</span></span>
+            <span class="about-fact-value"><span class="lang-en">6+ years consulting (global management consultancy) · 3+ years sales (technology &amp; engineering services company)</span><span class="lang-de">6+ Jahre Beratung (globale Unternehmensberatung) · 3+ Jahre Vertrieb (Technologie- und Engineering-Dienstleister)</span></span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact-label"><span class="lang-en">Roles</span><span class="lang-de">Rollen</span></span>
+            <span class="about-fact-value"><span class="lang-en">E2E Process Designer · Taskforce &amp; Workstream Lead · Rollout Manager · Test Manager · Scrum Master · Trainer &amp; Change Support · PMO</span><span class="lang-de">E2E-Prozessdesign · Taskforce- &amp; Workstream-Lead · Rollout-Management · Testmanagement · Scrum Master · Training &amp; Change-Begleitung · PMO</span></span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact-label"><span class="lang-en">Industries</span><span class="lang-de">Branchen</span></span>
+            <span class="about-fact-value"><span class="lang-en">Automotive · Utilities · Aeronautics · Environmental Services</span><span class="lang-de">Automobilindustrie · Energieversorgung · Luftfahrt · Umweltdienstleistungen</span></span>
+          </div>
+          <div class="about-fact">
+            <span class="about-fact-label"><span class="lang-en">Certifications</span><span class="lang-de">Zertifizierungen</span></span>
+            <span class="about-fact-value">LeanIX Practitioner · ITIL 4 Foundation · SAFe 5.1 Agilist · Professional Scrum Master I · CARS · Management 3.0</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -196,266 +471,6 @@
               <span><span class="lang-en">Supporting people and teams through change.</span><span class="lang-de">Begleitung für Menschen und Teams im Wandel.</span></span>
             </span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="topic-section" id="starting-point">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">01 — STARTING POINT</span>
-        <span class="lang-de">01 — AUSGANGSLAGE</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">Where do you stand with AI?</span>
-        <span class="lang-de">Wo stehst du mit KI?</span>
-      </h2>
-      <p class="topic-intro">
-        <span class="lang-en">Whether you are just getting started or already have plenty of ideas: existing use cases are picked up. If there are none yet, we develop them together.</span>
-        <span class="lang-de">Egal ob du gerade erst startest oder schon viele Ideen hast: Bestehende Use Cases werden aufgegriffen. Gibt es noch keine, entwickeln wir sie gemeinsam.</span>
-      </p>
-      <div class="segment-grid">
-        <div class="segment-card">
-          <p class="segment-eyebrow"><span class="lang-en">Segment A — AI Starter</span><span class="lang-de">Segment A — KI-Einsteiger:in</span></p>
-          <p class="segment-question"><span class="lang-en">"Where do we start?"</span><span class="lang-de">„Wo fangen wir an?"</span></p>
-          <ul>
-            <li><span class="lang-en">Little structured AI activity, few defined use cases</span><span class="lang-de">Wenig strukturierte KI-Aktivität, kaum definierte Use Cases</span></li>
-            <li><span class="lang-en">First tool usage in place</span><span class="lang-de">Erste Tool-Nutzung vorhanden</span></li>
-            <li><span class="lang-en">Uncertainty about governance, value and where to begin</span><span class="lang-de">Unsicherheit bei Governance, Nutzen und Einstieg</span></li>
-          </ul>
-        </div>
-        <div class="segment-card">
-          <p class="segment-eyebrow"><span class="lang-en">Segment B — AI Explorer</span><span class="lang-de">Segment B — KI-Explorer:in</span></p>
-          <p class="segment-question"><span class="lang-en">"What should we scale?"</span><span class="lang-de">„Was sollten wir skalieren?"</span></p>
-          <ul>
-            <li><span class="lang-en">Many use case ideas, first pilots possible</span><span class="lang-de">Viele Use-Case-Ideen, erste Piloten möglich</span></li>
-            <li><span class="lang-en">Missing prioritization and scaling, inconsistent governance</span><span class="lang-de">Fehlende Priorisierung und Skalierung, uneinheitliche Governance</span></li>
-            <li><span class="lang-en">Business value often not clearly measurable</span><span class="lang-de">Business Value oft nicht klar messbar</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="topic-section topic-section-alt" id="capabilities">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">02 — CAPABILITIES</span>
-        <span class="lang-de">02 — KOMPETENZFELDER</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">Two pillars. One foundation.</span>
-        <span class="lang-de">Zwei Säulen. Ein Fundament.</span>
-      </h2>
-      <p class="topic-intro">
-        <span class="lang-en">Two independent, combinable pillars — built on my experience from global transformation programs.</span>
-        <span class="lang-de">Zwei eigenständige, kombinierbare Säulen — aufbauend auf meiner Erfahrung aus globalen Transformationsprogrammen.</span>
-      </p>
-      <div class="pillar-grid">
-        <div class="pillar-card">
-          <p class="pillar-title"><span class="lang-en">Pillar 1 — AI Management</span><span class="lang-de">Säule 1 — KI Management</span></p>
-          <p class="pillar-focus"><span class="lang-en">Orient · Structure · Prioritize · Steer · Measure impact</span><span class="lang-de">Orientieren · Strukturieren · Priorisieren · Steuern · Wirkung messen</span></p>
-          <ul>
-            <li>AI Strategy</li>
-            <li>AI Portfolio Management</li>
-            <li>AI Maturity Assessment</li>
-            <li>Use Case Prioritization</li>
-            <li>Governance &amp; Responsible AI</li>
-            <li>KPI &amp; Value Management</li>
-            <li><span class="lang-en">Tool &amp; Vendor Evaluation</span><span class="lang-de">Tool- &amp; Vendor-Evaluation</span></li>
-          </ul>
-        </div>
-        <div class="pillar-card pillar-card-alt">
-          <p class="pillar-title"><span class="lang-en">Pillar 2 — AI Transformation &amp; Enablement</span><span class="lang-de">Säule 2 — AI Transformation &amp; Enablement</span></p>
-          <p class="pillar-focus"><span class="lang-en">Understand processes · Implement · Enable · Embed change</span><span class="lang-de">Prozesse verstehen · Umsetzen · Befähigen · Veränderung verankern</span></p>
-          <ul>
-            <li><span class="lang-en">Process Analysis &amp; AI Opportunity Identification</span><span class="lang-de">Process Analysis &amp; AI Opportunity Identification</span></li>
-            <li>Use Case Development</li>
-            <li>Prompting &amp; Tool Enablement</li>
-            <li>Workflow Design</li>
-            <li><span class="lang-en">Change Management &amp; Adoption</span><span class="lang-de">Change Management &amp; Adoption</span></li>
-            <li><span class="lang-en">Training &amp; Coaching</span><span class="lang-de">Training &amp; Coaching</span></li>
-            <li>Sustain &amp; Scale</li>
-          </ul>
-        </div>
-      </div>
-      <p class="pillar-bridge">
-        <span class="lang-en">Both pillars build on my foundational Process Excellence &amp; Transformation services — see <a href="#leistungen">Services</a> above.</span>
-        <span class="lang-de">Beide Säulen bauen auf meinen Leistungen im Bereich Process Excellence &amp; Transformation auf — siehe <a href="#leistungen">Leistungen</a> oben.</span>
-      </p>
-    </div>
-  </section>
-
-  <section class="topic-section" id="accelerator">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">03 — AI TRANSFORMATION ACCELERATOR</span>
-        <span class="lang-de">03 — AI TRANSFORMATION ACCELERATOR</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">From first idea to sustainable AI adoption.</span>
-        <span class="lang-de">Von der ersten Idee zu nachhaltiger KI-Nutzung.</span>
-      </h2>
-      <p class="topic-intro">
-        <span class="lang-en">A modular consulting offering: practical, people-centered and tailored to each client. Not necessarily linear — iterations and loops are part of the journey.</span>
-        <span class="lang-de">Ein modulares Beratungsangebot: praxisnah, menschenzentriert und auf jeden Kunden zugeschnitten. Nicht zwingend linear — Iterationen und Rücksprünge gehören dazu.</span>
-      </p>
-      <div class="phase-row">
-        <div class="phase-box"><span class="phase-number">01</span><span class="phase-name">Assess</span></div>
-        <div class="phase-box"><span class="phase-number">02</span><span class="phase-name">Learn</span></div>
-        <div class="phase-box"><span class="phase-number">03</span><span class="phase-name">Practice</span></div>
-        <div class="phase-box"><span class="phase-number">04</span><span class="phase-name">Apply</span></div>
-        <div class="phase-box"><span class="phase-number">05</span><span class="phase-name">Validate</span></div>
-        <div class="phase-box"><span class="phase-number">06</span><span class="phase-name">Implement</span></div>
-        <div class="phase-box phase-box-accent"><span class="phase-number">07</span><span class="phase-name"><span class="lang-en">Sustain &amp; Scale</span><span class="lang-de">Sustain &amp; Scale</span></span></div>
-      </div>
-      <div class="stream-list">
-        <div class="stream-item">
-          <span class="stream-label">Change Management</span>
-          <span class="stream-chain">Awareness → Understanding → Involvement → Capability → Adoption → Reinforcement</span>
-        </div>
-        <div class="stream-item">
-          <span class="stream-label">Responsible AI</span>
-          <span class="stream-chain">
-            <span class="lang-en">Legal · Privacy · Ethics · Human Oversight — throughout the entire journey</span>
-            <span class="lang-de">Legal · Privacy · Ethics · Human Oversight — über die gesamte Journey hinweg</span>
-          </span>
-        </div>
-      </div>
-      <a href="accelerator.html" class="btn-pill btn-pill-dark">
-        <span class="lang-en">View all 11 modules →</span>
-        <span class="lang-de">Alle 11 Module ansehen →</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="topic-section topic-section-alt" id="delivery">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">04 — DELIVERY MODELS</span>
-        <span class="lang-de">04 — DELIVERY MODELS</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">Choose the format that fits.</span>
-        <span class="lang-de">Das passende Format wählen.</span>
-      </h2>
-      <p class="topic-intro">
-        <span class="lang-en">Three ways to run the Accelerator — adapted to your team's capacity and goals.</span>
-        <span class="lang-de">Drei Wege, den Accelerator umzusetzen — angepasst an Kapazität und Ziele des Teams.</span>
-      </p>
-      <div class="delivery-grid">
-        <div class="delivery-option">
-          <p class="delivery-label"><span class="lang-en">Option A</span><span class="lang-de">Option A</span></p>
-          <p class="delivery-title">Workshop Sprint</p>
-          <p><span class="lang-en">8 weeks · one workshop per week</span><span class="lang-de">8 Wochen · ein Workshop pro Woche</span></p>
-        </div>
-        <div class="delivery-option delivery-option-highlight">
-          <p class="delivery-label"><span class="lang-en">Option B</span><span class="lang-de">Option B</span></p>
-          <p class="delivery-title">Transformation Accelerator</p>
-          <p><span class="lang-en">10–12 weeks · workshop plus working session per week</span><span class="lang-de">10–12 Wochen · Workshop plus Arbeitssession pro Woche</span></p>
-        </div>
-        <div class="delivery-option">
-          <p class="delivery-label"><span class="lang-en">Option C</span><span class="lang-de">Option C</span></p>
-          <p class="delivery-title">Modular Academy</p>
-          <p><span class="lang-en">1–2 hours daily or several sessions per week</span><span class="lang-de">1–2 Stunden täglich oder mehrere Sessions pro Woche</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="topic-section" id="about">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">05 — ABOUT ME</span>
-        <span class="lang-de">05 — ÜBER MICH</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">International. Curious. Pragmatic.</span>
-        <span class="lang-de">International. Neugierig. Pragmatisch.</span>
-      </h2>
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            <span class="lang-en">I'm Martina, a business transformation consultant based in Munich. For over six years at a global management consultancy, I supported global transformation and sales programs — from ideation and requirements analysis through E2E process analysis and multi-market rollouts to hypercare.</span>
-            <span class="lang-de">Ich bin Martina, Beraterin für Business Transformation mit Sitz in München. Über sechs Jahre habe ich in einer globalen Unternehmensberatung globale Transformations- und Vertriebsprogramme begleitet — von Ideenfindung und Anforderungsanalyse über die E2E-Prozessanalyse bis zu Multi-Market-Rollouts und der Hypercare-Phase.</span>
-          </p>
-          <p>
-            <span class="lang-en">Today I combine this experience with AI, building on my AI Manager qualification (AI Consultancy, AI Enterprise, AI Change Management) and a certified coaching education — both currently in progress.</span>
-            <span class="lang-de">Heute verbinde ich diese Erfahrung mit KI — aufbauend auf meiner laufenden Ausbildung zum AI Manager (AI Consultancy, AI Enterprise, AI Change Management) und einer laufenden Ausbildung zum zertifizierten Coach.</span>
-          </p>
-          <span class="about-photo-placeholder">
-            <span class="lang-en">[Portrait — placeholder]</span>
-            <span class="lang-de">[Portrait – Platzhalter]</span>
-          </span>
-        </div>
-        <div class="about-facts">
-          <div class="about-fact">
-            <span class="about-fact-label"><span class="lang-en">Experience</span><span class="lang-de">Erfahrung</span></span>
-            <span class="about-fact-value"><span class="lang-en">6+ years consulting (global management consultancy) · 3+ years sales (technology &amp; engineering services company)</span><span class="lang-de">6+ Jahre Beratung (globale Unternehmensberatung) · 3+ Jahre Vertrieb (Technologie- und Engineering-Dienstleister)</span></span>
-          </div>
-          <div class="about-fact">
-            <span class="about-fact-label"><span class="lang-en">Roles</span><span class="lang-de">Rollen</span></span>
-            <span class="about-fact-value"><span class="lang-en">E2E Process Designer · Taskforce &amp; Workstream Lead · Rollout Manager · Test Manager · Scrum Master · Trainer &amp; Change Support · PMO</span><span class="lang-de">E2E-Prozessdesign · Taskforce- &amp; Workstream-Lead · Rollout-Management · Testmanagement · Scrum Master · Training &amp; Change-Begleitung · PMO</span></span>
-          </div>
-          <div class="about-fact">
-            <span class="about-fact-label"><span class="lang-en">Industries</span><span class="lang-de">Branchen</span></span>
-            <span class="about-fact-value"><span class="lang-en">Automotive · Utilities · Aeronautics · Environmental Services</span><span class="lang-de">Automobilindustrie · Energieversorgung · Luftfahrt · Umweltdienstleistungen</span></span>
-          </div>
-          <div class="about-fact">
-            <span class="about-fact-label"><span class="lang-en">Certifications</span><span class="lang-de">Zertifizierungen</span></span>
-            <span class="about-fact-value">LeanIX Practitioner · ITIL 4 Foundation · SAFe 5.1 Agilist · Professional Scrum Master I · CARS · Management 3.0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tools-section" id="werkzeugkasten">
-    <div class="container">
-      <p class="eyebrow">
-        <span class="lang-en">TOOLKIT</span>
-        <span class="lang-de">WERKZEUGKASTEN</span>
-      </p>
-      <h2 class="section-heading">
-        <span class="lang-en">Tools I Work With</span>
-        <span class="lang-de">Tools, mit denen ich arbeite</span>
-      </h2>
-      <div class="tools-grid">
-        <div class="tool-item">
-          <span class="tool-icon tool-icon-dark" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"></path><path d="M8 9h8M8 12h5"></path></svg>
-          </span>
-          <span class="tool-name"><span class="lang-en">AI Assistants</span><span class="lang-de">KI-Assistenten</span></span>
-          <span class="tool-tags">ChatGPT, Claude, Gemini, Mistral</span>
-        </div>
-        <div class="tool-item">
-          <span class="tool-icon tool-icon-light" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1B3A5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"></circle><circle cx="19" cy="5" r="2.5"></circle><circle cx="19" cy="19" r="2.5"></circle><path d="M7.5 12h4M11.5 12l5-6M11.5 12l5 6"></path></svg>
-          </span>
-          <span class="tool-name"><span class="lang-en">Automation</span><span class="lang-de">Automatisierung</span></span>
-          <span class="tool-tags">n8n</span>
-        </div>
-        <div class="tool-item">
-          <span class="tool-icon tool-icon-dark" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="6" height="5" rx="1"></rect><rect x="15" y="4" width="6" height="5" rx="1"></rect><rect x="9" y="15" width="6" height="5" rx="1"></rect><path d="M9 6.5h6M6 9v3h12V9M12 12v3"></path></svg>
-          </span>
-          <span class="tool-name"><span class="lang-en">Process Modeling</span><span class="lang-de">Prozessmodellierung</span></span>
-          <span class="tool-tags">Signavio, BPMN, LeanIX</span>
-        </div>
-        <div class="tool-item">
-          <span class="tool-icon tool-icon-light" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1B3A5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1"></rect><rect x="10" y="4" width="5" height="10" rx="1"></rect><rect x="17" y="4" width="4" height="7" rx="1"></rect></svg>
-          </span>
-          <span class="tool-name"><span class="lang-en">Agile Tools</span><span class="lang-de">Agile Tools</span></span>
-          <span class="tool-tags">JIRA, Confluence</span>
-        </div>
-        <div class="tool-item">
-          <span class="tool-icon tool-icon-dark" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EFE6DA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5M14 15.2c.9-.8 1.9-1.2 3-1.2 2 0 3.7 1.4 4.3 4"></path></svg>
-          </span>
-          <span class="tool-name"><span class="lang-en">Collaboration</span><span class="lang-de">Zusammenarbeit</span></span>
-          <span class="tool-tags">M365, MS CRM, SAP C/4HANA</span>
         </div>
       </div>
     </div>

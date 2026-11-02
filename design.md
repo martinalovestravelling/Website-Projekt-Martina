@@ -207,16 +207,102 @@ Fünf neue Abschnitte auf `index.html`, zwischen "Leistungen" (bleibt unverände
 **Markenname:** Header-Wortmarke und Footer zeigen jetzt sitweit "MARTINA HANNER" statt "MARTINA"
 (Nutzer-Entscheidung 2026-11-02, siehe Briefing.md Abschnitt 2).
 
-**Portraitfoto:** Noch nicht geliefert. Der "Über mich"-Abschnitt hat eine Bildplatzhalterfläche
-(`.about-photo-placeholder`, gleiche gestrichelte Optik wie die übrigen Bildplatzhalter) mit dem
-Hinweis "[Portrait – Platzhalter]". Sobald eine Datei vorliegt (z. B. unter
-`images/martina-portrait.jpg`), kann sie dort eingesetzt werden.
+**Portraitfoto:** Datei `Foto.webp` liegt seit 2026-11-02 im Projektordner und wird im Header
+(`.brand-photo`, 48×48, rund, neben der Wortmarke "MARTINA HANNER") verwendet — Nutzer-Anweisung:
+"neben meinem Namen oben links". Der "Über mich"-Abschnitt hat weiterhin die ursprüngliche
+Bildplatzhalterfläche (`.about-photo-placeholder`, "[Portrait – Platzhalter]"), da nur der Header
+explizit genannt wurde; ob das Foto auch dort verwendet werden soll, ist offen für eine künftige
+Iteration.
 
 **`accelerator.html`:** neue Unterseite, gleiches Grundgerüst wie `erste-schritte.html`
 (Header/Nav/Footer/Chat-Widget identisch). Enthält die 7 Journey-Boxen als Sprunglinks (Anker je
 Phase) sowie alle 11 Module, nach Phase gruppiert, als nicht aufklappbare Karten (Inhalte direkt
 sichtbar, wie im Quelldokument gefordert). Abschließender CTA verlinkt zurück auf
 `index.html#kontakt`.
+
+## Navigation umstrukturiert (aktualisiert 2026-11-02, nach Review durch den Nutzer)
+
+Nach einem ersten Durchsicht der oben beschriebenen Erweiterung wünschte der Nutzer eine neue
+Top-Level-Navigation auf `index.html`, mit zwei CSS-only Dropdown-Gruppen (Hover + `:focus-within`,
+kein JavaScript — bleibt innerhalb der tech-spec.md-Vorgabe):
+
+1. **Home** (`#home`, neuer Anker auf der Hero-Section) — führt jederzeit zurück zum Seitenanfang.
+2. **Discover** (Dropdown) → Skills & Capabilities (`#capabilities`), Services (`#leistungen`)
+3. **Offering** (Dropdown) → Starting Point (`#starting-point`), Accelerator (`#accelerator`),
+   Delivery (`#delivery`). Nutzer-Entscheidung: "Starting Point gehört für mich in den Unterpunkt
+   Offering" — Offering ist zielgruppenorientiert (AI Starter / AI Explorer).
+4. **Portfolio** (`#portfolio`) — es gibt weiterhin keine eigene Portfolio-Sektion, nur die
+   bestehende Platzhalter-Kachel in "Alles auf einen Blick"; der Nav-Link bekam dafür eine `id`, um
+   dorthin zu scrollen. Bewusst nicht weiter ausgebaut ("wenn du nicht weißt wohin, dann einfach
+   erstmal lassen").
+5. **Tools** (`#werkzeugkasten`)
+6. **About Me** (`#about`) — Reihenfolge im Dokument geändert: liegt jetzt *nach* Werkzeugkasten
+   (vorher davor), damit die Dokumentreihenfolge der Nav-Reihenfolge entspricht.
+7. **News** (weiterhin deaktivierter Platzhalter-Link)
+
+**Physische Abschnittsreihenfolge auf `index.html` geändert**, damit sie zur neuen Nav passt:
+Hero → Überblicks-Kacheln → **Kompetenzfelder** (vorher nach Leistungen, jetzt davor, Teil der
+"Discover"-Gruppe) → Leistungen → Ausgangslage → Accelerator → Delivery → Werkzeugkasten → Über
+mich → Kontakt. Kein Inhalt wurde gelöscht, nur verschoben; die Eyebrow-Nummerierung wurde
+entsprechend angepasst (Kompetenzfelder verlor ihre "02 —"-Nummer, da sie jetzt zur Discover-Gruppe
+gehört statt zur Offering-Nummerierung; Accelerator/Delivery rückten auf 02/03; Über mich verlor
+ihre Nummer, da sie nicht mehr Teil der Offering-Sequenz ist). Der Hinweistext in "Kompetenzfelder"
+("siehe Services oben") wurde zu "siehe Services unten" korrigiert, da Services jetzt direkt danach
+folgt.
+
+**Header jetzt `position: sticky; top: 0`**, bleibt beim Scrollen sichtbar (Nutzer-Anweisung: "damit
+man jederzeit wieder auf Home zurückklicken kann"). Kein zusätzliches Body-Padding nötig, da
+`sticky` (anders als `fixed`) im normalen Dokumentfluss bleibt.
+
+**Scope-Hinweis:** Diese Nav-Änderung wurde nur auf `index.html` umgesetzt (Nutzer: "auf der
+allerersten Seite"). `accelerator.html` und die drei internen "Erste Schritte"-Seiten haben noch die
+alte Navigation/das alte Logo-Platzhalter — offen für eine künftige Iteration, falls gewünscht.
+
+## Navigation & Header, zweite Korrekturrunde (aktualisiert 2026-11-02, nach visuellem Review)
+
+Nach Ansicht der ersten Umsetzung meldete der Nutzer mehrere Korrekturen:
+
+1. **Bug behoben — Dropdown unsichtbar + Scrollbar:** `.site-nav` hatte `overflow-x: auto` ohne
+   explizites `overflow-y`; laut CSS-Spezifikation wird dadurch `overflow-y` implizit zu `auto`
+   statt `visible`, was das absolut positionierte `.nav-submenu` beschnitt und eine ungewollte
+   vertikale Scrollbar erzeugte. Fix: `overflow-x: auto` entfernt, stattdessen `flex-wrap: wrap`
+   (Nav bricht auf schmalen Bildschirmen um, statt zu scrollen) — dadurch ist kein `overflow`-Wert
+   mehr gesetzt und das Dropdown zeigt sich vollständig. Zusätzlich: Caret-Symbol (▾) an jedem
+   Dropdown-Auslöser und `box-shadow` am Submenü für bessere Erkennbarkeit ("deutlich aufklappen").
+2. **Sticky-Verhalten korrigiert:** Vorher war die *gesamte* `.site-header` sticky (Logo+Name+Reiter
+   blieben alle immer sichtbar) — unerwünscht. Jetzt ist nur noch `.header-top` (Logo, Name,
+   Kontakt-Button, Sprachumschalter) sticky; `.site-nav` (die Reiter-Zeile) bleibt normaler
+   Dokumentfluss und scrollt beim Herunterscrollen normal weg, unter die sticky Leiste. Beim Laden
+   sieht man weiterhin den vollen Header; erst beim Scrollen reduziert er sich auf Logo+Name — exakt
+   wie vom Nutzer gewünscht ("beim Scrollen, nicht dauerhaft"). Der Abstand zwischen Logo/Name-Zeile
+   und Reiter-Zeile wurde zudem verkleinert.
+3. **Nav-Gruppen geändert:** "Tools" ist jetzt Unterpunkt von "Offering" (zusammen mit Starting
+   Point, Accelerator, Delivery); "Services" ist jetzt Unterpunkt von "About Me" (eigene
+   Dropdown-Gruppe mit aktuell nur diesem einen Eintrag). "Discover" bleibt ebenfalls als
+   Dropdown-Gruppe bestehen (jetzt nur noch mit "Skills & Capabilities", da Services dort
+   herausgenommen wurde) — bewusste Entscheidung für strukturelle Konsistenz aller drei
+   Gruppen-Reiter, auch wenn Discover und About Me aktuell nur je einen Untereintrag haben.
+4. **Physische Abschnittsreihenfolge erneut angepasst:** "Leistungen" (`#leistungen`) wurde ans Ende
+   der Inhaltsabschnitte verschoben (direkt vor "Kontakt"), passend zu seiner neuen Nav-Zugehörigkeit
+   unter "About Me". "Werkzeugkasten" musste nicht verschoben werden — es stand bereits zwischen
+   Delivery und Über mich und bekam zur Konsistenz die Eyebrow-Nummer "04 —" (viertes Offering-Item).
+   Der Verweislink in "Kompetenzfelder" ("siehe Services ...") verzichtet jetzt bewusst auf eine
+   Richtungsangabe ("oben"/"unten"), da Services nicht mehr in der Nähe steht.
+5. **Portfolio-Verlinkung:** Die dritte Kachel in "Alles auf einen Blick" (vorher "PORTFOLIO" / "From
+   Analysis to Hypercare", deaktiviert) wurde auf Nutzerwunsch zu "OFFERING" / "From Assessment to AI
+   Adoption" umbenannt und aktiviert (verlinkt jetzt auf `#starting-point`) — "Assessment"/"AI
+   Adoption" bewusst unübersetzt gelassen, analog zu den bereits unübersetzten Phase-Namen im
+   Accelerator-Abschnitt (Assess, Learn, …). Die erste Kachel ("SKILLS" → "SKILLS & CAPABILITIES")
+   wurde ebenfalls aktiviert (verlinkt auf `#capabilities`), da dort jetzt echter Inhalt steht.
+   Der Nav-Punkt "Portfolio" hat dadurch keine eigene Vorschau-Kachel mehr und verlinkt vorerst auf
+   die allgemeine Überblicks-Sektion (`#ueberblick`) — es gibt weiterhin keine dedizierte
+   Portfolio-Sektion; offen für eine künftige Iteration.
+6. **Resources-Kachel:** Zusätzliche Zeile "Coming soon" / "Demnächst" ergänzt (war vorher nicht als
+   Platzhalter erkennbar); CTA-Button-Text "Discover"/"Entdecken" → "Learn"/"Mehr erfahren".
+7. **Hintergrundbild:** `hintergrundbild.png` (vom Nutzer bereitgestellt — generische,
+   KI/Business-Stock-Grafik ohne erkennbare Gesichter/Namen, unbedenklich nach den
+   Personendaten-Regeln) ersetzt den bisherigen Hero-Bildplatzhalter, mit einem dunklen
+   Verlaufs-Overlay (`.hero-overlay`) für Textlesbarkeit.
 
 ## Erste Schritte (Entscheidungshilfen) — jetzt intern (aktualisiert 2026-11-02)
 

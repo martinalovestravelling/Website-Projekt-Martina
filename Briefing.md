@@ -25,8 +25,10 @@ every other item above remain excluded.
 source document named two employers directly ("Accenture", "IABG"); these were replaced with the
 existing anonymized descriptions below ("global management consultancy" / "technology & engineering
 services company") rather than carried over literally, since the user did not separately approve
-naming employers. A professional portrait photo is also approved in principle (not yet supplied —
-see design.md, "AI Transformation & Enablement").
+naming employers. A professional portrait photo is also approved in principle — and, as of 2026-11-02, was supplied
+(`Foto.webp`) and is now used in the site header next to the name, per the user's explicit request
+("neben meinem Namen oben links") — see design.md, "AI Transformation & Enablement" and "Navigation
+umstrukturiert".
 
 ## 3. Language Requirements
 
