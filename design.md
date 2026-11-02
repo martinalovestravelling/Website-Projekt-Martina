@@ -304,6 +304,46 @@ Nach Ansicht der ersten Umsetzung meldete der Nutzer mehrere Korrekturen:
    Personendaten-Regeln) ersetzt den bisherigen Hero-Bildplatzhalter, mit einem dunklen
    Verlaufs-Overlay (`.hero-overlay`) für Textlesbarkeit.
 
+## Dritte Korrekturrunde (aktualisiert 2026-11-02, nach erneutem visuellem Review)
+
+1. **Sticky-Bug endgültig behoben (Ursache gefunden):** Der Header verschwand nach kurzem Scrollen
+   komplett, statt dauerhaft sichtbar zu bleiben. Ursache: `position: sticky` hält ein Element nur
+   innerhalb der Box seines unmittelbaren Elternelements sichtbar ("containing block"); da
+   `.header-top` vorher in der kurzen `.site-header` (nur ca. 1–2 Zeilen hoch) verschachtelt war,
+   endete der "Stick-Bereich" sobald dieser kurze Elternblock durchgescrollt war. Fix: `<header
+   class="site-header">` ist jetzt selbst das sticky Element und ein **direktes Kind von
+   `.page`** (das die gesamte Seite umspannt) — dadurch bleibt es über die komplette Seite hinweg
+   oben fixiert. `<nav class="site-nav">` ist jetzt ein Geschwisterelement direkt danach (nicht mehr
+   im `<header>` verschachtelt) und scrollt normal weg, wie gewünscht.
+2. **Logo statt Porträt im Header:** Die zwei vom Nutzer bereitgestellten Logo-Dateien
+   (`logo.png` mit Navy-Hintergrund, `logo-transparent.png` mit transparentem Hintergrund — beide
+   zeigen ein "MH"-Monogramm, keine Personendaten) ersetzen das Porträtfoto oben links im Header;
+   verwendet wird die transparente Variante, da sie nahtlos mit dem Navy-Header verschmilzt. Das
+   Porträtfoto (`Foto.webp`) zog dafür an zwei andere Stellen um:
+   - in die "About Me"-Kachel in "Alles auf einen Blick" (ersetzt dort den Bild-Platzhalter)
+   - in den Portrait-Platzhalter im "Über mich"-Abschnitt selbst (`.about-photo`, vorher
+     `.about-photo-placeholder`)
+3. **Discover-Kacheln neu sortiert/umbenannt:** "Offering" (vorher "Portfolio") steht jetzt an
+   erster/linker Position; "Skills & Capabilities" heißt jetzt "Skills, Capabilities & Portfolio"
+   (gleiche Umbenennung auch im Nav-Dropdown "Discover" und im Eyebrow-Label des
+   `#capabilities`-Abschnitts übernommen, für Konsistenz an allen drei Stellen).
+4. **About Me — Tools ergänzt:** Neue Fakten-Zeile "Tools" (Signavio, LeanIX, JIRA, Confluence, SAP
+   C/4HANA, MS CRM, M365, ChatGPT, Claude, Gemini, Mistral, n8n — aus Briefing.md 4.7) analog zu
+   Experience/Roles/Industries/Certifications. Der bestehende "Werkzeugkasten"-Abschnitt bleibt
+   unverändert bestehen (Nutzer-Anweisung: "nimm den Toolbox-Part bitte vorerst trotzdem noch nicht
+   raus") — die Tools stehen also aktuell bewusst doppelt auf der Seite.
+5. **"Ausgangslage" (`#starting-point`) komplett neu**, nach einer vom Nutzer bereitgestellten
+   Bildvorlage, um die Sektion klarer auf Zielgruppen auszurichten: neue Headline "Process first,
+   then AI." / "Erst der Prozess, dann die KI."; neue Zielgruppen-Tag-Zeile ("For: Companies /
+   Education providers / Freelancers"); die bisherigen zwei Segmente (AI Starter / AI Explorer)
+   wurden durch drei Personas ersetzt (STARTER / PLANNER / EXPLORER, je mit Zitat + 3 Bulletpoints,
+   wörtlich aus der Bildvorlage übernommen, deutsche Übersetzung in der etablierten Seiten-Diktion
+   ergänzt); neuer CTA-Button "Let's talk →" / "Lass uns sprechen →" (verlinkt auf `#kontakt`) plus
+   Hinweiszeile "Also available as an open group workshop." / "Auch als offener Gruppen-Workshop
+   buchbar."
+6. **Fußzeile:** "München"/"Munich" steht jetzt direkt neben dem Namen (`.footer-brand-group`,
+   kleiner fester Abstand) statt gleichmäßig über die ganze Fußzeile verteilt zu sein.
+
 ## Erste Schritte (Entscheidungshilfen) — jetzt intern (aktualisiert 2026-11-02)
 
 Der Nutzer hat entschieden, dass die Entscheidungshilfen (`erste-schritte.html`,

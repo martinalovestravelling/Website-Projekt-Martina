@@ -145,15 +145,13 @@ a:focus-visible {
 }
 
 /* ---------- Header ---------- */
-.site-header {
-  background-color: var(--color-brand-primary);
-  display: flex;
-  flex-direction: column;
-}
-
 /* Sticky: only this row (logo + name + actions) stays visible while scrolling.
-   The nav row below is NOT sticky, so it scrolls away underneath it — per user request. */
-.header-top {
+   It's a DIRECT child of .page (not nested inside a short wrapper) so its containing
+   block spans the whole page — otherwise a sticky element can only stay pinned within
+   its immediate parent's box, and disappears once that (short) parent scrolls past.
+   The nav row below is a sibling, NOT nested in here, so it scrolls away underneath it —
+   per user request. */
+.site-header {
   position: sticky;
   top: 0;
   z-index: 200;
@@ -189,13 +187,11 @@ a:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.brand-photo {
+.brand-logo-image {
   flex: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--color-surface-alt);
-  object-fit: cover;
+  height: 44px;
+  width: auto;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -252,13 +248,15 @@ a:focus-visible {
 }
 
 .site-nav {
+  position: relative;
+  background-color: var(--color-brand-primary);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   row-gap: 2px;
   column-gap: 2px;
   margin-left: -14px;
-  padding: 0 5% 10px;
+  padding: 2px 5% 10px;
 }
 
 .site-nav a {
@@ -442,7 +440,7 @@ a:focus-visible {
 }
 
 .tile-image-placeholder {
-  height: 130px;
+  height: 170px;
   background-color: var(--color-surface-alt);
   border-bottom: 2px dashed var(--color-text-muted);
   display: flex;
@@ -452,6 +450,22 @@ a:focus-visible {
   color: var(--color-text-muted);
   text-align: center;
   padding: 0 12px;
+}
+
+.tile-image-photo {
+  border-bottom: none;
+  padding: 0;
+}
+
+.tile-image-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.tile-image-portrait img {
+  object-position: top center;
 }
 
 .tile-body {
@@ -474,6 +488,7 @@ a:focus-visible {
 }
 
 .tile-wide {
+  position: relative;
   flex: 1 1 360px;
   min-height: 220px;
   border-radius: 20px;
@@ -486,8 +501,35 @@ a:focus-visible {
   gap: 20px;
 }
 
+.tile-wide-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.tile-wide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.tile-wide > .eyebrow,
+.tile-wide > .tile-title,
+.tile-wide > .tile-note,
+.tile-wide > .tile-cta {
+  position: relative;
+  z-index: 2;
+}
+
 .tile-wide-dark {
   background-color: var(--color-brand-primary);
+}
+
+.tile-wide-dark .tile-wide-overlay {
+  background-color: rgba(27, 58, 92, 0.8);
 }
 
 .tile-wide-dark .eyebrow {
@@ -500,6 +542,10 @@ a:focus-visible {
 
 .tile-wide-light {
   background-color: var(--color-surface-alt);
+}
+
+.tile-wide-light .tile-wide-overlay {
+  background-color: rgba(226, 211, 191, 0.82);
 }
 
 .tile-wide-light .tile-title {
@@ -611,6 +657,7 @@ a:focus-visible {
 
 /* ---------- Werkzeugkasten ---------- */
 .tools-section {
+  background-color: var(--color-surface-alt);
   padding: 72px 24px;
 }
 
@@ -688,11 +735,11 @@ a:focus-visible {
 }
 
 .contact-card {
-  max-width: 1320px;
+  max-width: 920px;
   margin: 0 auto;
   background-color: var(--color-brand-primary);
   border-radius: 28px;
-  padding: 48px 5%;
+  padding: 36px 48px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -704,7 +751,7 @@ a:focus-visible {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.2;
   color: var(--color-background);
 }
@@ -736,6 +783,13 @@ a:focus-visible {
 
 .site-footer .brand-name {
   color: var(--color-background);
+}
+
+.footer-brand-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
 }
 
 /* ---------- Placeholder sections (shared pattern) ---------- */
@@ -1540,7 +1594,45 @@ details.dh-wiz > summary {
   margin-bottom: 36px;
 }
 
-/* Starting Point: two segment cards */
+/* Starting Point: target-audience tags */
+.audience-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.audience-label {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin-right: 4px;
+}
+
+.audience-tag {
+  background-color: var(--color-brand-primary);
+  color: var(--color-background);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 999px;
+}
+
+/* Starting Point: CTA below the segment cards */
+.starting-point-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.starting-point-cta-note {
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+/* Starting Point: segment cards (2 or 3, grid auto-fits either) */
 .segment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1762,20 +1854,20 @@ details.dh-wiz > summary {
   margin: 0;
 }
 
-.about-photo-placeholder {
+.about-photo {
   flex: 0 0 220px;
   width: 220px;
   height: 260px;
-  border: 2px dashed var(--color-text-muted);
   border-radius: 16px;
-  background-color: var(--color-surface-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 16px;
-  font-size: 13px;
-  color: var(--color-text-muted);
+  overflow: hidden;
+  display: block;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .about-facts {

@@ -39,6 +39,50 @@ background-photo placeholder was replaced with a real image (`hintergrundbild.pn
 AI/business stock illustration — no identifiable faces or names, reviewed for the no-personal-data
 rule before use). See design.md, "Navigation & Header, zweite Korrekturrunde", for full details.
 
+**Third correction pass (same day, after another visual review):** found and fixed the real root
+cause of the sticky-header bug — `position: sticky` only holds an element within its immediate
+parent's box, and the previous wrapper (`.site-header` containing both rows) was too short, so the
+header disappeared entirely after a small amount of scrolling. Fix: `<header class="site-header">`
+is now the sticky element itself and a direct child of `.page` (which spans the whole document), so
+it stays pinned for the entire page; `<nav class="site-nav">` is now a sibling (not nested inside
+`<header>`) and scrolls away normally, as intended. The user's two supplied logo files (`logo.png`,
+`logo-transparent.png` — an "MH" monogram, no personal data) now replace the portrait in the header;
+the portrait (`Foto.webp`) moved to the "About Me" overview tile and the About Me section's own
+portrait slot instead. The overview tiles were reordered (Offering first) and the Skills tile
+renamed to "Skills, Capabilities & Portfolio" (applied consistently to the tile, the nav dropdown,
+and the section eyebrow). About Me gained a "Tools" fact row (Werkzeugkasten section deliberately
+kept too, per explicit user instruction). The Starting Point section was rebuilt from a user-supplied
+mockup image: new headline, a target-audience tag row, three personas (Starter/Planner/Explorer)
+replacing the previous two segments, and a new CTA. The footer now groups the city right next to the
+name instead of spreading it across the row. See design.md, "Dritte Korrekturrunde", for full
+details.
+
+**Fourth correction pass (same day):** the "Interested in Talking?" contact card was narrowed
+(max-width 1320px → 920px, smaller heading); the alternating sand/beige section background rhythm
+was broken by three consecutive beige sections (Delivery/Tools/About) — fixed by giving the Tools
+section a sand background, restoring strict alternation throughout. In the About Me section, the
+portrait now sits in its own column, top-aligned with the facts column (pulled out of the text
+column, which previously pushed it down below both paragraphs); bio text now says "senior business
+transformation consultant" / "Senior Beraterin", and the first of two "global" mentions in that
+paragraph was changed to "international" to avoid the repetition (the canonical "global management
+consultancy" phrasing elsewhere, e.g. the Experience fact row, was deliberately left unchanged).
+Four user-supplied stock images (generic AI/business imagery, no identifiable people) now fill the
+Discover overview tiles: `offering-tile.png`, `skills-capabilities-tile.png`, `news-tile.png`,
+`community-and-peers.png` — the latter two use a semi-transparent brand-colored overlay over the
+photo so the existing text stays readable, replacing the previously flat-colored cards.
+
+**Fifth correction pass (same day):** the three square Discover tile images looked cropped too
+tightly at 130px frame height — increased to 170px and switched their default crop focus to
+`center center` (only the About Me tile's portrait keeps `top center`, via a new
+`.tile-image-portrait` modifier, so it doesn't cut off the top of her head). The About Me section's
+portrait was reverted to its original position — nested below the two bio paragraphs in the text
+column — after a misunderstanding: the user wanted the facts column top-aligned with the text
+column (already correct, via `.about-layout`'s existing `align-items: flex-start`, independent of
+where the photo sits inside the text column), not the photo itself pulled out into its own
+top-aligned column. The alternating section-background fix (Tools section → sand) from the second
+correction pass was confirmed still correct in the code — a screenshot suggesting it was still
+broken turned out to predate that fix.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
