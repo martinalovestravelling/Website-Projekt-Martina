@@ -72,3 +72,30 @@ jederzeit erreichbar ist. Der Rest der Seite bleibt vollständig JS-frei.
   (Arbeitsproben, Kontakt) werden vom Assistenten als Platzhalter benannt,
   nie mit erfundenen Inhalten gefüllt.
 - Details zu Setup, Kosten und Deployment: siehe `/chatbot/SETUP.md`.
+
+## Sprachpräferenz-Ausnahme (`lang-toggle.js`)
+
+Zweite, bewusst sehr kleine Ausnahme vom "kein JavaScript"-Prinzip, auf Wunsch
+der Nutzerin eingeführt (2026-11-04), nachdem sich zwei Probleme als mit reinem
+CSS grundsätzlich nicht lösbar herausstellten:
+
+- **Problem 1:** Der Checkbox-Hack hält den Sprachzustand nur innerhalb einer
+  einzelnen Seite. Klickt man im Burger-/Navigationsmenü auf einen Unterpunkt
+  einer anderen Seite, lädt diese immer mit zurückgesetzter Checkbox (Englisch
+  zuerst) — unabhängig davon, welche Sprache gerade aktiv war.
+- **Problem 2:** Ein Sprung zurück nach ganz oben beim Umschalten der Sprache
+  lässt sich mit einer reinen Checkbox/Label-Konstruktion nicht auslösen, da
+  dafür ein Scroll-Befehl nötig ist.
+- **Architektur:** `lang-toggle.js` (zweites und letztes Skript im Repo, keine
+  Abhängigkeiten, kein Netzwerk-Request) liest/schreibt lediglich
+  `localStorage` und ruft `window.scrollTo`. Es wird auf jeder Seite direkt
+  nach der versteckten `#lang-toggle`-Checkbox synchron eingebunden (vor dem
+  übrigen Seiteninhalt), damit die gespeicherte Sprache vor dem ersten Rendern
+  gesetzt ist und kein kurzes Aufblitzen der falschen Sprache sichtbar wird.
+- Bei deaktiviertem/blockiertem JavaScript bleibt das bisherige Verhalten
+  (Checkbox-Hack, Englisch als Default pro Seite) unverändert erhalten — die
+  Seite funktioniert in jedem Fall weiterhin ohne JS, nur ohne die
+  Komfortfunktion.
+- Der Rest der Seite bleibt vollständig CSS-only für die Sprachumschaltung
+  selbst; nur dieses eine, dokumentierte Skript ergänzt Persistenz und
+  Scroll-Verhalten.

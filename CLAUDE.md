@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `index.html` and `styles.css` implement a landing page (new design, 2026-10-28; expanded 2026-11-02) with the CSS-only EN/DE toggle and placeholder sections. A condensed "About Me" section now lives directly on `index.html` (`#about`, added 2026-11-02 — see below); the *full* Briefing.md 4.3–4.10 detail tables (complete experience table, international experience, full skills table, tools, education, languages) are still not on the page and remain a possible future "About Me" subpage expansion, see `design.md`. The previous full one-pager is kept as `index-old.html` / `styles-old.css` / `design-old.md` for reference. There is no build system, package manager, linter, or test suite to run; none should be introduced, per the tech spec (see below).
 
-A FAQ chat widget (`chat-widget.js`) has been added as a scoped, documented exception to the no-JavaScript rule — see `tech-spec.md` ("Chat-Widget-Ausnahme") and the `/chatbot/` folder (knowledge base, Cloudflare Worker backend, setup checklist). It is the only JavaScript on the site and the only thing that talks to an external backend; everything else stays static.
+A FAQ chat widget (`chat-widget.js`) has been added as a scoped, documented exception to the no-JavaScript rule — see `tech-spec.md` ("Chat-Widget-Ausnahme") and the `/chatbot/` folder (knowledge base, Cloudflare Worker backend, setup checklist). It is the only thing that talks to an external backend; everything else stays static. A second, much smaller scoped exception, `lang-toggle.js`, was added 2026-11-04 (see `tech-spec.md`, "Sprachpräferenz-Ausnahme" and the dated entry below) to persist the EN/DE choice across page loads via `localStorage` and to scroll to top on toggle — both JS-free limitations the CSS-only checkbox hack cannot overcome on its own.
 
 Three decision-aid pages exist (`erste-schritte.html` hub, `erste-schritte-servicemodelle.html`, `erste-schritte-ki-anbieter.html`) but are **no longer part of the public site as of 2026-11-02**: the user decided they no longer fit the new "AI Transformation & Enablement" positioning (see below) and moved them to internal-only status — removed from all nav menus and from the Werkzeugkasten "AI Assistants" tile, marked `<meta name="robots" content="noindex, nofollow">`, reachable only via direct URL. **Important caveat (communicated to and accepted by the user):** on GitHub Pages this means "unindexed/unlinked", not "actually private" — any unlinked file in a public repo is still served to anyone who has the exact URL. `erste-schritte-servicemodelle.html` (SaaS/PaaS/IaaS/self-hosted + Public/Private/Hybrid/On-Premise decision aid) was adapted from a user-provided interactive Claude artifact that originally used JavaScript; per the user's explicit decision (2026-10-30), it was rebuilt CSS-only — radio-button tab hacks plus native `<details>`/`<summary>` for the branching wizard — so it needed no second JavaScript exception. `erste-schritte-ki-anbieter.html` (AI tool comparison: ChatGPT/Claude/Gemini/Copilot/Perplexity/Mistral — pricing, credits, integration, privacy, scenario recommendations) was adapted from a second user-provided artifact that was already static (no JS); it links out to Arena/lmarena.ai for live model rankings rather than embedding it, for the same privacy reasoning already applied to Google Fonts. Both decision-aid pages' content remains German-only, clearly marked; see design.md, "Erste Schritte — jetzt intern".
 
@@ -368,6 +368,89 @@ reassigned to the new categories; a new one added for "Business Applications", a
 since that category didn't exist before). Net effect of this pair of rounds: same visual format as
 the original Werkzeugkasten section, new content groupings only.
 
+**New `datenschutz.html` page added, footer wired up (2026-11-04).** The user supplied a full
+German privacy-policy text (Verantwortliche, GitHub Pages hosting, no cookies/tracking, self-hosted
+fonts, outbound LinkedIn link, chat assistant, email contact, data-subject rights) with several
+bracketed placeholders ("[Straße Hausnummer]", "[kontakt@deine-domain.de]", a GDPR transfer-basis
+note for GitHub Pages) left deliberately for the user/legal counsel to fill in — those were kept
+as-is, not invented. Per the user's explicit instruction, this content is **German-only and takes
+priority regardless of the site's EN/DE toggle** — implemented the same way the two internal
+decision-aid pages already do this (no `.lang-en`/`.lang-de` pair for the body text at all, so the
+toggle simply has nothing to hide; a bilingual `.dh-lang-note` banner explains to English-toggled
+visitors why). The chat-assistant section (§6) needed a factual call on which disclosure variant
+applies — confirmed from the actual code (`chat-widget.js` → Cloudflare Worker →
+`generativelanguage.googleapis.com`) that it's "Variant B" (the question is sent to an external AI
+service), not "Variant A" (fully client-side); wrote the two real parties involved (Cloudflare,
+which also sees the visitor's IP as part of ordinary hosting; Google's Gemini API, which receives
+only the message text/history via a server-to-server call, not the visitor's IP) and both
+providers' real privacy-policy URLs, but left the legal-basis wording in brackets
+("[juristisch prüfen]") since asserting GDPR compliance language isn't something to invent. The
+footer's "Impressum · Datenschutz" line, previously plain unlinked text everywhere, now links
+"Datenschutz" to this page on every live page (`index.html`, `about.html`, `accelerator.html`,
+`offering.html`, `services.html`, `portfolio-leasing-calculator.html`, and the three internal
+`erste-schritte-*.html` pages); "Impressum" stays unlinked, since no Impressum content exists yet —
+that's the next placeholder to fill in, not a page to build speculatively.
+
+**New `impressum.html` page added, footer link completed (2026-11-04).** Same pattern as
+`datenschutz.html`: German-only content (no `.lang-en`/`.lang-de` pairing for the body text), a
+bilingual `.dh-lang-note` banner explaining why, full site header/nav/burger/footer/chat-widget
+shell. Sections: Angaben gemäß § 5 DDG (name/address, with `[Straße Hausnummer]` and `[PLZ]`
+placeholders kept as-is), Kontakt (`[kontakt@deine-domain.de]` placeholder), Umsatzsteuer-ID (kept
+conditional/bracketed exactly as supplied), Verbraucherstreitbeilegung, Haftung für Inhalte, Haftung
+für Links, Urheberrecht (`[Fotograf / Bildquelle]` placeholder). The user's supplied text contained
+two overlapping drafts of the links-liability paragraph — one folded into a combined "Haftung für
+Inhalte und Links" heading in impersonal "wir" voice, a second, separate "Haftung für Links"
+paragraph in first-person "ich" voice naming LinkedIn specifically. Resolved by splitting into two
+headed paragraphs ("Haftung für Inhalte" / "Haftung für Links") and merging the two link-liability
+drafts into one non-redundant paragraph that keeps the LinkedIn mention and "kein Einfluss" phrasing
+from the standalone version plus the "zum Zeitpunkt der Verlinkung" clause from the combined
+version; all of "wir" was changed to "ich" throughout for voice consistency with the rest of the
+site and with `datenschutz.html`. This is a grammatical/voice edit only, not new legal content — no
+hallucinated facts or legal assertions were added. The footer's "Impressum" text is now a link to
+this page on all 9 live pages (`index.html`, `about.html`, `accelerator.html`, `offering.html`,
+`services.html`, `portfolio-leasing-calculator.html`, `datenschutz.html`, and the three internal
+`erste-schritte-*.html` pages), matching how "Datenschutz" was wired up previously — both footer
+links are now live everywhere.
+
+**Translation gaps closed, Portfolio heading renamed, second JS exception added (2026-11-04).**
+The user found several places where German text had quietly fallen back to English because new copy
+was added without a `.lang-de` pairing: the homepage's "Everything at a Glance" Offering tile
+(eyebrow was literally "OFFERING" in both languages instead of "ANGEBOT"; the tile title "From
+Assessment to AI Adoption" had no German span at all) on `index.html`; the Services teaser's pillar
+2 title ("AI Transformation & Enablement") and foundation-bar title ("Process Excellence &
+Transformation") on both `index.html` and `services.html`; and `services.html`'s "AI Strategy &
+Maturity" service item, whose German pairing read "AI Strategie & Reifegrad" instead of "KI-Strategie
+& Reifegrad" (per the user's rule that "AI" is always "KI" in German body text — this does not apply
+to job-title-style proper nouns like "AI Manager" on `about.html`, left as-is). All now have proper
+`.lang-en`/`.lang-de` pairs; the German sides use "KI" throughout, "Prozessexzellenz & Transformation"
+for the foundation bar, and "Von der Bewertung zur KI-Einführung" for the Offering tile title. Per
+explicit user instruction, this "AI → KI" and "fill in missing pairs" pass does **not** extend to
+`accelerator.html` or to `offering.html`'s `#journey`/Accelerator-related content (phases, streams,
+the Starter/Planner/Explorer labels, the delivery-format names) — the user confirmed the existing
+mixed English/German wording there is intentional and should stay untouched. The Portfolio section's
+heading was also renamed, on both the overview tile and the `#portfolio` section itself: "Selected
+Work" → "Work Samples" (EN), "Ausgewählte Arbeiten" → "Arbeitsproben" (DE) — the user felt the old
+German phrasing sounded odd, and the new term now matches the "Arbeitsprobe" wording already used
+everywhere else in that section (tags, CTA link, burger-menu sub-link).
+
+Separately, the user flagged two interaction problems that turned out to be structural limits of
+the CSS-only checkbox-hack toggle, not simple bugs: (1) clicking a nav/burger sub-link while reading
+in German lands on the target subpage in English, because each page load resets the hidden checkbox
+to unchecked — there is no way for a new, separate HTML document to "remember" a prior page's
+checkbox state without either cookies/storage or a full rearchitecture to URL-fragment-based
+(`:target`) language switching; (2) there was no scroll-to-top on language toggle, which a checkbox
+alone cannot trigger (that needs an actual scroll command). Asked the user how to proceed (keep as a
+documented limitation / add a small, scoped JS exception / a bigger `:target`-based rearchitecture);
+they chose the scoped-JS-exception option. Added `lang-toggle.js` as a second, deliberate exception
+to the "no JavaScript" rule (the first being `chat-widget.js`) — a small, dependency-free script that
+reads/writes the chosen language to `localStorage` and calls `window.scrollTo` on toggle; it is
+included right after the hidden `#lang-toggle` checkbox on every one of the 11 live pages that has
+the toggle (synchronously, before the rest of the page renders, to avoid a flash of the wrong
+language). With JavaScript disabled or blocked, the site falls back to the previous behavior
+unchanged (CSS-only toggle, English default per page) — no functionality is lost, only the
+persistence/scroll convenience. See `tech-spec.md`, "Sprachpräferenz-Ausnahme", for the full
+rationale and architecture.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
@@ -381,7 +464,7 @@ Read these in this order to understand the project; each builds on the previous 
 
 - **No hallucinated content.** Only use content that the user has explicitly provided (currently: `Briefing.md`). Never invent bios, skills, project descriptions, testimonials, or other factual content. If something needs to be added that isn't already given, ask the user first.
 - **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type, **except where explicitly overridden below.** **Exceptions (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is approved and supplied (`Foto.webp`, plus `about-me-tile.png` for the Discover tile only). **As of 2026-11-04, the employer names "Accenture" and "IABG" are also explicitly approved** (currently used on `about.html` only) — this was a deliberate policy change the user confirmed after being told it reverses a repeatedly-reinforced rule; it does not extend to any other employer or to anything else on the no-personal-data list.
-- **Static only, no framework, no build step, no JavaScript — except the chat widget.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The one deliberate exception is `chat-widget.js` (the FAQ chat bubble), documented in `tech-spec.md` under "Chat-Widget-Ausnahme" — don't use it as precedent for adding JavaScript elsewhere on the page.
+- **Static only, no framework, no build step, no JavaScript — except two scoped, documented exceptions.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle itself must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The two deliberate exceptions are `chat-widget.js` (the FAQ chat bubble, see "Chat-Widget-Ausnahme") and `lang-toggle.js` (persists the EN/DE choice across page loads via `localStorage` and scrolls to top on toggle, added 2026-11-04, see "Sprachpräferenz-Ausnahme") — both documented in `tech-spec.md`. Don't use either as precedent for adding JavaScript elsewhere on the page.
 - **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section holds one real work sample (`portfolio-leasing-calculator.html`, added 2026-11-04) plus one remaining "Work Sample 02 · coming soon" placeholder card — don't fabricate a second sample. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
 - **Color and font tokens are fixed CSS custom properties**, defined in `design.md`: two house colors (`--color-brand-primary`, `--color-brand-secondary`) plus neutral support tokens, and a dependency-free sans-serif font stack (`--font-sans`). Use these token names consistently rather than hardcoding color/font values.
 
