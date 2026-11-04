@@ -2550,6 +2550,24 @@ details.dh-wiz > summary {
   border: 1px solid var(--color-border);
 }
 
+/* Experimental: a photo background for the work-sample card, so the user can see how it looks
+   before deciding whether to keep it. Gradient + image in one shorthand keeps the text readable
+   without an extra overlay element. */
+.portfolio-card-photo {
+  border: none;
+  background: linear-gradient(rgba(27, 58, 92, 0.85), rgba(27, 58, 92, 0.85)), url("n8n-workflow-tile.png") center/cover;
+}
+
+.portfolio-card-photo .portfolio-card-tag,
+.portfolio-card-photo .portfolio-card-title,
+.portfolio-card-photo .portfolio-card-text {
+  color: var(--color-background);
+}
+
+.portfolio-card-photo .link-arrow {
+  color: var(--color-surface-alt);
+}
+
 .portfolio-card-text {
   font-size: 14px;
   color: var(--color-text);
