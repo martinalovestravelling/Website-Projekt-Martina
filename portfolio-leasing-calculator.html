@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Sample — From Form to Finished Leasing Offer</title>
+<meta name="description" content="An n8n workflow calculates a leasing offer in code and has an LLM write it up, with a human reviewing before it's sent.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<div class="page">
+
+  <header class="site-header">
+    <a href="index.html" class="brand-link">
+      <img src="logo-transparent.png" alt="Martina Hanner logo" class="brand-logo-image">
+      <span class="brand-name">MARTINA HANNER</span>
+    </a>
+    <div class="header-actions">
+      <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+        <span class="lang-en">Contact</span>
+        <span class="lang-de">Kontakt</span>
+      </a>
+      <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+        <span class="lang-switch-option lang-en-option">EN</span>
+        <span class="lang-switch-option lang-de-option">DE</span>
+      </label>
+      <input type="checkbox" id="nav-menu-toggle" class="nav-menu-toggle-input">
+      <label for="nav-menu-toggle" class="nav-menu-toggle-label" aria-label="Open section menu / Abschnittsmenü öffnen">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-menu-panel">
+        <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+        <div class="nav-menu-panel-group">
+          <a href="offering.html" class="nav-menu-panel-group-label"><span class="lang-en">OFFERING</span><span class="lang-de">ANGEBOT</span></a>
+          <a href="offering.html#where" class="nav-menu-panel-sub-link"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+          <a href="offering.html#journey" class="nav-menu-panel-sub-link"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+          <a href="offering.html#formats" class="nav-menu-panel-sub-link"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#capabilities" class="nav-menu-panel-group-label"><span class="lang-en">SERVICES</span><span class="lang-de">LEISTUNGEN</span></a>
+          <a href="services.html#pillars" class="nav-menu-panel-sub-link"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+          <a href="services.html#foundation" class="nav-menu-panel-sub-link"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#portfolio" class="nav-menu-panel-group-label"><span class="lang-en">PORTFOLIO</span><span class="lang-de">PORTFOLIO</span></a>
+          <a href="portfolio-leasing-calculator.html" class="nav-menu-panel-sub-link" aria-current="page"><span class="lang-en">Work Sample 01</span><span class="lang-de">Arbeitsprobe 01</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#about" class="nav-menu-panel-group-label"><span class="lang-en">ABOUT ME</span><span class="lang-de">ÜBER MICH</span></a>
+          <a href="about.html" class="nav-menu-panel-sub-link"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+          <a href="about.html#werkzeugkasten" class="nav-menu-panel-sub-link"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+    <div class="nav-item">
+      <a href="offering.html" class="nav-item-toggle"><span class="lang-en">Offering</span><span class="lang-de">Angebot</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="offering.html#where"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+        <a href="offering.html#journey"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+        <a href="offering.html#formats"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="index.html#capabilities" class="nav-item-toggle"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="services.html#pillars"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+        <a href="services.html#foundation"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+      </div>
+    </div>
+    <a href="index.html#portfolio" aria-current="page"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+    <div class="nav-item">
+      <a href="index.html#about" class="nav-item-toggle"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="about.html"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+        <a href="about.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+      </div>
+    </div>
+    <a href="#" aria-disabled="true"><span class="lang-en">News</span><span class="lang-de">News</span></a>
+  </nav>
+
+  <div class="dh-hero">
+    <p class="ws-breadcrumb">
+      <a href="index.html#portfolio">Portfolio</a> /
+      <span class="lang-en">Work Sample 01</span><span class="lang-de">Arbeitsprobe 01</span>
+    </p>
+
+    <section class="ws-hero">
+      <div class="ws-hero-text">
+        <p class="eyebrow">
+          <span class="lang-en">WORK SAMPLE 01 — AUTOMATION WITH N8N</span>
+          <span class="lang-de">ARBEITSPROBE 01 — AUTOMATISIERUNG MIT N8N</span>
+        </p>
+        <h1 class="section-heading">
+          <span class="lang-en">From form to finished leasing offer</span>
+          <span class="lang-de">Vom Formular zum fertigen Leasingangebot</span>
+        </h1>
+        <p class="ws-hero-lead">
+          <span class="lang-en">An n8n workflow takes in a company-bike leasing request, calculates the rates in code, and lets an LLM turn them into a customer-ready offer. A human reviews it before it goes out.</span>
+          <span class="lang-de">Ein n8n-Workflow nimmt eine Dienstrad-Anfrage entgegen, berechnet die Leasingraten per Code und lässt ein LLM daraus ein kundenfertiges Angebot formulieren. Ein Mensch prüft, bevor es rausgeht.</span>
+        </p>
+        <div class="ws-tag-row">
+          <span class="ws-tag">n8n</span>
+          <span class="ws-tag"><span class="lang-en">JavaScript Code Node</span><span class="lang-de">JavaScript Code-Node</span></span>
+          <span class="ws-tag">OpenAI Chat Model</span>
+          <span class="ws-tag">Human-in-the-Loop</span>
+        </div>
+      </div>
+      <div class="ws-stats">
+        <div class="ws-stat">
+          <div class="ws-stat-number">5</div>
+          <div class="ws-stat-label"><span class="lang-en">Workflow steps</span><span class="lang-de">Workflow-Schritte</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">0</div>
+          <div class="ws-stat-label"><span class="lang-en">Calculations in the LLM</span><span class="lang-de">Rechnungen im LLM</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">1</div>
+          <div class="ws-stat-label"><span class="lang-en">Review step before sending</span><span class="lang-de">Prüfschritt vor Versand</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="dh-section" style="border-top: none;">
+    <div class="ws-principle">
+      <p class="ws-principle-label">
+        <span class="lang-en">THE CORE PRINCIPLE</span>
+        <span class="lang-de">DAS KERNPRINZIP</span>
+      </p>
+      <div class="ws-principle-statements">
+        <p><span class="lang-en">The code does the math.</span><span class="lang-de">Rechnen macht der Code.</span></p>
+        <p><span class="lang-en">The LLM does the writing.</span><span class="lang-de">Formulieren macht das LLM.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="starting-point-ws">
+    <p class="eyebrow">
+      <span class="lang-en">01 — STARTING POINT</span>
+      <span class="lang-de">01 — AUSGANGSLAGE</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Every offer, by hand</span>
+      <span class="lang-de">Jedes Angebot von Hand</span>
+    </h2>
+    <p class="dh-lead">
+      <span class="lang-en">Demo scenario: a company-bike provider receives leasing requests from business customers — with quantity, term and a contact person. Until now, every rate was calculated by hand and every offer written individually.</span>
+      <span class="lang-de">Demo-Szenario: Ein Dienstrad-Anbieter erhält Leasinganfragen von Firmenkunden – mit Stückzahl, Laufzeit und Ansprechperson. Bisher wurde jede Rate manuell gerechnet und jedes Angebot einzeln geschrieben.</span>
+    </p>
+    <p class="dh-lead">
+      <span class="lang-en">That costs time, and mistakes creep in, especially in the calculations. The goal: an automated process that delivers correct numbers, phrases them in a friendly way — and still stays controllable.</span>
+      <span class="lang-de">Das kostet Zeit, und gerade bei Rechenwegen schleichen sich Fehler ein. Ziel: ein automatisierter Ablauf, der korrekte Zahlen liefert, freundlich formuliert – und trotzdem kontrollierbar bleibt.</span>
+    </p>
+  </section>
+
+  <section class="dh-section" id="workflow">
+    <p class="eyebrow">
+      <span class="lang-en">02 — THE WORKFLOW</span>
+      <span class="lang-de">02 — DER WORKFLOW</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Five steps in n8n</span>
+      <span class="lang-de">Fünf Schritte in n8n</span>
+    </h2>
+    <div class="ws-steps">
+      <div class="ws-step">
+        <div class="ws-step-number">01</div>
+        <h3><span class="lang-en">Form</span><span class="lang-de">Formular</span></h3>
+        <p><span class="lang-en">Customer enters quantity, term and contact person.</span><span class="lang-de">Kunde gibt Anzahl, Laufzeit und Ansprechperson ein.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step">
+        <div class="ws-step-number">02</div>
+        <h3><span class="lang-en">Input</span><span class="lang-de">Eingabe</span></h3>
+        <p><span class="lang-en">Fields are validated and brought into a clean format.</span><span class="lang-de">Felder werden geprüft und in ein sauberes Format gebracht.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-highlight">
+        <span class="ws-step-highlight-badge"><span class="lang-en">WITH CODE</span><span class="lang-de">MIT CODE</span></span>
+        <div class="ws-step-number">03</div>
+        <h3><span class="lang-en">Calculation</span><span class="lang-de">Berechnung</span></h3>
+        <p><span class="lang-en">JavaScript calculates the rate, total rate and total amount — deterministically.</span><span class="lang-de">JavaScript rechnet Rate, Gesamtrate und Gesamtsumme – deterministisch.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step-group">
+        <div class="ws-step">
+          <div class="ws-step-number">04</div>
+          <h3><span class="lang-en">LLM text</span><span class="lang-de">LLM-Text</span></h3>
+          <p><span class="lang-en">A Basic LLM Chain turns the finished numbers into an offer.</span><span class="lang-de">Basic LLM Chain formuliert aus den fertigen Zahlen ein Angebot.</span></p>
+        </div>
+        <div class="ws-step-model-note">Model: OpenAI Chat Model</div>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-dark">
+        <div class="ws-step-number">05</div>
+        <h3><span class="lang-en">Review offer</span><span class="lang-de">Angebot prüfen</span></h3>
+        <p><span class="lang-en">Manual step: a human checks it and approves it.</span><span class="lang-de">Manueller Schritt: Ein Mensch kontrolliert und gibt frei.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="input-output">
+    <p class="eyebrow">
+      <span class="lang-en">03 — INPUT &amp; OUTPUT</span>
+      <span class="lang-de">03 — INPUT &amp; OUTPUT</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">What goes in, what comes out</span>
+      <span class="lang-de">Was rein geht, was raus kommt</span>
+    </h2>
+    <div class="ws-io-grid">
+      <div class="ws-io-card">
+        <p class="ws-io-eyebrow"><span class="lang-en">INPUT · FORM</span><span class="lang-de">INPUT · FORMULAR</span></p>
+        <h3><span class="lang-en">Company-bike request</span><span class="lang-de">Dienstrad-Anfrage</span></h3>
+        <p class="ws-io-card-sub">Radwerk Mitte GmbH</p>
+        <div class="ws-io-field">
+          <label for="ws-f-anzahl"><span class="lang-en">Quantity *</span><span class="lang-de">Anzahl *</span></label>
+          <input id="ws-f-anzahl" type="text" value="10" readonly>
+        </div>
+        <div class="ws-io-field">
+          <label for="ws-f-laufzeit"><span class="lang-en">Term in months *</span><span class="lang-de">Laufzeit in Monaten *</span></label>
+          <input id="ws-f-laufzeit" type="text" value="48" readonly>
+        </div>
+        <div class="ws-io-field">
+          <label for="ws-f-person"><span class="lang-en">Contact person *</span><span class="lang-de">Ansprechperson *</span></label>
+          <input id="ws-f-person" type="text" value="TEST2" readonly>
+        </div>
+        <button type="button" class="btn-pill btn-pill-dark" style="width: 100%;" disabled>
+          <span class="lang-en">Send request</span>
+          <span class="lang-de">Anfrage senden</span>
+        </button>
+        <p class="ws-io-note">
+          <span class="lang-en">Recreated for illustration — not functional</span>
+          <span class="lang-de">Nachbau zur Veranschaulichung – nicht funktionsfähig</span>
+        </p>
+      </div>
+
+      <div class="ws-io-calc">
+        <p class="ws-io-eyebrow"><span class="lang-en">STEP 03 · CODE NODE</span><span class="lang-de">SCHRITT 03 · CODE-NODE</span></p>
+        <h3><span class="lang-en">The calculation</span><span class="lang-de">Die Rechnung</span></h3>
+        <div class="ws-io-calc-row"><span><span class="lang-en">Rate per bike</span><span class="lang-de">Rate pro Rad</span></span><strong>56.53 €</strong></div>
+        <div class="ws-io-calc-row"><span><span class="lang-en">× Quantity</span><span class="lang-de">× Anzahl</span></span><strong>10</strong></div>
+        <div class="ws-io-calc-row ws-io-calc-row-divider"><span><span class="lang-en">Total rate / month</span><span class="lang-de">Gesamtrate / Monat</span></span><strong>565.30 €</strong></div>
+        <div class="ws-io-calc-row"><span><span class="lang-en">× Term</span><span class="lang-de">× Laufzeit</span></span><strong><span class="lang-en">48 months</span><span class="lang-de">48 Monate</span></strong></div>
+        <div class="ws-io-calc-row ws-io-calc-total"><span><span class="lang-en">Total amount</span><span class="lang-de">Gesamtsumme</span></span><strong>27,134.40 €</strong></div>
+        <p class="ws-io-calc-note">
+          <span class="lang-en">The LLM receives these values ready-made. It doesn't calculate anything itself.</span>
+          <span class="lang-de">Diese Werte bekommt das LLM fertig übergeben. Es rechnet nichts selbst.</span>
+        </p>
+      </div>
+
+      <div class="ws-io-email">
+        <div class="ws-io-email-header">
+          <p><span class="lang-en">OUTPUT · WRITTEN BY THE LLM</span><span class="lang-de">OUTPUT · VOM LLM FORMULIERT</span></p>
+          <p>
+            <strong><span class="lang-en">Subject:</span><span class="lang-de">Betreff:</span></strong>
+            <span class="lang-en"> Offer for 10 × Trekking E-Bike — 48-month term</span>
+            <span class="lang-de"> Angebot für 10 × Trekking-E-Bike – Laufzeit 48 Monate</span>
+          </p>
+        </div>
+        <div class="ws-io-email-body">
+          <p><span class="lang-en">Dear TEST2,</span><span class="lang-de">Sehr geehrte/r TEST2,</span></p>
+          <p><span class="lang-en">Thank you for your inquiry. We are pleased to offer you the following:</span><span class="lang-de">vielen Dank für Ihre Anfrage. Gern unterbreiten wir Ihnen folgendes Angebot:</span></p>
+          <div class="ws-io-email-grid">
+            <span><span class="lang-en">Model</span><span class="lang-de">Modell</span></span><strong>Trekking E-Bike</strong>
+            <span><span class="lang-en">Quantity</span><span class="lang-de">Anzahl</span></span><strong><span class="lang-en">10 units</span><span class="lang-de">10 Stück</span></strong>
+            <span><span class="lang-en">Term</span><span class="lang-de">Laufzeit</span></span><strong><span class="lang-en">48 months</span><span class="lang-de">48 Monate</span></strong>
+            <span><span class="lang-en">Rate per bike</span><span class="lang-de">Rate pro Rad</span></span><strong><span class="lang-en">€56.53 / month</span><span class="lang-de">56,53 € / Monat</span></strong>
+            <span><span class="lang-en">Total rate</span><span class="lang-de">Gesamtrate</span></span><strong><span class="lang-en">€565.30 / month</span><span class="lang-de">565,30 € / Monat</span></strong>
+          </div>
+          <p><span class="lang-en">This offer is non-binding and valid for 14 days from the date of dispatch. Please don't hesitate to contact us with any questions.</span><span class="lang-de">Dieses Angebot ist freibleibend und gilt 14 Tage ab Versanddatum. Bei Rückfragen sind wir gern für Sie da.</span></p>
+          <p>
+            <span class="lang-en">Kind regards,</span><span class="lang-de">Mit freundlichen Grüßen,</span><br>
+            <span class="ws-io-email-highlight">Dienstrad GmbH</span>
+          </p>
+          <div class="ws-io-callout">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8C6E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"></path><path d="M12 10v4M12 17.5v.01"></path></svg>
+            <span>
+              <strong><span class="lang-en">Found while testing:</span><span class="lang-de">Gefunden beim Testen:</span></strong>
+              <span class="lang-en"> the form belongs to "Radwerk Mitte GmbH" — the model invented a different company name in the sender line. See Learning 02.</span>
+              <span class="lang-de"> Das Formular gehört zur „Radwerk Mitte GmbH" – das Modell hat sich beim Absender einen anderen Firmennamen ausgedacht. Siehe Learning 02.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="learnings">
+    <p class="eyebrow">
+      <span class="lang-en">04 — LEARNINGS</span>
+      <span class="lang-de">04 — LEARNINGS</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">What I learned</span>
+      <span class="lang-de">Was ich dabei gelernt habe</span>
+    </h2>
+    <div class="ws-learning-grid">
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">01</div>
+        <h3><span class="lang-en">Never let the LLM do the math</span><span class="lang-de">Zahlen nie vom LLM rechnen lassen</span></h3>
+        <p><span class="lang-en">Language models are good at phrasing but unreliable at arithmetic. That's why the calculation lives in a code step — traceable and the same every time.</span><span class="lang-de">Sprachmodelle formulieren gut, rechnen aber unzuverlässig. Die Berechnung liegt deshalb in einem Code-Schritt – nachvollziehbar und jedes Mal gleich.</span></p>
+      </div>
+      <div class="ws-learning-card ws-learning-card-highlight">
+        <div class="ws-learning-number">02</div>
+        <h3><span class="lang-en">Hand over facts, don't let it guess</span><span class="lang-de">Fakten übergeben, nicht erraten lassen</span></h3>
+        <p><span class="lang-en">Whatever the model isn't given, it invents. The company name has to go into the prompt as a fixed variable.</span><span class="lang-de">Was das Modell nicht bekommt, erfindet es. Der Firmenname muss als feste Variable in den Prompt.</span></p>
+        <div class="ws-prompt">
+          <div class="ws-prompt-before"><span class="ws-prompt-label"><span class="lang-en">BEFORE</span><span class="lang-de">VORHER</span></span><span class="lang-en">Write an offer for the customer.</span><span class="lang-de">Schreibe ein Angebot für den Kunden.</span></div>
+          <div class="ws-prompt-after"><span class="ws-prompt-label"><span class="lang-en">AFTER</span><span class="lang-de">NACHHER</span></span>Sender: {{n8nVar}}<br><span class="lang-en">Use only this information.</span><span class="lang-de">Nutze nur diese Angaben.</span></div>
+        </div>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">03</div>
+        <h3><span class="lang-en">The human stays in the loop</span><span class="lang-de">Der Mensch bleibt im Loop</span></h3>
+        <p><span class="lang-en">This exact mistake shows why the manual review step before sending stays in place. Automation speeds things up — responsibility stays with the person.</span><span class="lang-de">Genau dieser Fehler zeigt, warum der manuelle Prüfschritt vor dem Versand bleibt. Automatisierung beschleunigt – Verantwortung bleibt beim Menschen.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">04</div>
+        <h3><span class="lang-en">Define the output format early</span><span class="lang-de">Ausgabeformat früh festlegen</span></h3>
+        <p><span class="lang-en">The raw text came back with control characters instead of paragraphs. Specifying the target format (email, HTML, plain text) up front saves rework.</span><span class="lang-de">Der Rohtext kam mit Steuerzeichen statt Absätzen. Wer das Zielformat (E-Mail, HTML, Text) vorgibt, spart Nacharbeit.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="transferable">
+    <div class="ws-transfer">
+      <div class="ws-transfer-text">
+        <p class="eyebrow">
+          <span class="lang-en">05 — TRANSFERABLE TO</span>
+          <span class="lang-de">05 — ÜBERTRAGBAR AUF</span>
+        </p>
+        <h2 class="section-heading" style="margin-bottom: 0;">
+          <span class="lang-en">Anywhere fixed rules meet individual writing</span>
+          <span class="lang-de">Überall, wo feste Regeln auf individuelle Texte treffen</span>
+        </h2>
+      </div>
+      <div class="ws-transfer-grid">
+        <div class="ws-transfer-item"><strong><span class="lang-en">Insurance quotes</span><span class="lang-de">Versicherungsangebote</span></strong><span class="lang-en">Premium by rule set, cover letter by LLM</span><span class="lang-de">Prämie per Regelwerk, Anschreiben per LLM</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Claims notifications</span><span class="lang-de">Schadenmeldungen</span></strong><span class="lang-en">Capture the data, phrase the response</span><span class="lang-de">Daten erfassen, Rückmeldung formulieren</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Sales inquiries</span><span class="lang-de">Vertriebsanfragen</span></strong><span class="lang-en">Calculate terms, prepare the offer</span><span class="lang-de">Konditionen berechnen, Angebot vorbereiten</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="screenshots">
+    <details class="ws-screens-toggle" open>
+      <summary>
+        <span class="lang-en">View original n8n screenshots</span>
+        <span class="lang-de">Original-Screenshots aus n8n ansehen</span>
+      </summary>
+      <div class="ws-screens-grid">
+        <figure style="flex: 2 1 420px;">
+          <img src="leasing-workflow.png" alt="n8n workflow with five nodes: form, input, calculation (code), Basic LLM Chain with OpenAI Chat Model, offer">
+          <figcaption><span class="lang-en">The workflow in the n8n editor</span><span class="lang-de">Der Workflow im n8n-Editor</span></figcaption>
+        </figure>
+        <figure>
+          <img src="leasing-form.png" alt="n8n form: company-bike request with fields for quantity, term, contact person">
+          <figcaption><span class="lang-en">The input form (test version)</span><span class="lang-de">Das Eingabeformular (Testversion)</span></figcaption>
+        </figure>
+        <figure>
+          <img src="leasing-output.png" alt="n8n output with the generated offer text in two variants">
+          <figcaption><span class="lang-en">The LLM's raw output</span><span class="lang-de">Der Roh-Output des LLM</span></figcaption>
+        </figure>
+      </div>
+    </details>
+  </section>
+
+  <section class="contact-section" id="kontakt">
+    <div class="contact-card">
+      <div>
+        <h2>
+          <span class="lang-en">A similar process at your company?</span>
+          <span class="lang-de">Ähnlicher Prozess bei dir?</span>
+        </h2>
+        <p>
+          <span class="lang-en">Let's look together at where AI automation makes sense for you — and where the human should stay.</span>
+          <span class="lang-de">Lass uns gemeinsam schauen, wo Automatisierung mit KI bei dir sinnvoll ist – und wo der Mensch bleiben sollte.</span>
+        </p>
+      </div>
+      <div class="contact-ctas">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary">
+          <span class="lang-en">Get in Touch</span>
+          <span class="lang-de">Kontakt aufnehmen</span>
+        </a>
+        <a href="index.html#portfolio" class="btn-pill btn-pill-outline">
+          <span class="lang-en">Back to Portfolio</span>
+          <span class="lang-de">Zurück zum Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand-group">
+      <span class="brand-name">MARTINA HANNER</span>
+      <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    </span>
+    <span>Impressum · Datenschutz</span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>

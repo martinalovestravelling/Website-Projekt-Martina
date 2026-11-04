@@ -308,6 +308,41 @@ which looked worse, not better. Since `about-me-tile.png` is a wide, already-cen
 switched `.tile-image-portrait img` back to `object-fit: cover` (centered): it now fills the tile by
 cropping into the blurred background at the edges, not into her.
 
+**"Accelerator" nav target changed (same day).** Every "Accelerator" link in every nav/burger menu
+on every page — including `accelerator.html`'s own nav, which previously pointed to itself — now
+points to `offering.html#journey` (the "02 — How We Get There" overview: seven phases, persona
+range bars, Change Management/Responsible AI streams). `accelerator.html` (the full 11-module
+detail page) is reached only via that section's "View all 11 modules →" link now, not directly from
+any nav/burger menu — the user wants the overview to be the default stop, with the full module
+breakdown one click further in for whoever wants it.
+
+**First real Portfolio work sample added (same day).** The user supplied a design-reference mockup
+(`portfolio-leasingcalculator.zip`, a Claude-canvas export with inline styles — `README.md` inside it
+explicitly says to treat it as a content/layout reference and rebuild with the site's own design
+system, not copy the markup) plus three real n8n screenshots, for a leasing-offer automation
+workflow (form → validate → calculate in a code node → LLM drafts the offer → human reviews). Built
+as a new subpage, `portfolio-leasing-calculator.html` (same header/nav/footer/chat-widget shell as
+the other subpages), with the mockup's full content translated to English as the primary language
+(German kept as the `.lang-de` pairing, reusing the mockup's own German copy) — per explicit user
+instruction, "case study" was renamed "work sample" everywhere (`Arbeitsprobe` in German). New
+dedicated CSS added for this page's components (hero stats, the "core principle" banner, the
+five-step workflow row with its code-highlighted and human-review steps, the input/output showcase
+grid — mock form, calculation box, generated-email card — the learnings grid with a before/after
+prompt comparison, the transferable-to banner, and the collapsible original-screenshots section) —
+all built from the site's existing tokens, not the mockup's inline hex values. The three real n8n
+screenshots were copied in as `leasing-workflow.png`, `leasing-form.png`, `leasing-output.png`; the
+screenshots show a fictional demo scenario ("Radwerk Mitte GmbH", test placeholder contact) that the
+mockup itself labels as a demo, not a real client, so no personal-data concern. The homepage
+`#portfolio` section got only the minimal addition the user asked for — an intro line, and the single
+"coming soon" placeholder card split into one real card (title, one-line summary, "View work sample
+→" link to the new subpage) plus one remaining "Work Sample 02 · coming soon" placeholder — not the
+mockup's fuller visual treatment, since the user was explicit the homepage format shouldn't change
+much. `.portfolio-grid`'s column sizing was loosened (was capped at 280px to stop a single empty
+card stretching full-width; now `minmax(260px, 1fr)` with a `max-width: 820px` cap on the grid
+itself) now that there's real card content to size for. A "Work Sample 01" sub-link was added under
+the "Portfolio" burger-menu group on every page, matching how Services/About Me already list their
+sub-pages once real content exists.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
