@@ -343,6 +343,31 @@ itself) now that there's real card content to size for. A "Work Sample 01" sub-l
 the "Portfolio" burger-menu group on every page, matching how Services/About Me already list their
 sub-pages once real content exists.
 
+**`about.html` content sharpened, employer names approved (2026-11-04).** The user supplied a
+revised bio (now three paragraphs instead of two, naming real employers), a new subline under the
+H1, and a restructured facts column. Before applying it, the user was asked to explicitly confirm
+naming "Accenture" and "IABG" — a repeatedly-reinforced rule on this project was "employers named
+only by industry/type, never by name" — since this reverses that rule; see `Briefing.md` Section 2
+and the Critical Constraints above for the confirmed exception. Changes: new subline ("I connect
+processes, technology and people – from blueprint to hypercare."); bio rewritten to three
+paragraphs naming Accenture (consulting) and IABG (sales) directly, adding the Tech Squad Lead role,
+workshop facilitation "from team to management board", and a concrete AI Manager / coaching
+narrative (coaching completion dated December 2026, no longer phrased as open-ended "in progress");
+the facts column's "Roles" row split into "Lead Roles" and "Further Roles", "Industries" updated
+(Environmental Services → Public Sector; Utilities → Energy & Utilities; Aeronautics → Aerospace),
+and the "Tools" row replaced with a new "Languages" row (German native, English fluent, Spanish/
+French advanced, Arabic basic). The Toolkit section's icon-grid (`.tools-grid`/`.tool-item`/
+`.tool-icon`, 5 categories built around a visual AI/Automation/Process/Agile/Collaboration split)
+was replaced with a plain two-column category table (`.dh-info-table`, reused from the decision-aid
+pages) matching the five categories and groupings the user specified (AI & Automation; Process &
+Architecture; Agile Delivery; Business Applications — a new category, splitting SAP C/4HANA/MS CRM
+out of the old catch-all "Collaboration" group; Collaboration, now just M365). The icon-grid CSS
+was removed as dead code at the time since nothing else used it — but the user asked right after to
+bring the round icons back for this same new grouping, so it was restored (same 5 icons, reused/
+reassigned to the new categories; a new one added for "Business Applications", a 2×2 app-grid glyph,
+since that category didn't exist before). Net effect of this pair of rounds: same visual format as
+the original Werkzeugkasten section, new content groupings only.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
@@ -355,9 +380,9 @@ Read these in this order to understand the project; each builds on the previous 
 ## Critical Constraints
 
 - **No hallucinated content.** Only use content that the user has explicitly provided (currently: `Briefing.md`). Never invent bios, skills, project descriptions, testimonials, or other factual content. If something needs to be added that isn't already given, ask the user first.
-- **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type. **Exception (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is also approved in principle but not yet supplied. Everything else on this list — in particular employer names — stays excluded, even when a user-supplied source document names one directly.
+- **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type, **except where explicitly overridden below.** **Exceptions (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is approved and supplied (`Foto.webp`, plus `about-me-tile.png` for the Discover tile only). **As of 2026-11-04, the employer names "Accenture" and "IABG" are also explicitly approved** (currently used on `about.html` only) — this was a deliberate policy change the user confirmed after being told it reverses a repeatedly-reinforced rule; it does not extend to any other employer or to anything else on the no-personal-data list.
 - **Static only, no framework, no build step, no JavaScript — except the chat widget.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The one deliberate exception is `chat-widget.js` (the FAQ chat bubble), documented in `tech-spec.md` under "Chat-Widget-Ausnahme" — don't use it as precedent for adding JavaScript elsewhere on the page.
-- **Placeholder sections stay placeholders.** The "Arbeitsproben" (work samples) section and the contact link (LinkedIn) must be visibly marked as placeholders until the user supplies real content/URLs — do not fabricate sample projects or a real LinkedIn URL.
+- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section holds one real work sample (`portfolio-leasing-calculator.html`, added 2026-11-04) plus one remaining "Work Sample 02 · coming soon" placeholder card — don't fabricate a second sample. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
 - **Color and font tokens are fixed CSS custom properties**, defined in `design.md`: two house colors (`--color-brand-primary`, `--color-brand-secondary`) plus neutral support tokens, and a dependency-free sans-serif font stack (`--font-sans`). Use these token names consistently rather than hardcoding color/font values.
 
 ## Acceptance Criteria

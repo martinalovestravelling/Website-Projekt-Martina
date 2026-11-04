@@ -236,14 +236,35 @@ a:focus-visible {
   background-color: var(--color-background);
 }
 
+.btn-pill-primary:hover,
+.btn-pill-primary:focus-visible {
+  background-color: var(--color-surface-alt);
+  color: var(--color-brand-primary);
+}
+
 .btn-pill-outline {
   border: 2px solid var(--color-background);
   color: var(--color-background);
   padding: 14px 26px;
 }
 
+.btn-pill-outline:hover,
+.btn-pill-outline:focus-visible {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: var(--color-background);
+}
+
 .btn-pill-dark {
   background-color: var(--color-brand-primary);
+  color: var(--color-background);
+}
+
+/* None of these three variants had their own hover color, so they fell back to the page-wide
+   a:hover rule (dark brown text) — invisible on a dark button background, which is why this one
+   "turned black" on hover. Each variant now keeps its own readable hover state. */
+.btn-pill-dark:hover,
+.btn-pill-dark:focus-visible {
+  background-color: #14293e;
   color: var(--color-background);
 }
 
@@ -692,12 +713,7 @@ a:focus-visible {
   color: var(--color-chip-text);
 }
 
-/* ---------- Werkzeugkasten ---------- */
-.tools-section {
-  background-color: var(--color-surface-alt);
-  padding: 72px 24px;
-}
-
+/* ---------- Werkzeugkasten (Toolkit) ---------- */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -743,40 +759,22 @@ a:focus-visible {
   color: var(--color-text-muted);
 }
 
-.tool-item-link {
-  text-decoration: none;
-  color: inherit;
-  border-radius: 12px;
-  padding: 8px;
-  margin: -8px;
-}
-
-.tool-item-link:hover,
-.tool-item-link:focus-visible {
-  background-color: var(--color-surface);
-}
-
-.tool-item-link:hover .tool-name {
-  color: var(--color-brand-primary);
-}
-
-.tool-item-cta {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-brand-secondary);
-}
-
 /* ---------- Kontakt ---------- */
+/* Its own clearly bounded band (matching the Tools/Leistungen section pattern) instead of sitting
+   directly on whatever background happens to precede it — plus a hairline seam so it still reads
+   as a separate section even on the pages where the previous section is this same sand tone. */
 .contact-section {
-  padding: 0 24px 72px;
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid rgba(46, 38, 32, 0.1);
+  padding: 48px 24px;
 }
 
 .contact-card {
-  max-width: 920px;
+  max-width: 780px;
   margin: 0 auto;
   background-color: var(--color-brand-primary);
-  border-radius: 28px;
-  padding: 36px 48px;
+  border-radius: 20px;
+  padding: 26px 32px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -788,14 +786,14 @@ a:focus-visible {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 19px;
   line-height: 1.2;
   color: var(--color-background);
 }
 
 .contact-card p {
-  margin: 8px 0 0;
-  font-size: 17px;
+  margin: 6px 0 0;
+  font-size: 14px;
   color: var(--color-surface-alt);
 }
 
@@ -803,6 +801,15 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.contact-ctas .btn-pill {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
+.contact-ctas .btn-pill-outline {
+  padding: 9px 20px;
 }
 
 /* ---------- Footer ---------- */
@@ -1644,12 +1651,6 @@ details.dh-wiz > summary {
 }
 
 /* Offering: target-audience line — plain text, not pills (the offer is the same for everyone) */
-.audience-plain {
-  font-size: 15px;
-  color: var(--color-text-muted);
-  margin-bottom: 24px;
-}
-
 /* Starting Point: CTA below the segment cards */
 .starting-point-cta {
   display: flex;
@@ -2347,12 +2348,14 @@ details.dh-wiz > summary {
 .service-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 2px;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .service-tags .tag-chip {
   margin: 0;
+  font-size: 10px;
+  padding: 2px 7px;
 }
 
 /* services.html: foundation panel (dark, 5-item grid) */

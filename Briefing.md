@@ -13,7 +13,8 @@ The website must **not** contain any personal data. In particular, do not includ
 - Names of employers, clients or universities
 - References to specific job applications or target companies
 
-Employers are described only by their industry or type (e.g. "global management consultancy").
+Employers are described only by their industry or type (e.g. "global management consultancy") —
+**except as explicitly overridden below.**
 
 **Exception approved 2026-10-28 (provisional, "vorerst"):** the first name **"Martina"** and the city
 **"Munich/München"** may appear on the site. Surname, email address, phone number, postal address and
@@ -21,14 +22,22 @@ every other item above remain excluded.
 
 **Update 2026-11-02:** the user explicitly approved extending this exception to the **full name
 "Martina Hanner"** (header wordmark and footer on all public pages), sourced from
-`Offering webseite_V2_Martina_Hanner_Claude_Code.md`. Employer names remain excluded — that same
-source document named two employers directly ("Accenture", "IABG"); these were replaced with the
-existing anonymized descriptions below ("global management consultancy" / "technology & engineering
-services company") rather than carried over literally, since the user did not separately approve
-naming employers. A professional portrait photo is also approved in principle — and, as of 2026-11-02, was supplied
-(`Foto.webp`) and is now used in the site header next to the name, per the user's explicit request
-("neben meinem Namen oben links") — see design.md, "AI Transformation & Enablement" and "Navigation
-umstrukturiert".
+`Offering webseite_V2_Martina_Hanner_Claude_Code.md`. At that point employer names were still
+excluded — that same source document named two employers directly ("Accenture", "IABG"), and they
+were replaced with anonymized descriptions ("global management consultancy" / "technology &
+engineering services company") since the user had not yet separately approved naming employers. A
+professional portrait photo was also approved in principle, and was supplied (`Foto.webp`), now used
+in the site header next to the name, per the user's explicit request ("neben meinem Namen oben
+links") — see design.md, "AI Transformation & Enablement" and "Navigation umstrukturiert".
+
+**Update 2026-11-04 (employer names now approved):** the user explicitly confirmed — after being
+asked directly and told this reverses a repeatedly-reinforced rule — that **"Accenture" and "IABG"
+may now be named directly** on the site, replacing the anonymized phrasing above wherever these two
+employers are mentioned (currently: the "About Me" full-profile page, `about.html`). This is a
+deliberate, explicit policy change, not an oversight; it applies specifically to these two named
+employers and does not lift the rule for anything else on the no-personal-data list above (still
+excluded: surname-adjacent identifiers beyond the approved full name, date of birth, phone, email,
+postal address, university names, specific job-application/target-company references).
 
 ## 3. Language Requirements
 

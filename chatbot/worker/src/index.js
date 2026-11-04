@@ -14,7 +14,10 @@
 import { SYSTEM_PROMPT } from "./knowledge.js";
 
 // Tried in order; if one is overloaded or unavailable, the next is used.
-const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-flash-latest", "gemini-flash-lite-latest"];
+// "gemini-3.8-flash" used to be first here but doesn't resolve at all — every single request
+// burned its full 15s timeout on it before ever reaching a model that works, which is why the
+// widget looked broken/unreliable rather than just occasionally slow. Removed.
+const GEMINI_MODELS = ["gemini-flash-latest", "gemini-flash-lite-latest"];
 const GEMINI_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
 function corsHeaders(origin) {
