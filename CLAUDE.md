@@ -83,6 +83,231 @@ top-aligned column. The alternating section-background fix (Tools section → sa
 correction pass was confirmed still correct in the code — a screenshot suggesting it was still
 broken turned out to predate that fix.
 
+**Offering & Services redesign, plus a site-wide quick-jump menu (2026-11-04):** the user supplied
+redesigned "Offering" and "Services" teaser mockups (`offering_section_v2.html`,
+`services_section_v2.html` — Claude-artifact exports, English-only) and a screenshot of the intended
+homepage look. `index.html`'s `#starting-point` section was restyled to the compact teaser shown in
+the screenshot (heading now "Process first, then AI. Where do you stand?"; the three persona cards
+each gained a "Focus: …" tag and a "→ <format>" pointer, replacing the old audience-tag row and
+"Let's talk" CTA); its new CTA, "Find your path →", links to a new subpage, `offering.html`. The
+`#capabilities` section was likewise condensed into a two-pillar-plus-foundation teaser (pillar
+header bars "PILLAR 1 · STEER" / "PILLAR 2 · DO" with a one-line description each, eyebrow changed
+to "SERVICES", no more inline bullet lists) with a new "All services →" CTA linking to a new
+subpage, `services.html`. The old standalone `#leistungen` ("What I Take Care Of", 7 numbered items)
+section was removed from `index.html` — not deleted, folded into the new `services.html`, which
+re-groups the same services (plus the former `#capabilities` pillar bullets) into the V2 structure:
+two 4-item pillar panels (each item tagged STARTER/PLANNER/EXPLORER) over a "Process Excellence &
+Transformation" foundation panel. `offering.html` likewise consolidates the homepage's Starting
+Point/Accelerator/Delivery narrative into one page: the three persona cards (richer, with the
+Focus/format pointers), the existing 7-phase accelerator overview plus new persona-range bars
+(Starter spans phases 1–3, Planner 1–5, Explorer 5–7, matching the V2 mockup) linking to
+`accelerator.html` for the full 11 modules, and the three delivery-format cards relabeled "For
+Starters/Planners/Explorers" with a "You get" outcome line each and a "Special format: Open group
+workshop" callout on the Starter option. Per a cue in the V2 mockup's own hidden caption ("revised
+Offering section **without concrete durations**"), the delivery-option durations were also
+genericized on `index.html`'s existing `#delivery` section for consistency (e.g. "8 weeks" →
+"Multiple weeks"). All new/changed copy reuses the site's existing design tokens and existing
+bilingual (EN/DE) text pairs wherever the underlying fact was already on the site; new copy was
+translated to match the established tone. Internal links to the removed `#leistungen` anchor
+(`accelerator.html`, the three internal `erste-schritte-*.html` pages) were updated to point to
+`services.html` or `#capabilities` as appropriate.
+
+Separately, the user asked for a small hamburger/quick-jump menu, reachable at any scroll position
+on every page, to jump back to a page's sections. Implemented CSS-only (checkbox hack, same
+mechanism as the language toggle): a small ☰ icon now sits in `.header-actions` (which is why it's
+always visible — `.header-actions` lives in the sticky header row, so the icon is already onscreen
+during scroll without needing actual scroll-position detection, which plain CSS cannot do
+reliably/cross-browser without JavaScript or still-inconsistent scroll-driven-animation CSS). Added
+to `index.html`, `accelerator.html`, `offering.html` and `services.html`; the three internal
+`erste-schritte-*.html` pages and `input-index-martina-hanner.html` (a kept-for-reference raw
+artifact export, not part of the live site) were left untouched, consistent with their existing
+"old header, future follow-up pass" status noted elsewhere in this file.
+
+**Homepage trimmed to five sections, new Portfolio section, grouped quick-jump menu (same day,
+after user review):** after seeing the first pass, the user asked for `index.html`'s content body
+to hold only: the overview tiles, the Offering teaser, a new Portfolio section, About Me, Tools, and
+Contact — i.e. the full `#capabilities` (pillar/foundation teaser), `#accelerator` and `#delivery`
+sections from the redesign above were removed as standalone homepage sections (not deleted from the
+site: `#accelerator`'s and `#delivery`'s content already lived in full on `offering.html`/
+`accelerator.html`; `#capabilities`'s pillar content already lived in full on `services.html`).
+`#werkzeugkasten` (Tools) stays, repositioned to directly follow `#about` per the user's explicit
+choice (a dedicated Tools subpage or moving it into `services.html` were the alternatives offered
+and declined). A new `#portfolio` section was added, from a user-supplied mockup: "Selected Work"
+heading plus three placeholder case-study cards (`.portfolio-card`, dashed border, "Case study /
+Workflow · coming soon" tag) with a disabled "View portfolio →" link, since there is no real
+portfolio content yet (per the placeholder-sections rule). The "Everything at a Glance" overview
+tiles were rebuilt as six uniform tiles in two rows of three (Offering/Services/About Me, then the
+new Portfolio tile, News, Resources) — News and Resources moved off the old wide dark/light tile
+format onto the same plain `.tile` format as the rest, per a second user-supplied mockup; the
+"Services" tile (formerly "Skills, Capabilities & Portfolio") now links straight to `services.html`
+instead of an on-page anchor, since that anchor no longer exists. `index.html`'s main nav and all
+four pages' burger quick-jump panels were restructured to match: four groups — Offering (Starting
+Point, Accelerator, Delivery), Services (Pillars, Foundation), Portfolio (no sub-items yet), About
+Me (Tools) — each group header itself links to that area's main anchor/page, with its sub-items
+nested and indented below (`.nav-menu-panel-group`/`-group-label`/`-sub-link` in styles.css); this
+was an explicit user request so the burger panel always shows "the 4 main parts, with their
+subpages listed under each," not a flat list. The previous "Discover" nav-dropdown group (which only
+ever held the old Capabilities/Skills item) was retired along with it. Two small badge labels
+("RENAMED", "NEW") on the user's tile mockup were confirmed to be notes for Claude, not real UI —
+no badge chips were added to the live tiles.
+
+**Correction pass (same day): Services teaser restored, subpage nav fixed, Portfolio pared down.**
+Two things from the previous pass were wrong. First, removing `#capabilities` from `index.html`
+also removed the compact two-pillar/foundation teaser card itself — the user wanted that card kept
+on the homepage (it was only the old, long bullet-list version that was meant to go). Restored it
+as its own section (same id, `#capabilities`, positioned between `#starting-point` and `#portfolio`
+to match the Offering → Services → Portfolio → About Me group order), and repointed the hero CTA,
+the "Services" overview tile, the main-nav "Services" item and the burger panel's "SERVICES" group
+label all back to `#capabilities` (they had been pointing at `services.html` directly). Second, the
+three subpages' own flat `.site-nav` bars were out of sync with the new 4-group order and were
+missing a Portfolio link entirely — reordered to Starting Point/Accelerator/Delivery, Services,
+Portfolio, About Me, Tools, News on all three, with Portfolio added (`index.html#portfolio`).
+Third, the new `#portfolio` section's three case-study cards were cut down to a single placeholder
+card showing only the tag "Workflow · coming soon" (no title text) — the user wants the section
+to stay almost empty until there is real portfolio content, rather than naming specific case
+studies that don't exist yet. `.portfolio-grid`'s column sizing was capped (`minmax(220px, 280px)`
+instead of `1fr`) so a single remaining card doesn't stretch to the section's full width. To keep
+the sand/beige background alternation intact with the restored section, `#starting-point` picked up
+`topic-section-alt` (sand) and the restored `#capabilities` stayed plain `topic-section` (beige),
+so the chain overview → starting-point → capabilities → portfolio → about → werkzeugkasten now
+alternates beige/sand/beige/sand/beige/sand with no adjacent clash (down from the one unavoidable
+clash at the very top in the previous pass).
+
+**Visual polish, real LinkedIn contact, new `about.html`, de-emphasized audience tags (same day).**
+Four more fixes from user feedback on screenshots: (1) The restored `#capabilities` teaser had grown
+back the one-line descriptions under each pillar title and kept the old two-separate-boxes-with-a-
+gap look; both removed per a reference screenshot — `.pillar-grid-compact`/`.pillar-card-compact`
+are now one unified card with a thin divider border between the two halves (left border side by
+side, top border once they stack on narrow screens) and just a pillar title, no description. The
+"All services" and "Find your path" CTAs changed from pill buttons to plain underlined text links
+(new `.link-arrow` class), matching the reference screenshots' minimal link style; `.back-home-link`
+got the same underline treatment for consistency. (2) `index.html`'s `#about` section is now a
+one-line teaser (small circular photo + one short bio sentence + a "Full profile →" link) instead
+of the full bio/facts layout — the full bio, the facts grid (Experience/Roles/Industries/
+Certifications/Tools) and the Werkzeugkasten icon section all moved to a new `about.html` subpage
+(same shell as the other three subpages); every page's "About Me" nav group/burger-panel now has a
+"Full Profile" sub-link to `about.html` alongside "Tools" (repointed to `about.html#werkzeugkasten`,
+since that id no longer exists on `index.html`). (3) The user supplied their real LinkedIn URL
+(`https://www.linkedin.com/in/martina-hanner`) and asked for it everywhere contact is mentioned,
+having decided against a contact form or phone number for now — this resolves the long-standing
+placeholder-contact note in `PRD.md`/`tech-spec.md`. `index.html#kontakt`'s two dead placeholder
+buttons ("Send a Message", "Schedule a Call") were replaced with one real "Connect on LinkedIn"
+button (`target="_blank" rel="noopener"`); every subpage's own contact section (`accelerator.html`,
+`offering.html`, `services.html`, `about.html`) gained a second "Connect on LinkedIn" button next to
+its existing "Let's Talk" (which still forwards to `index.html#kontakt`). The old `.linkedin-link`
+CSS rule (disabled/placeholder style) is unused on any live page now — it was already only
+referenced by the archived `index-old.html` — so real LinkedIn links just use the normal
+`.btn-pill` classes instead of reviving it. (4) On `offering.html`, the three audience pills
+("Companies", "Education providers", "Freelancers") were replaced with one plain muted text line
+(new `.audience-plain` class, old `.audience-row`/`.audience-label`/`.audience-tag` rules removed
+as dead code) — the user's point being the offering doesn't differ by audience, so a clickable-
+looking pill row overstated a distinction that isn't really there.
+
+**Further visual fixes against the user's reference screenshots (same day).** The homepage Offering
+teaser's three persona cards were simplified to eyebrow + quote only (dropped the bullet list and
+the Focus/format footer that had crept back in) — that richer version stays on `offering.html`
+itself, only the homepage teaser needed to match the minimal reference image. The Services teaser's
+divider between the two pillar halves was using `var(--color-border)`, which is almost the same
+tone as the card's own `--color-surface` background (computed as new identical-looking tones) and so
+was effectively invisible — switched to `var(--color-text-muted)` for real contrast. The STARTER/
+PLANNER/EXPLORER tag chips were genuinely hard to read: the Planner chip (`--color-brand-secondary`
+background) computes to only ~3.8:1 contrast against the old `--color-background` text color, below
+WCAG AA (4.5:1) for small bold text — added a new, documented token, `--color-chip-text: #FFFFFF`
+(real white; the existing beige/cream tokens weren't light enough), and bumped the chip font-size
+11→12px. Added a `[aria-current="page"]` style to `.site-nav a` so the subpage flat-nav tab you're
+currently on is visually marked (underlined, muted color) — the user reported "some subpages have
+the wrong tab," but a full cross-check of all four subpages' nav hrefs turned up no actual broken
+link (all four are consistent and point where expected); this is the most likely explanation found
+so far — ask the user which page/tab specifically if it persists.
+
+**Decisive nav fix, box/color/icon corrections (same day).** The "wrong tab" complaint kept
+recurring across two rounds despite every individual href checking out, so instead of patching links
+again, the subpages' flat 8-item `.site-nav` was replaced with the exact same grouped dropdown
+structure `index.html` already uses (Home, Offering▾, Services▾, Portfolio, About Me▾, News) —
+`accelerator.html`, `offering.html`, `services.html` and `about.html` now all share one nav paradigm
+instead of two different ones, with `aria-current="page"` set on both the group toggle and the
+specific sub-item so the current page is visible whether or not the dropdown is open. Also fixed:
+the homepage Services teaser went back to three separate, fully-rounded cards (pillar 1, pillar 2,
+foundation) with a real gap between them, not one fused shape with a hairline divider — that
+divider approach was the wrong fix for the earlier "boxes aren't nicely separated" complaint, this
+is what was actually meant. "Sustain & Scale" lost its accent highlight color on both the homepage/
+`offering.html` phase row and `accelerator.html`'s journey boxes (should look like the other six
+phases). "View all 11 modules" on `offering.html` changed from a pill button to the same
+`.link-arrow` text-link style as everything else on that card. The Starter format's "Special format"
+callout got its "!" badge icon back (`.format-callout-bang`) — it was in the original source artifact
+but got dropped when the callout was first built. Fixed a real bug: `.brand-link` and `.site-nav a`
+had no hover rule of their own, so they fell back to the page-wide `a:hover { color: var(--color-text)
+}`, which turns text dark brown — invisible against the navy header (this is why the brand name
+"turned black" on hover). Gave both the same subtle light-overlay hover the burger menu already had
+(`rgba(255,255,255,0.14)` background), so hovering any header/nav link now behaves consistently.
+
+**Found the real nav bug (same day).** The "tabs still don't look right" complaint turned out to be
+a genuine, visible layout bug, not a link/labeling issue at all: the four subpages still had their
+header built the old way — `<nav class="site-nav">` nested *inside* `<header class="site-header">`,
+as a sibling of a `.header-top` wrapper div (this was flagged as a known, deferred issue as far back
+as the "Navigation umstrukturiert" entry above, when the sticky-header rework was deliberately
+scoped to `index.html` only). Since `.site-header` is `display: flex; flex-wrap: nowrap`, having
+`.header-top` and `.site-nav` as its two flex children forced them into one single row side by side
+instead of stacking into two rows like on `index.html` — exactly what the screenshot showed. Fixed
+on all four subpages (`accelerator.html`, `offering.html`, `services.html`, `about.html`) by
+matching `index.html`'s structure exactly: `.header-top` removed, `.brand-link` and
+`.header-actions` are now direct children of `<header>`, and `<nav class="site-nav">` is a sibling
+after `</header>` closes, not nested inside it.
+
+**Option A/B/C removed, portfolio tile photo, chip-text re-check, burger-menu audit (same day).**
+`offering.html`'s three delivery cards no longer show "Option A/B/C" above the title — just the
+"For Starters/Planners/Explorers" label and the format name now (the `.delivery-label` CSS rule
+that styled it is gone too, unused elsewhere). The user supplied a real photo for the Portfolio
+overview tile (`portfolio-tile.png`, renamed from `portfolio tile.png` to match the other tile
+filenames' no-spaces convention) — wired in, replacing the dashed "coming soon" placeholder. The
+About Me portrait tile was cropping the photo (`object-fit: cover` on a short, wide tile box was
+cutting off the top of the head or the shoulders) — switched `.tile-image-portrait img` to
+`object-fit: contain` so the whole photo shows, letterboxed against the tile's own background if
+the aspect ratios don't match exactly. Re-checked the STARTER/PLANNER/EXPLORER chip text color
+reported as still unreadable — the CSS (`--color-chip-text: #FFFFFF`, added two rounds ago) is
+correct in the file with no conflicting override found; most likely a stale cached stylesheet,
+flagged to the user to hard-refresh. Also did a full systematic audit, for the reported "burger menu
+sub-links all land on the homepage" bug: cross-referenced every `id="..."` defined on every page
+against every href used in every burger panel across all five pages — found them all correctly
+matched except one latent, unrelated inconsistency (`accelerator.html`'s contact section used
+`id="contact"` instead of `id="kontakt"` like every other page; nothing linked to it by that name,
+but fixed for consistency). Could not reproduce the reported bug from the markup alone — asked the
+user for one concrete example (which page, which exact link) to pin down the real mechanism rather
+than guess again.
+
+**Two real bugs found from the user's annotated screenshots (same day).** Both confirmed exactly as
+the user described, from markup/CSS this time, not guesswork:
+
+1. The chip-text complaint *was* a real, reproducible bug, not caching — the legend row's chips
+   (directly inside `.segment-legend`) looked fine, but the identical chips nested inside
+   `.service-panel-item`'s `.service-text` did not, which was the tell. Root cause: `.service-text
+   span` (a descendant selector, specificity 0,1,1) was winning over `.tag-chip`'s own `color: var
+   (--color-chip-text)` (specificity 0,1,0) for any tag-chip nested inside `.service-text` —
+   because a tag-chip *is* a `<span>`, descended from `.service-text` via the `.service-tags`
+   wrapper. Fixed with a targeted, higher-specificity override: `.service-text .tag-chip { color:
+   var(--color-chip-text); }`.
+2. The user circled exactly where "Starting Point" should land from the nav/burger menu:
+   `offering.html#where` (the "01 — WHERE DO YOU STAND?" section, with the fuller three-persona
+   cards), not the condensed homepage teaser it was pointing to before. Every "Starting Point" nav/
+   burger-submenu link, across all 8 pages that have one (`index.html`, `accelerator.html`,
+   `offering.html`'s own burger, `services.html`, `about.html`, and the three internal
+   `erste-schritte-*.html` pages), now points to `offering.html#where` — this matches how its
+   sibling items already behave (Accelerator → `accelerator.html`, Delivery →
+   `offering.html#formats`: the specific named sub-item always points to the full detail, not a
+   teaser). The homepage's own "Offering" overview tile and the "Offering" group-label/top-level nav
+   item still point to the homepage teaser (`#starting-point`) — unchanged, since those represent
+   browsing the homepage itself, not jumping to the dedicated page.
+
+Also: the user supplied a second portrait photo, `about-me-tile.png` (renamed from `about me tile.png`),
+to use **only** for the "Everything at a Glance" / Discover overview tile — `Foto.webp` stays as
+before everywhere else (the homepage About Me teaser, the full bio on `about.html`).
+
+**One more tweak (same day):** the `object-fit: contain` fix from the previous round (meant to stop
+the portrait being cropped) left visible letterboxing — empty tile background showing on the sides —
+which looked worse, not better. Since `about-me-tile.png` is a wide, already-centered half-body shot,
+switched `.tile-image-portrait img` back to `object-fit: cover` (centered): it now fills the tile by
+cropping into the blurred background at the edges, not into her.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:

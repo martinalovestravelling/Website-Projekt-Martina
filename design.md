@@ -380,3 +380,108 @@ bestehen (siehe `styles-old.css`, Abschnitt "Chat widget", 1:1 in `styles.css` �
 - Sprachumschaltung folgt demselben Checkbox-Mechanismus wie der Rest der Seite (EN/DE-Textpaare
   innerhalb des Widgets)
 - Einzige Stelle der Seite mit JavaScript — siehe tech-spec.md, Abschnitt "Chat-Widget-Ausnahme"
+
+## Offering & Services neu gestaltet, plus Quick-Jump-Menü (hinzugefügt 2026-11-04)
+
+Der Nutzer stellte zwei überarbeitete Teaser-Mockups bereit (`offering_section_v2.html`,
+`services_section_v2.html`, Claude-Artefakt-Exporte, nur Englisch) sowie einen Screenshot des
+gewünschten Homepage-Looks. Beide Dateien verwenden zufällig exakt dieselben Hex-Werte wie die
+bestehenden Tokens (`#1B3A5C`/`--color-brand-primary`, `#8C6E52`/`--color-brand-secondary`,
+`#EFE6DA`/`--color-background`, `#F5EEE4`/`--color-surface`, `#E2D3BF`/`--color-surface-alt`,
+`#2E2620`/`--color-text`, `#5A4636`/`--color-text-muted`) — die Übernahme erfolgte daher 1:1 über die
+Tokens, ohne neue Hex-Werte.
+
+**Homepage-Teaser (`index.html`):** `#starting-point` wurde auf das im Screenshot gezeigte kompakte
+Kartenformat reduziert (Überschrift jetzt "Process first, then AI. Where do you stand?"; jede der
+drei Personas bekam eine "Focus: …"-Tag-Zeile plus "→ <Format>"-Verweis via neuer
+`.segment-footer`/`.segment-tag`/`.segment-format`-Klassen; die bisherige Zielgruppen-Tag-Zeile und
+der "Let's talk"-CTA wurden entfernt — beides lebt jetzt auf der neuen Unterseite). Neuer CTA "Find
+your path →" verlinkt auf `offering.html`. `#capabilities` wurde von der ausführlichen
+Bullet-Listen-Darstellung auf eine zweispaltige Kurzfassung umgestellt (`.pillar-grid-compact` +
+`.pillar-card-compact`: nur Headerzeile "PILLAR 1 · STEER"/"PILLAR 2 · DO" + Titel + ein
+Einzeiler), darunter ein neuer dunkler `.foundation-bar`-Balken ("Process Excellence &
+Transformation"); Eyebrow geändert zu "SERVICES". Neuer CTA "All services →" verlinkt auf
+`services.html`. Der bisherige eigenständige `#leistungen`-Abschnitt ("What I Take Care Of", 7
+nummerierte Posten) wurde von `index.html` entfernt — nicht gelöscht, sondern in `services.html`
+aufgegangen (siehe unten). Der `#delivery`-Abschnitt behält seine drei Karten, nur die Dauerangaben
+wurden generischer formuliert ("8 Wochen" → "Mehrere Wochen" usw.), weil die versteckte Caption im
+V2-Mockup explizit "ohne konkrete Dauern" sagt.
+
+**Neue Unterseite `offering.html`:** gleiches Grundgerüst wie `accelerator.html` (Header/Nav/Footer/
+Chat-Widget). Drei Abschnitte: 01 "Wo stehst du?" (dieselben drei Personas wie auf der Startseite,
+aber mit den Focus-/Format-Zusatzzeilen), 02 "So erreichen wir es" (bestehende 7-Phasen-Übersicht +
+neue Persona-Bereichsbalken — Starter Phase 1–3, Planner 1–5, Explorer 5–7, via neuer
+`.persona-bar-track`/`.persona-bar-*`-Klassen — plus Link auf `accelerator.html` für alle 11
+Module), 03 "Das passende Format wählen" (die drei Delivery-Karten, jetzt mit
+"For Starters/Planners/Explorers"-Label, einer "You get"-Ergebniszeile und — nur bei Starter — einem
+Sonderformat-Hinweis "Open group workshop", via neuer `.delivery-outcome`/`.format-callout`-Klassen).
+
+**Neue Unterseite `services.html`:** zwei volle Pillar-Panels (`.service-panel`, je 4 Posten mit
+Titel, Beschreibung und STARTER/PLANNER/EXPLORER-Tag-Chips — neue `.tag-chip*`-Klassen, Farben
+identisch zu den drei Tokens oben) sowie ein dunkles Foundation-Panel (`.foundation-panel`, 5 Posten,
+im Wesentlichen die migrierten alten `#leistungen`-Einträge 01–05, Posten 06/07 wanderten als
+Pillar-2-Posten 07/08 "AI Fundamentals & Tool Enablement" / "Training, Coaching & Adoption" in die
+Säulen).
+
+**Quick-Jump-Menü (CSS-only Hamburger):** auf Nutzerwunsch jederzeit erreichbares Drei-Striche-Icon
+oben rechts im Header, das ein Dropdown mit allen Abschnittslinks der jeweiligen Seite öffnet
+(Checkbox-Hack, gleiches Prinzip wie der Sprach-Toggle — `#nav-menu-toggle` + `.nav-menu-panel`).
+Es sitzt in `.header-actions`, die bereits Teil der sticky Kopfzeile ist — dadurch ist es ohne echte
+Scroll-Erkennung (die reines CSS nicht zuverlässig browserübergreifend kann) automatisch die ganze
+Zeit sichtbar, auch während des Scrollens, was die eigentliche Anforderung sogar übertrifft.
+Eingebaut in `index.html`, `accelerator.html`, `offering.html`, `services.html`; die drei internen
+"Erste Schritte"-Seiten und `input-index-martina-hanner.html` (Referenz-Rohexport, nicht Teil der
+Live-Seite) bleiben unverändert mit altem Header, siehe bereits bestehender Hinweis oben
+("künftige Iteration").
+
+## Startseite auf fünf Abschnitte gekürzt, neuer Portfolio-Abschnitt, gruppiertes Quick-Jump-Menü (noch am selben Tag, nach erneutem Review)
+
+Nach Ansicht der ersten Umsetzung wünschte der Nutzer: `index.html` soll im Inhaltsbereich nur noch
+die Überblicks-Kacheln, den Offering-Teaser, einen neuen Portfolio-Abschnitt, "Über mich", Tools und
+Kontakt haben. Entfernt als eigenständige Startseiten-Abschnitte: `#capabilities` (Säulen-/
+Fundament-Teaser), `#accelerator` und `#delivery` — nichts davon ist inhaltlich verloren, da die
+vollständigen Inhalte bereits auf `offering.html`/`accelerator.html` (Accelerator, Delivery) bzw.
+`services.html` (Capabilities-Säulen) existieren. `#werkzeugkasten` bleibt (Nutzerentscheidung:
+weder eigene Unterseite noch Umzug nach `services.html`), jetzt direkt nach `#about` positioniert.
+Neuer Abschnitt `#portfolio` (aus einer Nutzer-Bildvorlage): Überschrift "Selected Work" plus drei
+Platzhalter-Case-Study-Karten (`.portfolio-card`, gestrichelter Rahmen, Tag "Case study/Workflow ·
+coming soon") und ein deaktivierter Link "View portfolio →" — echter Portfolio-Inhalt fehlt noch,
+daher strikt als Platzhalter markiert (siehe Projektregel zu Platzhalter-Abschnitten). Die
+"Alles auf einen Blick"-Kacheln wurden zu sechs einheitlichen Kacheln in zwei Dreierreihen
+umgebaut (Offering/Services/Über mich, dann die neue Portfolio-Kachel, News, Ressourcen) — News und
+Ressourcen wechselten vom bisherigen breiten Dunkel-/Hell-Kachelformat auf dasselbe einfache
+`.tile`-Format wie die übrigen, laut zweiter Nutzer-Bildvorlage; die "Services"-Kachel (vormals
+"Skills, Capabilities & Portfolio") verlinkt jetzt direkt auf `services.html` statt auf einen
+Seitenanker, da es den nicht mehr gibt. Haupt-Navigation von `index.html` sowie die Burger-Quick-Jump-
+Panels aller vier Seiten wurden entsprechend neu gruppiert: vier Gruppen — Offering (Starting Point,
+Accelerator, Delivery), Services (Pillars, Foundation), Portfolio (noch ohne Unterpunkte), About Me
+(Tools) —, jede Gruppenüberschrift selbst verlinkt auf den jeweiligen Hauptanker/die Hauptseite,
+darunter eingerückt die Unterpunkte (`.nav-menu-panel-group`/`-group-label`/`-sub-link` in
+`styles.css`) — ausdrücklicher Nutzerwunsch, damit das Burgermenü immer "die 4 Hauptteile mit den
+Unterseiten jeweils darunter" zeigt, statt einer flachen Liste. Die bisherige Nav-Dropdown-Gruppe
+"Discover" (enthielt nur noch den alten Capabilities/Skills-Eintrag) entfiel damit ebenfalls. Die
+Mini-Labels "RENAMED"/"NEW" auf der Kachel-Bildvorlage des Nutzers waren laut Rückfrage nur Notizen
+für Claude — keine echten Badge-Chips auf den Kacheln.
+
+## Korrekturrunde: Services-Teaser zurück, Unterseiten-Nav korrigiert, Portfolio verschlankt (noch am selben Tag)
+
+Zwei Dinge aus der letzten Runde waren falsch. Erstens: Mit `#capabilities` verschwand versehentlich
+auch die kompakte Zwei-Säulen-/Fundament-Teaser-Karte selbst von der Startseite — der Nutzer wollte
+nur die alte, lange Bullet-Listen-Version loswerden, nicht die Karte. Wieder eingefügt (gleiche
+`id="capabilities"`, jetzt zwischen `#starting-point` und `#portfolio`, passend zur Gruppenreihenfolge
+Offering → Services → Portfolio → About Me); Hero-CTA, Overview-Kachel "Services", Haupt-Nav-Punkt
+"Services" und das Burgermenü-Gruppenlabel "SERVICES" zeigen wieder auf `#capabilities` statt direkt
+auf `services.html`. Zweitens: Die flache `.site-nav`-Reiterzeile auf den drei Unterseiten war nicht
+auf die neue 4-Gruppen-Reihenfolge abgestimmt und hatte gar keinen Portfolio-Link — auf allen drei
+Seiten neu sortiert (Starting Point/Accelerator/Delivery, Services, Portfolio, About Me, Tools, News)
+und Portfolio (`index.html#portfolio`) ergänzt. Drittens: Die drei Case-Study-Karten im neuen
+`#portfolio`-Abschnitt wurden auf eine einzige reduziert, die nur noch den Tag "Workflow · coming
+soon" zeigt (kein Titel) — der Nutzer möchte den Abschnitt bewusst fast leer lassen, statt konkrete,
+noch nicht existierende Case-Study-Titel zu nennen. `.portfolio-grid`s Spaltenbreite wurde begrenzt
+(`minmax(220px, 280px)` statt `1fr`), damit die eine verbleibende Karte nicht über die volle
+Abschnittsbreite gestreckt wird. Damit die Sand-/Beige-Alternation mit dem wiederhergestellten
+Abschnitt stimmt, bekam `#starting-point` `topic-section-alt` (Sand), während das
+wiederhergestellte `#capabilities` bei reinem `topic-section` (Beige) blieb — die Kette Overview →
+Starting Point → Capabilities → Portfolio → About Me → Werkzeugkasten alterniert jetzt lückenlos
+Beige/Sand/Beige/Sand/Beige/Sand (vorher gab es an dieser Stelle einen unvermeidbaren Bruch ganz
+oben).
