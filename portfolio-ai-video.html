@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Sample — AI Video with OpenArt (First Draft)</title>
+<meta name="description" content="A first-draft AI video made with OpenArt AI and ChatGPT: from a character to a single image, two mini scenes and a short video, including the continuity errors and what they taught me about prompting.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<script src="lang-toggle.js"></script>
+<div class="page">
+
+  <header class="site-header">
+    <a href="index.html" class="brand-link">
+      <img src="logo-transparent.png" alt="Martina Hanner logo" class="brand-logo-image">
+      <span class="brand-name">MARTINA HANNER</span>
+    </a>
+    <div class="header-actions">
+      <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+        <span class="lang-en">Contact</span>
+        <span class="lang-de">Kontakt</span>
+      </a>
+      <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+        <span class="lang-switch-option lang-en-option">EN</span>
+        <span class="lang-switch-option lang-de-option">DE</span>
+      </label>
+      <input type="checkbox" id="nav-menu-toggle" class="nav-menu-toggle-input">
+      <label for="nav-menu-toggle" class="nav-menu-toggle-label" aria-label="Open section menu / Abschnittsmenü öffnen">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-menu-panel">
+        <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+        <div class="nav-menu-panel-group">
+          <a href="offering.html" class="nav-menu-panel-group-label"><span class="lang-en">OFFERING</span><span class="lang-de">ANGEBOT</span></a>
+          <a href="offering.html#where" class="nav-menu-panel-sub-link"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+          <a href="offering.html#journey" class="nav-menu-panel-sub-link"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+          <a href="offering.html#formats" class="nav-menu-panel-sub-link"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#capabilities" class="nav-menu-panel-group-label"><span class="lang-en">SERVICES</span><span class="lang-de">LEISTUNGEN</span></a>
+          <a href="services.html#pillars" class="nav-menu-panel-sub-link"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+          <a href="services.html#foundation" class="nav-menu-panel-sub-link"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#portfolio" class="nav-menu-panel-group-label"><span class="lang-en">PORTFOLIO</span><span class="lang-de">PORTFOLIO</span></a>
+          <a href="portfolio-this-website.html" class="nav-menu-panel-sub-link"><span class="lang-en">Built with Claude Code</span><span class="lang-de">Gebaut mit Claude Code</span></a>
+          <a href="portfolio-leasing-calculator.html" class="nav-menu-panel-sub-link"><span class="lang-en">Automation with n8n</span><span class="lang-de">Automatisierung mit n8n</span></a>
+          <a href="portfolio-chat-assistant.html" class="nav-menu-panel-sub-link"><span class="lang-en">FAQ Chat Assistant (Draft)</span><span class="lang-de">FAQ-Chat-Assistent (Entwurf)</span></a>
+          <a href="portfolio-ai-video.html" class="nav-menu-panel-sub-link" aria-current="page"><span class="lang-en">AI Video with OpenArt (Draft)</span><span class="lang-de">KI-Video mit OpenArt (Entwurf)</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#about" class="nav-menu-panel-group-label"><span class="lang-en">ABOUT ME</span><span class="lang-de">ÜBER MICH</span></a>
+          <a href="about.html" class="nav-menu-panel-sub-link"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+          <a href="about.html#werkzeugkasten" class="nav-menu-panel-sub-link"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+          <a href="community-and-peers.html" class="nav-menu-panel-sub-link"><span class="lang-en">Community &amp; Peers</span><span class="lang-de">Community &amp; Kolleg:innen</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+    <div class="nav-item">
+      <a href="offering.html" class="nav-item-toggle"><span class="lang-en">Offering</span><span class="lang-de">Angebot</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="offering.html#where"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+        <a href="offering.html#journey"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+        <a href="offering.html#formats"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="index.html#capabilities" class="nav-item-toggle"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="services.html#pillars"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+        <a href="services.html#foundation"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+      </div>
+    </div>
+    <a href="index.html#portfolio" aria-current="page"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+    <div class="nav-item">
+      <a href="index.html#about" class="nav-item-toggle"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="about.html"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+        <a href="about.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+        <a href="community-and-peers.html"><span class="lang-en">Community &amp; Peers</span><span class="lang-de">Community &amp; Kolleg:innen</span></a>
+      </div>
+    </div>
+    <a href="community-and-peers.html"><span class="lang-en">Community</span><span class="lang-de">Community</span></a>
+  </nav>
+
+  <div class="dh-hero">
+    <p class="ws-breadcrumb">
+      <a href="index.html#portfolio">Portfolio</a> /
+      <span class="lang-en">AI Video with OpenArt (Draft)</span><span class="lang-de">KI-Video mit OpenArt (Entwurf)</span>
+    </p>
+
+    <section class="ws-hero">
+      <div class="ws-hero-text">
+        <p class="eyebrow">
+          <span class="lang-en">AI VIDEO — WORK SAMPLE 04 · FIRST DRAFT</span>
+          <span class="lang-de">KI-VIDEO — ARBEITSPROBE 04 · ERSTER ENTWURF</span>
+        </p>
+        <h1 class="section-heading">
+          <span class="lang-en">From a character to a short AI video</span>
+          <span class="lang-de">Vom Charakter zum kurzen KI-Video</span>
+        </h1>
+        <p class="ws-hero-lead">
+          <span class="lang-en">A short wine story, made with OpenArt AI and ChatGPT. I worked my way in step by step: first a character, then a single image, then two mini scenes, and finally the full video in OpenArt's Creator Studio, in Director Project mode. It's an early first draft, and some mistakes are still visible. They're the most useful part.</span>
+          <span class="lang-de">Eine kurze Wein-Geschichte, erstellt mit OpenArt AI und ChatGPT. Ich habe mich Schritt für Schritt herangetastet: erst ein Charakter, dann ein einzelnes Bild, dann zwei Mini-Szenen und schließlich das ganze Video im Creator Studio von OpenArt, im Director-Project-Modus. Es ist ein früher erster Entwurf, und einige Fehler sind noch sichtbar. Genau sie sind der lehrreichste Teil.</span>
+        </p>
+        <div class="ws-tag-row">
+          <span class="ws-tag">OpenArt AI</span>
+          <span class="ws-tag">Creator Studio · Director Project</span>
+          <span class="ws-tag">ChatGPT</span>
+          <span class="ws-tag"><span class="lang-en">Draft</span><span class="lang-de">Entwurf</span></span>
+        </div>
+      </div>
+      <div class="ws-stats">
+        <div class="ws-stat">
+          <div class="ws-stat-number">4</div>
+          <div class="ws-stat-label"><span class="lang-en">Steps from character to video</span><span class="lang-de">Schritte vom Charakter zum Video</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">2</div>
+          <div class="ws-stat-label"><span class="lang-en">Mini scenes tested first</span><span class="lang-de">Mini-Szenen vorab getestet</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">83 s</div>
+          <div class="ws-stat-label"><span class="lang-en">Length of the draft video</span><span class="lang-de">Länge des Video-Entwurfs</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ws-draft-notice">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8C6E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"></path><path d="M12 10v4M12 17.5v.01"></path></svg>
+      <p>
+        <strong><span class="lang-en">First draft, not a finished video</span><span class="lang-de">Erster Entwurf, kein fertiges Video</span></strong>
+        <span class="lang-en">The video still has continuity errors: the wine changes colour, and a chair switches sides. My credits ran out before I could fix them. See "What I learned" below.</span>
+        <span class="lang-de">Das Video hat noch Anschlussfehler: Der Wein wechselt die Farbe, und ein Stuhl wechselt die Seite. Meine Credits waren aufgebraucht, bevor ich sie korrigieren konnte. Siehe „Was ich gelernt habe“ weiter unten.</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="dh-section" id="video" style="border-top: none;">
+    <p class="eyebrow">
+      <span class="lang-en">01 — THE VIDEO</span>
+      <span class="lang-de">01 — DAS VIDEO</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">The draft: a short wine story</span>
+      <span class="lang-de">Der Entwurf: eine kurze Wein-Geschichte</span>
+    </h2>
+    <div class="ws-video-frame">
+      <video controls preload="none" playsinline poster="ai-video-poster.png" width="854" height="480">
+        <source src="ai-video-final.mp4" type="video/mp4">
+        <span class="lang-en">Your browser can't play this video. <a href="ai-video-final.mp4">Download the MP4</a>.</span>
+        <span class="lang-de">Dein Browser kann dieses Video nicht abspielen. <a href="ai-video-final.mp4">MP4 herunterladen</a>.</span>
+      </video>
+    </div>
+    <p class="ws-video-caption">
+      <span class="lang-en">83 seconds, from the vineyard to the glass. Made in OpenArt AI's Creator Studio, Director Project mode. First draft.</span>
+      <span class="lang-de">83 Sekunden, vom Weinberg bis ins Glas. Erstellt im Creator Studio von OpenArt AI, Director-Project-Modus. Erster Entwurf.</span>
+    </p>
+  </section>
+
+  <section class="dh-section" id="process">
+    <p class="eyebrow">
+      <span class="lang-en">02 — HOW I WORKED MY WAY IN</span>
+      <span class="lang-de">02 — WIE ICH MICH HERANGETASTET HABE</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Small steps first, then the full video</span>
+      <span class="lang-de">Erst kleine Schritte, dann das ganze Video</span>
+    </h2>
+    <div class="ws-steps">
+      <div class="ws-step">
+        <div class="ws-step-number">01</div>
+        <h3><span class="lang-en">Character</span><span class="lang-de">Charakter</span></h3>
+        <p><span class="lang-en">First, I created a character in OpenArt AI from reference photos and a background story, before any image or scene existed.</span><span class="lang-de">Zuerst habe ich in OpenArt AI aus Referenzfotos und einer Hintergrundgeschichte einen Charakter angelegt, noch bevor es ein Bild oder eine Szene gab.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step">
+        <div class="ws-step-number">02</div>
+        <h3><span class="lang-en">Single image</span><span class="lang-de">Einzelnes Bild</span></h3>
+        <p><span class="lang-en">Then one still image of the character, made with Create Image.</span><span class="lang-de">Dann ein einzelnes Standbild des Charakters, erstellt mit Create Image.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step">
+        <div class="ws-step-number">03</div>
+        <h3><span class="lang-en">Two mini scenes</span><span class="lang-de">Zwei Mini-Szenen</span></h3>
+        <p><span class="lang-en">Next, two short five-second scenes: a café and a wine tasting.</span><span class="lang-de">Danach zwei kurze Szenen von fünf Sekunden: ein Café und eine Weinprobe.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-dark">
+        <div class="ws-step-number">04</div>
+        <h3><span class="lang-en">Short video</span><span class="lang-de">Kurzes Video</span></h3>
+        <p><span class="lang-en">Finally, the full video in Creator Studio's Director Project mode, shot by shot.</span><span class="lang-de">Zum Schluss das ganze Video im Director-Project-Modus des Creator Studios, Einstellung für Einstellung.</span></p>
+      </div>
+    </div>
+
+    <p class="dh-lead" style="margin-top: 28px;">
+      <span class="lang-en">OpenArt features I used along the way:</span>
+      <span class="lang-de">OpenArt-Funktionen, die ich dabei genutzt habe:</span>
+    </p>
+    <div class="ws-tag-row">
+      <span class="ws-tag"><span class="lang-en">Character</span><span class="lang-de">Charakter</span></span>
+      <span class="ws-tag">Create Image</span>
+      <span class="ws-tag">Text to Video</span>
+      <span class="ws-tag">Voice to Video</span>
+      <span class="ws-tag">Creator Studio · Director Project</span>
+    </div>
+
+    <div class="ws-media-grid">
+      <figure class="ws-media-item">
+        <a href="ai-video-character.png" target="_blank" rel="noopener"><img src="ai-video-character.png" alt="Screenshot of the 'Edit Character' dialog in OpenArt AI: reference photos, the character name 'Amélie Voss' and a short background story. Opens full size." width="1417" height="780" loading="lazy"></a>
+        <figcaption>
+          <strong><span class="lang-en">01 · Character</span><span class="lang-de">01 · Charakter</span></strong>
+          <span class="lang-en">The character "Amélie Voss" in OpenArt AI, built from reference photos plus a background story. The starting point for every later image and scene.</span>
+          <span class="lang-de">Der Charakter „Amélie Voss“ in OpenArt AI, angelegt aus Referenzfotos und einer Hintergrundgeschichte. Ausgangspunkt für alle späteren Bilder und Szenen.</span>
+        </figcaption>
+      </figure>
+      <figure class="ws-media-item">
+        <img src="ai-video-still-cafe.png" alt="AI-generated image: a woman with long blonde hair sits at a bistro table in a sunlit old-town lane, with a coffee cup and a notebook." width="1152" height="864" loading="lazy">
+        <figcaption>
+          <strong><span class="lang-en">02 · Single image</span><span class="lang-de">02 · Einzelnes Bild</span></strong>
+          <span class="lang-en">A café scene as a still image.</span>
+          <span class="lang-de">Eine Café-Szene als Standbild.</span>
+        </figcaption>
+      </figure>
+      <figure class="ws-media-item">
+        <video controls preload="metadata" playsinline muted width="1280" height="720">
+          <source src="ai-video-scene-cafe.mp4#t=0.5" type="video/mp4">
+        </video>
+        <figcaption>
+          <strong><span class="lang-en">03a · Mini scene: café</span><span class="lang-de">03a · Mini-Szene: Café</span></strong>
+          <span class="lang-en">The same café setting, now moving. Five seconds.</span>
+          <span class="lang-de">Dieselbe Café-Szene, jetzt in Bewegung. Fünf Sekunden.</span>
+        </figcaption>
+      </figure>
+      <figure class="ws-media-item">
+        <video controls preload="metadata" playsinline muted width="1280" height="720">
+          <source src="ai-video-scene-wine.mp4#t=0.5" type="video/mp4">
+        </video>
+        <figcaption>
+          <strong><span class="lang-en">03b · Mini scene: wine tasting</span><span class="lang-de">03b · Mini-Szene: Weinprobe</span></strong>
+          <span class="lang-en">A second test scene, with a glass of red wine. Five seconds.</span>
+          <span class="lang-de">Eine zweite Test-Szene mit einem Glas Rotwein. Fünf Sekunden.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="dh-section" id="learnings">
+    <div class="ws-principle">
+      <p class="ws-principle-label">
+        <span class="lang-en">THE KEY LEARNING</span>
+        <span class="lang-de">DAS WICHTIGSTE LEARNING</span>
+      </p>
+      <div class="ws-principle-statements">
+        <p><span class="lang-en">Good AI video starts with precise prompts.</span><span class="lang-de">Gutes KI-Video beginnt mit präzisen Prompts.</span></p>
+        <p><span class="lang-en">Whatever I don't specify, the model decides, and it can decide differently from one shot to the next.</span><span class="lang-de">Was ich nicht festlege, entscheidet das Modell, und zwar von Einstellung zu Einstellung womöglich anders.</span></p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top: 40px;">
+      <span class="lang-en">03 — WHAT I LEARNED (FIRST DRAFT)</span>
+      <span class="lang-de">03 — WAS ICH GELERNT HABE (ERSTER ENTWURF)</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Two continuity errors, and why they're still in</span>
+      <span class="lang-de">Zwei Anschlussfehler, und warum sie noch drin sind</span>
+    </h2>
+    <div class="ws-learning-grid">
+      <div class="ws-learning-card ws-learning-card-highlight">
+        <div class="ws-learning-number">01</div>
+        <h3><span class="lang-en">The wine changes colour</span><span class="lang-de">Der Wein wechselt die Farbe</span></h3>
+        <p><span class="lang-en">In the tasting part, the wine suddenly turns from red to white and back again. Lesson: details like this have to be stated clearly and consistently in every prompt.</span><span class="lang-de">Im Probier-Teil wird aus dem Rotwein plötzlich Weißwein und wieder zurück. Learning: Solche Details müssen in jedem Prompt klar und einheitlich festgelegt werden.</span></p>
+      </div>
+      <div class="ws-learning-card ws-learning-card-highlight">
+        <div class="ws-learning-number">02</div>
+        <h3><span class="lang-en">She walks left, but the chair is on the right</span><span class="lang-de">Sie geht nach links, der Stuhl steht aber rechts</span></h3>
+        <p><span class="lang-en">The character moves to the left side, yet the chair she then sits on is suddenly on the right. Lesson: directions and the position of objects need to be described just as precisely as the people.</span><span class="lang-de">Der Charakter bewegt sich nach links, der Stuhl, auf dem sie dann sitzt, steht aber plötzlich rechts. Learning: Richtungen und die Position von Gegenständen müssen genauso präzise beschrieben werden wie die Personen.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">03</div>
+        <h3><span class="lang-en">In Director mode, chatting costs credits too</span><span class="lang-de">Im Director-Modus kostet auch das Chatten Credits</span></h3>
+        <p><span class="lang-en">In Director Project mode, credits are used not only for generating the video but already while chatting. That was the trap: by the time I wanted to fix the wine colour, my credits were used up. Lesson: prompt very concretely up front, so details like this carry through from start to finish.</span><span class="lang-de">Im Director-Project-Modus werden Credits nicht nur für die eigentliche Video-Erstellung verbraucht, sondern schon beim Chatten. Das war die Falle: Als ich die Farbe des Weins korrigieren wollte, waren meine Credits aufgebraucht. Learning: Im Vorfeld sehr konkret prompten, damit sich solche Details von Anfang bis Ende durchziehen.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="kontakt">
+    <div class="contact-card">
+      <div>
+        <h2>
+          <span class="lang-en">Curious what AI video could do for you?</span>
+          <span class="lang-de">Neugierig, was KI-Video für dich leisten kann?</span>
+        </h2>
+        <p>
+          <span class="lang-en">Let's talk about where it already works well, and where it still needs careful prompting and review.</span>
+          <span class="lang-de">Lass uns darüber sprechen, wo es schon gut funktioniert und wo es noch sorgfältiges Prompting und Prüfung braucht.</span>
+        </p>
+      </div>
+      <div class="contact-ctas">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary">
+          <span class="lang-en">Get in Touch</span>
+          <span class="lang-de">Kontakt aufnehmen</span>
+        </a>
+        <a href="index.html#portfolio" class="btn-pill btn-pill-outline">
+          <span class="lang-en">Back to Portfolio</span>
+          <span class="lang-de">Zurück zum Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand-group">
+      <span class="brand-name">MARTINA HANNER</span>
+      <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    </span>
+    <span><a href="impressum.html" style="color: inherit;">Impressum</a> · <a href="datenschutz.html" style="color: inherit;">Datenschutz</a></span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>

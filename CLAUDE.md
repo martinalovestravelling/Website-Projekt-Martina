@@ -598,6 +598,31 @@ replaced with `logo-transparent.png`. `offering.html`'s seven phase boxes now li
 lines and "You get" lines are new wording from the template — flagged to the user for content
 review. See design.md, "Accelerator-Seite neu gestaltet".
 
+**Fourth Portfolio work sample: AI video with OpenArt, first draft (2026-11-09).** The homepage
+placeholder card for the AI video became a real card (photo background `ai-video-poster.png`, a
+frame from the final video at 0:13, via `.portfolio-card-photo-video`) linking to the new subpage
+`portfolio-ai-video.html` (same shell as the other work samples). Media supplied by the user, renamed
+to the no-spaces convention: `ai-video-final.mp4` (83 s, 854×480, ~16 MB — the draft video),
+`ai-video-still-cafe.png` (step 2, single image), `ai-video-scene-cafe.mp4` and
+`ai-video-scene-wine.mp4` (step 3, two 5 s mini scenes). Played with native `<video controls>`, no
+JS; the final video uses `preload="none"` + poster to avoid loading 16 MB up front. Content is only
+what the user stated: the four-step approach (character → single image → two mini scenes → short
+video in Creator Studio's Director Project mode), the OpenArt features used (Character, Create
+Image, Text to Video, Voice to Video), tools OpenArt AI + ChatGPT, and the two continuity-error
+learnings (wine switches red → white → red; she moves left but the chair she sits on is on the
+right) under the headline "good AI video starts with precise prompts". Draft framing repeated as on
+the chat-assistant sample (eyebrow, `.ws-draft-notice`, breadcrumb, "(Draft)" in every burger-menu
+sub-link). Step 1 shows `ai-video-character.png` (renamed from `character OpenArt AI.png`, supplied
+the same day): a screenshot of OpenArt's "Edit Character" dialog with the reference photos, the
+fictional character name "Amélie Voss" and a background story. A third learning was added from the
+user: in Director Project mode, credits are already consumed while chatting, not only for video
+generation — the user's credits ran out before the wine-colour error could be fixed, so the errors
+are still in the video because of that, **not** "left in deliberately" (earlier wording corrected
+accordingly in the hero lead and the draft notice). "Claude" was dropped
+from this sample's tool tags because the user's detailed description named only OpenArt AI and
+ChatGPT (their first, shorter request had also mentioned Claude) — flagged to the user. New CSS:
+`.ws-video-frame`, `.ws-media-grid`/`.ws-media-item`.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
@@ -612,7 +637,7 @@ Read these in this order to understand the project; each builds on the previous 
 - **No hallucinated content.** Only use content that the user has explicitly provided (currently: `Briefing.md`). Never invent bios, skills, project descriptions, testimonials, or other factual content. If something needs to be added that isn't already given, ask the user first.
 - **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type, **except where explicitly overridden below.** **Exceptions (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is approved and supplied (`Foto.webp`, plus `about-me-tile.png` for the Discover tile only). **As of 2026-11-04, the employer names "Accenture" and "IABG" are also explicitly approved** (currently used on `about.html` only) — this was a deliberate policy change the user confirmed after being told it reverses a repeatedly-reinforced rule; it does not extend to any other employer or to anything else on the no-personal-data list.
 - **Static only, no framework, no build step, no JavaScript — except two scoped, documented exceptions.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle itself must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The two deliberate exceptions are `chat-widget.js` (the FAQ chat bubble, see "Chat-Widget-Ausnahme") and `lang-toggle.js` (persists the EN/DE choice across page loads via `localStorage` and scrolls to top on toggle, added 2026-11-04, see "Sprachpräferenz-Ausnahme") — both documented in `tech-spec.md`. Don't use either as precedent for adding JavaScript elsewhere on the page.
-- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section now holds three real work samples — `portfolio-this-website.html` (the site's own build process), `portfolio-leasing-calculator.html` (the n8n workflow), and `portfolio-chat-assistant.html` (the live FAQ chat widget, added 2026-11-09 and explicitly marked throughout as a first draft/prototype, not a finished feature) — plus, as of 2026-11-09, one user-requested placeholder card on the homepage (dashed "Draft · coming soon" style, no subpage or link yet) for an AI video made in OpenArt AI's Director Mode with Claude and ChatGPT — fill in its title/description/subpage only from what the user supplies; don't fabricate further samples, and don't soften or remove the chat-assistant sample's "first draft" framing without the user asking. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
+- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section now holds three real work samples — `portfolio-this-website.html` (the site's own build process), `portfolio-leasing-calculator.html` (the n8n workflow), and `portfolio-chat-assistant.html` (the live FAQ chat widget, added 2026-11-09 and explicitly marked throughout as a first draft/prototype, not a finished feature) — plus a fourth, `portfolio-ai-video.html` (an AI video made with OpenArt AI and ChatGPT, also marked throughout as a first draft — see the dated entry above); don't fabricate further samples, and don't soften or remove the chat-assistant sample's "first draft" framing without the user asking. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
 - **Color and font tokens are fixed CSS custom properties**, defined in `design.md`: two house colors (`--color-brand-primary`, `--color-brand-secondary`) plus neutral support tokens, and a dependency-free sans-serif font stack (`--font-sans`). Use these token names consistently rather than hardcoding color/font values.
 
 ## Acceptance Criteria

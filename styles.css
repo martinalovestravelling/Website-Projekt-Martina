@@ -2985,6 +2985,10 @@ a.phase-box:focus-visible {
   background: linear-gradient(rgba(27, 58, 92, 0.85), rgba(27, 58, 92, 0.85)), url("ai-assistant-tile.png") center/cover;
 }
 
+.portfolio-card-photo-video {
+  background: linear-gradient(rgba(27, 58, 92, 0.85), rgba(27, 58, 92, 0.85)), url("ai-video-poster.png") center/cover;
+}
+
 .portfolio-card-photo .portfolio-card-tag,
 .portfolio-card-photo .portfolio-card-title,
 .portfolio-card-photo .portfolio-card-text {
@@ -3558,6 +3562,56 @@ a.phase-box:focus-visible {
   font-size: 13px;
   color: var(--color-text-muted);
   margin-top: 6px;
+}
+
+/* AI video work sample (portfolio-ai-video.html): native <video> player + the
+   character → image → mini scenes → short video gallery. Plain HTML5 video, no JS. */
+.ws-video-frame {
+  background-color: var(--color-brand-primary);
+  border-radius: 14px;
+  padding: 10px;
+  max-width: 900px;
+}
+
+.ws-video-frame video,
+.ws-media-item video,
+.ws-media-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: var(--color-text);
+}
+
+.ws-video-caption {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.ws-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.ws-media-item {
+  margin: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.ws-media-item figcaption {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.ws-media-item figcaption strong {
+  display: block;
+  color: var(--color-brand-primary);
 }
 
 .ws-breadcrumb {
