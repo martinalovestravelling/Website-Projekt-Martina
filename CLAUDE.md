@@ -586,6 +586,18 @@ paragraph now spans the same width as the strength columns below it — one cons
 top to bottom, matching the user's ask, with no reliance on a magic number tuned to force a specific
 wrap pattern.
 
+**`accelerator.html` redesigned (2026-11-09).** Rebuilt from the user-supplied
+`accelerator-redesign-claude-code.md` (kept in the repo as the reference): breadcrumb instead of
+"← Back to home", a sticky 7-phase bar under the sticky `.site-header`, and the 11 modules as
+unnumbered `<details>` accordions (only "Assessment & Setup" open on load) with goal line, segment
+markers and "We do / You get". Deviations from the template, on purpose: segment-marker text uses
+`--color-chip-text` (contrast), px units, the template's `.header-top` reference mapped to
+`.site-header`, and the existing contact block kept as the closing CTA. Header logo placeholder
+replaced with `logo-transparent.png`. `offering.html`'s seven phase boxes now link to the matching
+`accelerator.html#<phase>` anchors. Old `.journey-*`/`.module-*` CSS removed as dead code. The goal
+lines and "You get" lines are new wording from the template — flagged to the user for content
+review. See design.md, "Accelerator-Seite neu gestaltet".
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:

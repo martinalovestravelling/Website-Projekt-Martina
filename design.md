@@ -485,3 +485,31 @@ wiederhergestellte `#capabilities` bei reinem `topic-section` (Beige) blieb — 
 Starting Point → Capabilities → Portfolio → About Me → Werkzeugkasten alterniert jetzt lückenlos
 Beige/Sand/Beige/Sand/Beige/Sand (vorher gab es an dieser Stelle einen unvermeidbaren Bruch ganz
 oben).
+
+## Accelerator-Seite neu gestaltet (hinzugefügt 2026-11-09)
+
+Vorlage: `accelerator-redesign-claude-code.md` (vom Nutzer bereitgestellt). `accelerator.html` zeigt
+die 11 Module jetzt als aufklappbare Liste statt als Karten-Raster:
+
+- **Intro:** Breadcrumb (Startseite › Angebot › Accelerator) ersetzt den „← Back to home“-Link;
+  Eyebrow, H1, Lead-Satz, eine Zeile mit den Segment-Markern STARTER/PLANNER/EXPLORER und Link auf
+  `offering.html#where`.
+- **Sticky Phasenleiste** (`.acc-phasebar`): 7 nummerierte Phasen, klebt direkt unter dem sticky
+  `.site-header` (`--header-top-height: 70px` auf `.page-accelerator`); Phasen-Überschriften haben
+  `scroll-margin-top`, damit sie beim Springen nicht verdeckt werden. Die IDs `#assess` … `#sustain`
+  bleiben erhalten. Auf schmalen Bildschirmen (≤ 520px) scrollt die Leiste seitlich.
+- **Module:** native `<details>`/`<summary>` (kein JavaScript), nicht nummeriert — nummeriert sind
+  nur die Phasen. Zugeklappt: Titel, graue Zielzeile, Segment-Marker, +/–-Kreis. Aufgeklappt:
+  „Wir machen“ / „Du bekommst“. Beim Laden ist nur „Assessment & Setup“ geöffnet. Auf ≤ 520px
+  rutschen die Segment-Marker unter die Zielzeile, statt ausgeblendet zu werden.
+- **Streams** (Change Management, Responsible AI) als zwei Sand-Kästen über den Modulen.
+- **Format-Brücke:** drei Karten (Modular Academy / Workshop Sprint / Transformation Accelerator),
+  verlinkt auf `offering.html#formats`; danach der bestehende Kontakt-Block.
+- **Farben:** Segment-Marker = Farben der Persona-Balken auf `offering.html`; Schrift auf den Markern
+  ist `--color-chip-text` (weiß), nicht `--color-surface` wie in der Vorlage — Creme auf dem
+  Planner-Braun liegt unter WCAG AA. Keine neuen Hex-Werte, Maße in px wie im Rest von styles.css.
+- **offering.html:** die 7 Phasen-Kästchen in „How we get there“ sind jetzt Links auf
+  `accelerator.html#assess` … `#sustain`.
+- Die alten Klassen `.journey-*` und `.module-*` wurden als toter Code aus styles.css entfernt.
+- **Inhalt prüfen:** „Wir machen“ ist 1:1 von der alten Seite; Zielzeile und „Du bekommst“ sind laut
+  Vorlage neu formuliert und sollen vom Nutzer inhaltlich geprüft werden.

@@ -2058,98 +2058,382 @@ details.dh-wiz > summary {
   line-height: 1.5;
 }
 
-/* Accelerator subpage (accelerator.html): journey boxes + module cards */
-.journey-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 14px;
-  margin-bottom: 8px;
+/* ===== Accelerator page (accelerator.html, redesign 2026-11-09) =====
+   Source: accelerator-redesign-claude-code.md. Only existing tokens, px units like the rest
+   of this file. --header-top-height matches the sticky .site-header's rendered height
+   (16px + 10px padding around the 44px logo ≈ 70px), so the phase bar sticks right under it. */
+.page-accelerator {
+  --header-top-height: 70px;
 }
 
-.journey-box {
-  display: block;
-  background-color: var(--color-surface);
-  border-radius: 12px;
-  padding: 18px 16px;
+.acc-intro,
+.acc-modules,
+.acc-formats {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.acc-intro {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.acc-intro h1 {
+  margin: 0 0 12px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
   text-decoration: none;
-  color: var(--color-text);
-  min-height: 44px;
 }
 
-.journey-box:hover,
-.journey-box:focus-visible {
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--color-brand-secondary);
+  text-decoration: underline;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--color-brand-primary);
+  font-weight: 700;
+}
+
+.acc-lead {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  max-width: 760px;
+}
+
+.acc-segments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-top: 16px;
+}
+
+.acc-segments a {
+  color: var(--color-brand-primary);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-brand-secondary);
+  margin-left: 4px;
+}
+
+.acc-segments a:hover,
+.acc-segments a:focus-visible {
+  color: var(--color-brand-secondary);
+}
+
+/* Segment markers: same colours as offering.html's persona bars / .tag-chip. Text uses
+   --color-chip-text (white), not --color-surface — cream on the Planner brown fails WCAG AA
+   (see the --color-chip-text note at the top of this file). */
+.seg {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-chip-text);
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.seg-starter  { background-color: var(--color-brand-primary); }
+.seg-planner  { background-color: var(--color-brand-secondary); }
+.seg-explorer { background-color: var(--color-text-muted); }
+.seg-all      { background-color: var(--color-text); }
+
+/* Sticky phase bar: full-width background, contents aligned with the 1120px column */
+.acc-phasebar {
+  position: sticky;
+  top: var(--header-top-height);
+  z-index: 50;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px max(24px, calc((100% - 1072px) / 2));
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.acc-phasebar a {
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+.acc-phasebar a:hover,
+.acc-phasebar a:focus-visible {
   background-color: var(--color-surface-alt);
 }
 
-.journey-box-accent {
-  background-color: var(--color-brand-secondary);
-  color: var(--color-background);
-}
-
-.journey-box-accent:hover,
-.journey-box-accent:focus-visible {
-  background-color: #74543c;
-}
-
-.journey-box .phase-number {
-  color: inherit;
-}
-
-.journey-box .phase-name {
-  color: inherit;
-  font-size: 16px;
-}
-
-.journey-box-count {
+.acc-phasebar .num {
   display: block;
-  font-size: 13px;
-  margin-top: 8px;
-  opacity: 0.85;
-}
-
-.module-phase-group {
-  margin-bottom: 36px;
-}
-
-.module-phase-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 14px;
-}
-
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.module-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  padding: 20px;
-}
-
-.module-card-number {
   font-family: var(--font-display);
   font-weight: 800;
   color: var(--color-brand-secondary);
+}
+
+/* Streams */
+.acc-streams {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 20px 0;
+}
+
+.acc-stream {
+  background-color: var(--color-surface-alt);
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 14px;
 }
 
-.module-card-title {
-  font-weight: 700;
-  font-size: 16px;
+.acc-stream strong {
+  display: block;
   color: var(--color-brand-primary);
-  margin: 4px 0 8px;
 }
 
-.module-card p {
+/* Phase headings */
+.acc-phase {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 28px 0 10px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  scroll-margin-top: calc(var(--header-top-height) + 80px);
+}
+
+.acc-phase::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.acc-phase .num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--color-brand-secondary);
+}
+
+/* Collapsible modules (<details>/<summary>, no JavaScript) */
+.acc-module {
+  background-color: var(--color-surface);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.acc-module summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas:
+    "title tags toggle"
+    "goal  tags toggle";
+  column-gap: 10px;
+  align-items: center;
+}
+
+.acc-module summary::-webkit-details-marker {
+  display: none;
+}
+
+.acc-module summary:focus-visible {
+  outline: 2px solid var(--color-brand-secondary);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.acc-title {
+  grid-area: title;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+.acc-goal {
+  grid-area: goal;
   font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.acc-tags {
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.acc-toggle {
+  grid-area: toggle;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-brand-primary);
+  color: var(--color-chip-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.acc-toggle::after { content: "+"; }
+.acc-module[open] .acc-toggle { background-color: var(--color-brand-secondary); }
+.acc-module[open] .acc-toggle::after { content: "–"; }
+
+.acc-body {
+  margin: 0 16px;
+  padding: 10px 0 14px;
+  border-top: 1px solid var(--color-surface-alt);
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 4px 10px;
+  font-size: 15px;
+}
+
+.acc-body dt {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.acc-body dd {
   margin: 0;
+}
+
+/* Formats bridge */
+.acc-formats {
+  margin-top: 36px;
+  margin-bottom: 40px;
+}
+
+.acc-formats-inner {
+  background-color: var(--color-surface-alt);
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.acc-format-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.acc-format {
+  display: block;
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: var(--color-text);
+  border-top: 3px solid var(--color-brand-primary);
+}
+
+.acc-format-planner  { border-top-color: var(--color-brand-secondary); }
+.acc-format-explorer { border-top-color: var(--color-text-muted); }
+
+.acc-format:hover,
+.acc-format:focus-visible {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.acc-format strong {
+  display: block;
+  color: var(--color-brand-primary);
+}
+
+.acc-format-for {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.acc-format-note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* offering.html "How we get there": phase boxes are now links into accelerator.html */
+a.phase-box {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a.phase-box:hover,
+a.phase-box:focus-visible {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+/* Mobile: phase bar scrolls sideways; segment markers move below the goal line instead of
+   being hidden */
+@media (max-width: 520px) {
+  .acc-phasebar {
+    grid-template-columns: repeat(7, minmax(56px, 1fr));
+    overflow-x: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .acc-intro,
+  .acc-modules,
+  .acc-formats {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .acc-module summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title toggle"
+      "goal  toggle"
+      "tags  toggle";
+  }
+
+  .acc-tags {
+    margin-top: 4px;
+  }
+
+  .acc-body {
+    grid-template-columns: 1fr;
+  }
+
+  .acc-body dd + dt {
+    margin-top: 6px;
+  }
 }
 
 .back-home-link {
