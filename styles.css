@@ -2558,6 +2558,12 @@ details.dh-wiz > summary {
   background: linear-gradient(rgba(27, 58, 92, 0.85), rgba(27, 58, 92, 0.85)), url("n8n-workflow-tile.png") center/cover;
 }
 
+/* Modifier: swaps in a different photo for another card while reusing .portfolio-card-photo's
+   border/text-color overrides above and below */
+.portfolio-card-photo-website {
+  background: linear-gradient(rgba(27, 58, 92, 0.85), rgba(27, 58, 92, 0.85)), url("website-tile.png") center/cover;
+}
+
 .portfolio-card-photo .portfolio-card-tag,
 .portfolio-card-photo .portfolio-card-title,
 .portfolio-card-photo .portfolio-card-text {

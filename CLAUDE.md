@@ -451,6 +451,47 @@ unchanged (CSS-only toggle, English default per page) — no functionality is lo
 persistence/scroll convenience. See `tech-spec.md`, "Sprachpräferenz-Ausnahme", for the full
 rationale and architecture.
 
+**Second Portfolio work sample added: the site's own build process (2026-11-09).** The user asked
+for the Portfolio section's remaining "Work Sample 02 · coming soon" placeholder to become a real
+second sample, about building this website itself with Visual Studio Code, GitHub and Claude Code.
+Built as a new subpage, `portfolio-this-website.html` (same header/nav/burger/footer/chat-widget
+shell as `portfolio-leasing-calculator.html`, reusing its `.ws-*` and `.dh-*` component CSS —
+no new CSS was added). Unlike the n8n sample, this one has no real screenshots to show, so the
+`.ws-screens-toggle` collapsible screenshots section was left out rather than filled with placeholder
+images. Content follows the same no-hallucination rule as everything else on the site: the five-step
+workflow (Briefing → Planning docs → Build → Review → Ship) and the five-document "paper trail"
+(`Briefing.md`, `PRD.md`, `tech-spec.md`, `design.md`, `CLAUDE.md` itself) describe this project's
+actual, already-documented process rather than invented case-study content; the three hero stats (4
+planning docs, 0 frameworks/build step, 2 scoped JavaScript exceptions) are durable architectural
+facts rather than moving counters like a commit count, chosen so the page doesn't go stale as work
+continues. The four "Learnings" cards restate things already established elsewhere in this file (the
+brief-before-prompt discipline, the two named JS exceptions, the sticky-header root-cause fix from
+the "Dritte Korrekturrunde" entry, and this file's own role as a running decision log) rather than
+adding new claims. The homepage `#portfolio` section's second card was changed from the dashed
+"coming soon" placeholder to a real `.portfolio-card-active` card, and a "Built with Claude Code"
+sub-link was added under every page's "Portfolio" burger-menu group (the 8 pages that already listed
+the n8n sample there), matching how the n8n sample's sub-link was added previously. `.portfolio-grid`'s
+sizing was left unchanged since it already accommodates real card content.
+
+**Correction pass (same day): stat wording, a real tile photo, card order swapped.** Three fixes
+from user feedback right after the above landed. First, the "0 — Frameworks or build step" hero stat
+read as if it contradicted the "many rounds of content and design changes" described in the Starting
+Point section just below it — reworded to "0 — Compilers or bundlers in the pipeline" (German:
+"Compiler oder Bundler in der Pipeline") to make clear it's about tooling (no npm/webpack/compile
+step between editing and shipping), not a claim that no iteration happened; the many edit-review-ship
+rounds are a separate, true thing. Second, the user supplied a real tile photo (`website-tile.png`,
+renamed from `website tile.png` for the no-spaces filename convention — a stock image of a laptop
+showing a GitHub → Claude Code → VS Code → browser workflow graphic, blurred office background, no
+identifiable people) to use as this card's background, the same way `n8n-workflow-tile.png` already
+works for the leasing-calculator card; added a `.portfolio-card-photo-website` CSS modifier (swaps
+only the background-image, reusing `.portfolio-card-photo`'s border/text-color rules) rather than
+duplicating the whole block. Third, the user asked for the two Portfolio cards' order to be swapped
+— the website-build sample now comes first, the n8n/leasing sample second — applied to the homepage
+grid, the "Portfolio" burger-menu sub-link order on all 9 pages that have it, and the "WORK SAMPLE
+01/02" numbering in both subpages' own hero eyebrows (now 01 for `portfolio-this-website.html`, 02
+for `portfolio-leasing-calculator.html`), so the numbering matches reading/visual order rather than
+creation order.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
@@ -465,7 +506,7 @@ Read these in this order to understand the project; each builds on the previous 
 - **No hallucinated content.** Only use content that the user has explicitly provided (currently: `Briefing.md`). Never invent bios, skills, project descriptions, testimonials, or other factual content. If something needs to be added that isn't already given, ask the user first.
 - **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type, **except where explicitly overridden below.** **Exceptions (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is approved and supplied (`Foto.webp`, plus `about-me-tile.png` for the Discover tile only). **As of 2026-11-04, the employer names "Accenture" and "IABG" are also explicitly approved** (currently used on `about.html` only) — this was a deliberate policy change the user confirmed after being told it reverses a repeatedly-reinforced rule; it does not extend to any other employer or to anything else on the no-personal-data list.
 - **Static only, no framework, no build step, no JavaScript — except two scoped, documented exceptions.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle itself must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The two deliberate exceptions are `chat-widget.js` (the FAQ chat bubble, see "Chat-Widget-Ausnahme") and `lang-toggle.js` (persists the EN/DE choice across page loads via `localStorage` and scrolls to top on toggle, added 2026-11-04, see "Sprachpräferenz-Ausnahme") — both documented in `tech-spec.md`. Don't use either as precedent for adding JavaScript elsewhere on the page.
-- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section holds one real work sample (`portfolio-leasing-calculator.html`, added 2026-11-04) plus one remaining "Work Sample 02 · coming soon" placeholder card — don't fabricate a second sample. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
+- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section now holds two real work samples — `portfolio-leasing-calculator.html` (added 2026-11-04) and `portfolio-this-website.html` (added 2026-11-09, about the site's own build process) — and no remaining "coming soon" card; don't fabricate a third sample. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
 - **Color and font tokens are fixed CSS custom properties**, defined in `design.md`: two house colors (`--color-brand-primary`, `--color-brand-secondary`) plus neutral support tokens, and a dependency-free sans-serif font stack (`--font-sans`). Use these token names consistently rather than hardcoding color/font values.
 
 ## Acceptance Criteria

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Sample — This Website, Built with Claude Code</title>
+<meta name="description" content="This website itself: a static site built in Visual Studio Code with Claude Code as an AI pair-programmer, from written briefs instead of ad-hoc prompts.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<script src="lang-toggle.js"></script>
+<div class="page">
+
+  <header class="site-header">
+    <a href="index.html" class="brand-link">
+      <img src="logo-transparent.png" alt="Martina Hanner logo" class="brand-logo-image">
+      <span class="brand-name">MARTINA HANNER</span>
+    </a>
+    <div class="header-actions">
+      <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+        <span class="lang-en">Contact</span>
+        <span class="lang-de">Kontakt</span>
+      </a>
+      <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+        <span class="lang-switch-option lang-en-option">EN</span>
+        <span class="lang-switch-option lang-de-option">DE</span>
+      </label>
+      <input type="checkbox" id="nav-menu-toggle" class="nav-menu-toggle-input">
+      <label for="nav-menu-toggle" class="nav-menu-toggle-label" aria-label="Open section menu / Abschnittsmenü öffnen">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-menu-panel">
+        <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+        <div class="nav-menu-panel-group">
+          <a href="offering.html" class="nav-menu-panel-group-label"><span class="lang-en">OFFERING</span><span class="lang-de">ANGEBOT</span></a>
+          <a href="offering.html#where" class="nav-menu-panel-sub-link"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+          <a href="offering.html#journey" class="nav-menu-panel-sub-link"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+          <a href="offering.html#formats" class="nav-menu-panel-sub-link"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#capabilities" class="nav-menu-panel-group-label"><span class="lang-en">SERVICES</span><span class="lang-de">LEISTUNGEN</span></a>
+          <a href="services.html#pillars" class="nav-menu-panel-sub-link"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+          <a href="services.html#foundation" class="nav-menu-panel-sub-link"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#portfolio" class="nav-menu-panel-group-label"><span class="lang-en">PORTFOLIO</span><span class="lang-de">PORTFOLIO</span></a>
+          <a href="portfolio-this-website.html" class="nav-menu-panel-sub-link" aria-current="page"><span class="lang-en">Built with Claude Code</span><span class="lang-de">Gebaut mit Claude Code</span></a>
+          <a href="portfolio-leasing-calculator.html" class="nav-menu-panel-sub-link"><span class="lang-en">Automation with n8n</span><span class="lang-de">Automatisierung mit n8n</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#about" class="nav-menu-panel-group-label"><span class="lang-en">ABOUT ME</span><span class="lang-de">ÜBER MICH</span></a>
+          <a href="about.html" class="nav-menu-panel-sub-link"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+          <a href="about.html#werkzeugkasten" class="nav-menu-panel-sub-link"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+    <div class="nav-item">
+      <a href="offering.html" class="nav-item-toggle"><span class="lang-en">Offering</span><span class="lang-de">Angebot</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="offering.html#where"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+        <a href="offering.html#journey"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+        <a href="offering.html#formats"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="index.html#capabilities" class="nav-item-toggle"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="services.html#pillars"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+        <a href="services.html#foundation"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+      </div>
+    </div>
+    <a href="index.html#portfolio" aria-current="page"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+    <div class="nav-item">
+      <a href="index.html#about" class="nav-item-toggle"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="about.html"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+        <a href="about.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+      </div>
+    </div>
+    <a href="#" aria-disabled="true"><span class="lang-en">News</span><span class="lang-de">News</span></a>
+  </nav>
+
+  <div class="dh-hero">
+    <p class="ws-breadcrumb">
+      <a href="index.html#portfolio">Portfolio</a> /
+      <span class="lang-en">Built with Claude Code</span><span class="lang-de">Gebaut mit Claude Code</span>
+    </p>
+
+    <section class="ws-hero">
+      <div class="ws-hero-text">
+        <p class="eyebrow">
+          <span class="lang-en">BUILT WITH CLAUDE CODE — WORK SAMPLE 01</span>
+          <span class="lang-de">GEBAUT MIT CLAUDE CODE — ARBEITSPROBE 01</span>
+        </p>
+        <h1 class="section-heading">
+          <span class="lang-en">From written brief to published page</span>
+          <span class="lang-de">Vom Briefing zur veröffentlichten Seite</span>
+        </h1>
+        <p class="ws-hero-lead">
+          <span class="lang-en">This site — the one you're reading right now — was built in Visual Studio Code together with Claude Code, working from written briefs instead of ad-hoc back-and-forth. Every round of changes is documented, and every fact on the page traces back to something I actually provided.</span>
+          <span class="lang-de">Diese Seite – genau die, die du gerade liest – entstand in Visual Studio Code gemeinsam mit Claude Code, auf Basis schriftlicher Briefings statt loser Prompts. Jede Änderungsrunde ist dokumentiert, und jede Tatsache auf der Seite lässt sich auf eine echte Angabe von mir zurückführen.</span>
+        </p>
+        <div class="ws-tag-row">
+          <span class="ws-tag">Visual Studio Code</span>
+          <span class="ws-tag">GitHub</span>
+          <span class="ws-tag">GitHub Pages</span>
+          <span class="ws-tag">Claude Code</span>
+          <span class="ws-tag"><span class="lang-en">Static HTML &amp; CSS</span><span class="lang-de">Statisches HTML &amp; CSS</span></span>
+        </div>
+      </div>
+      <div class="ws-stats">
+        <div class="ws-stat">
+          <div class="ws-stat-number">4</div>
+          <div class="ws-stat-label"><span class="lang-en">Planning docs before the first line of page code</span><span class="lang-de">Planungsdokumente vor der ersten Zeile Code</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">0</div>
+          <div class="ws-stat-label"><span class="lang-en">Compilers or bundlers in the pipeline</span><span class="lang-de">Compiler oder Bundler in der Pipeline</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">2</div>
+          <div class="ws-stat-label"><span class="lang-en">Scoped JavaScript exceptions</span><span class="lang-de">Bewusste JavaScript-Ausnahmen</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="dh-section" style="border-top: none;">
+    <div class="ws-principle">
+      <p class="ws-principle-label">
+        <span class="lang-en">THE CORE PRINCIPLE</span>
+        <span class="lang-de">DAS KERNPRINZIP</span>
+      </p>
+      <div class="ws-principle-statements">
+        <p><span class="lang-en">The agent writes the code.</span><span class="lang-de">Der Agent schreibt den Code.</span></p>
+        <p><span class="lang-en">Every fact on the page still comes from me.</span><span class="lang-de">Jede Tatsache auf der Seite kommt trotzdem von mir.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="starting-point-ws">
+    <p class="eyebrow">
+      <span class="lang-en">01 — STARTING POINT</span>
+      <span class="lang-de">01 — AUSGANGSLAGE</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Why build it this way</span>
+      <span class="lang-de">Warum so gebaut</span>
+    </h2>
+    <p class="dh-lead">
+      <span class="lang-en">The site itself needed to match what it's about: process first, then AI — not a framework bolted onto undefined content. It also had to be something one person could build and keep maintaining solo, without a development team or a recurring hosting bill.</span>
+      <span class="lang-de">Die Seite sollte selbst zeigen, wofür sie steht: erst Prozess, dann KI – kein aufgesetztes Framework über unklarem Inhalt. Außerdem musste sie von einer Person allein gebaut und gepflegt werden können, ohne Entwicklungsteam und ohne laufende Hosting-Kosten.</span>
+    </p>
+    <p class="dh-lead">
+      <span class="lang-en">That pointed to a static site: plain HTML and CSS, served for free by GitHub Pages, with no server to maintain and no build step to break. Working with Claude Code as an AI pair-programmer made that realistic across many rounds of content and design changes — as long as the process stayed disciplined: a written brief first, code only once the brief was clear.</span>
+      <span class="lang-de">Das sprach für eine statische Seite: reines HTML und CSS, kostenlos über GitHub Pages ausgeliefert, ohne Server zum Warten und ohne Build-Schritt, der brechen kann. Mit Claude Code als KI-Pair-Programmer wurde das über viele Inhalts- und Design-Runden hinweg realistisch – solange der Ablauf diszipliniert blieb: erst das schriftliche Briefing, Code erst, wenn das Briefing klar war.</span>
+    </p>
+  </section>
+
+  <section class="dh-section" id="workflow">
+    <p class="eyebrow">
+      <span class="lang-en">02 — THE WORKFLOW</span>
+      <span class="lang-de">02 — DER WORKFLOW</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Five steps, every round</span>
+      <span class="lang-de">Fünf Schritte, jede Runde</span>
+    </h2>
+    <div class="ws-steps">
+      <div class="ws-step">
+        <div class="ws-step-number">01</div>
+        <h3><span class="lang-en">Briefing</span><span class="lang-de">Briefing</span></h3>
+        <p><span class="lang-en">Real facts only: bio, skills, screenshots, mockups — nothing invented.</span><span class="lang-de">Nur echte Angaben: Lebenslauf, Skills, Screenshots, Mockups – nichts erfunden.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step">
+        <div class="ws-step-number">02</div>
+        <h3><span class="lang-en">Planning docs</span><span class="lang-de">Planungsdokumente</span></h3>
+        <p><span class="lang-en">The brief becomes a PRD, a tech spec and a design spec — each reviewed before any code.</span><span class="lang-de">Aus dem Briefing werden PRD, Tech-Spec und Design-Spec – jedes davon geprüft, bevor Code entsteht.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-highlight">
+        <span class="ws-step-highlight-badge"><span class="lang-en">STATIC HTML/CSS</span><span class="lang-de">STATISCHES HTML/CSS</span></span>
+        <div class="ws-step-number">03</div>
+        <h3><span class="lang-en">Build</span><span class="lang-de">Umsetzung</span></h3>
+        <p><span class="lang-en">Markup and styles are written directly, following fixed design tokens and a no-JavaScript rule.</span><span class="lang-de">Markup und Styles entstehen direkt, nach festen Design-Tokens und einer No-JavaScript-Regel.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-dark">
+        <div class="ws-step-number">04</div>
+        <h3><span class="lang-en">Review</span><span class="lang-de">Review</span></h3>
+        <p><span class="lang-en">Manual step: every change is checked against screenshots and mockups before it ships.</span><span class="lang-de">Manueller Schritt: Jede Änderung wird vor dem Livegang gegen Screenshots und Mockups geprüft.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step">
+        <div class="ws-step-number">05</div>
+        <h3><span class="lang-en">Ship</span><span class="lang-de">Veröffentlichen</span></h3>
+        <p><span class="lang-en">Committed to GitHub, served by GitHub Pages — no server, no deploy pipeline.</span><span class="lang-de">Commit auf GitHub, ausgeliefert über GitHub Pages – kein Server, keine Deploy-Pipeline.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="paper-trail">
+    <p class="eyebrow">
+      <span class="lang-en">03 — THE PAPER TRAIL</span>
+      <span class="lang-de">03 — DIE NACHVOLLZIEHBARKEIT</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">One document per decision</span>
+      <span class="lang-de">Ein Dokument pro Entscheidung</span>
+    </h2>
+    <p class="dh-lead">
+      <span class="lang-en">Every round of work builds on a short chain of plain-text documents instead of one long chat history — so later sessions, and other people, can follow why something is the way it is.</span>
+      <span class="lang-de">Jede Arbeitsrunde baut auf einer kurzen Kette einfacher Textdokumente auf statt auf einem langen Chatverlauf – damit spätere Runden und andere Personen nachvollziehen können, warum etwas so ist, wie es ist.</span>
+    </p>
+    <table class="dh-info-table">
+      <thead>
+        <tr>
+          <th scope="col"><span class="lang-en">Document</span><span class="lang-de">Dokument</span></th>
+          <th scope="col"><span class="lang-en">Purpose</span><span class="lang-de">Zweck</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Briefing.md</th>
+          <td><span class="lang-en">Source of truth for bio, skills, certifications and the privacy rules</span><span class="lang-de">Grundlage für Lebenslauf, Skills, Zertifizierungen und die Datenschutzregeln</span></td>
+        </tr>
+        <tr>
+          <th scope="row">PRD.md</th>
+          <td><span class="lang-en">Goal, audience, non-goals and testable acceptance criteria</span><span class="lang-de">Ziel, Zielgruppe, Nicht-Ziele und prüfbare Abnahmekriterien</span></td>
+        </tr>
+        <tr>
+          <th scope="row">tech-spec.md</th>
+          <td><span class="lang-en">The technical approach: static only, no build step, the two scoped JavaScript exceptions</span><span class="lang-de">Der technische Ansatz: rein statisch, kein Build-Schritt, die zwei bewussten JavaScript-Ausnahmen</span></td>
+        </tr>
+        <tr>
+          <th scope="row">design.md</th>
+          <td><span class="lang-en">Page structure plus the fixed colour and typography tokens</span><span class="lang-de">Seitenstruktur sowie die festen Farb- und Typografie-Tokens</span></td>
+        </tr>
+        <tr>
+          <th scope="row">CLAUDE.md</th>
+          <td><span class="lang-en">A dated, running log of every content and design decision since</span><span class="lang-de">Ein laufend datiertes Protokoll aller Inhalts- und Design-Entscheidungen seither</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="dh-section" id="learnings">
+    <p class="eyebrow">
+      <span class="lang-en">04 — LEARNINGS</span>
+      <span class="lang-de">04 — LEARNINGS</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">What this project taught me</span>
+      <span class="lang-de">Was dieses Projekt gezeigt hat</span>
+    </h2>
+    <div class="ws-learning-grid">
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">01</div>
+        <h3><span class="lang-en">Write the brief before the prompt</span><span class="lang-de">Erst das Briefing, dann der Prompt</span></h3>
+        <p><span class="lang-en">A document that states the facts and the rules up front heads off invented content far more reliably than catching it after the fact.</span><span class="lang-de">Ein Dokument, das Fakten und Regeln vorab festhält, verhindert erfundene Inhalte zuverlässiger, als sie im Nachhinein zu korrigieren.</span></p>
+      </div>
+      <div class="ws-learning-card ws-learning-card-highlight">
+        <div class="ws-learning-number">02</div>
+        <h3><span class="lang-en">Name the exception, don't hide it</span><span class="lang-de">Die Ausnahme benennen, nicht verstecken</span></h3>
+        <p><span class="lang-en">The two places this site does use JavaScript — a chat widget and a language-preference toggle — are each scoped to one small file and documented, instead of quietly becoming a precedent for more.</span><span class="lang-de">Die beiden Stellen, an denen diese Seite doch JavaScript nutzt – ein Chat-Widget und eine Sprachpräferenz – sind jeweils auf eine kleine, dokumentierte Datei begrenzt, statt stillschweigend zum Vorbild für mehr zu werden.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">03</div>
+        <h3><span class="lang-en">Fix the root cause, not the symptom</span><span class="lang-de">Die Ursache beheben, nicht das Symptom</span></h3>
+        <p><span class="lang-en">A sticky header that vanished on scroll got patched twice as a layout tweak before the real cause turned up: a sticky element only holds within its parent's box, and that parent was too short.</span><span class="lang-de">Ein beim Scrollen verschwindender Sticky-Header wurde zweimal als Layout-Anpassung „repariert", bevor die eigentliche Ursache auftauchte: Ein Sticky-Element hält nur innerhalb der Box seines Elternelements – und die war zu kurz.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">04</div>
+        <h3><span class="lang-en">A dated log keeps solo, AI-assisted work honest</span><span class="lang-de">Ein datiertes Protokoll hält KI-unterstützte Einzelarbeit ehrlich</span></h3>
+        <p><span class="lang-en">Across many rounds of edits, one running, dated log of decisions is what lets a single person — and the agent — stay oriented, instead of relying on memory of what was tried before.</span><span class="lang-de">Über viele Änderungsrunden hinweg sorgt ein einziges, laufend datiertes Entscheidungsprotokoll dafür, dass eine einzelne Person – und der Agent – orientiert bleiben, statt sich auf die Erinnerung an frühere Versuche zu verlassen.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="transferable">
+    <div class="ws-transfer">
+      <div class="ws-transfer-text">
+        <p class="eyebrow">
+          <span class="lang-en">05 — TRANSFERABLE TO</span>
+          <span class="lang-de">05 — ÜBERTRAGBAR AUF</span>
+        </p>
+        <h2 class="section-heading" style="margin-bottom: 0;">
+          <span class="lang-en">Anywhere a brief should outlive the chat that produced it</span>
+          <span class="lang-de">Überall, wo ein Briefing den Chat überdauern sollte, aus dem es stammt</span>
+        </h2>
+      </div>
+      <div class="ws-transfer-grid">
+        <div class="ws-transfer-item"><strong><span class="lang-en">Documentation-first delivery</span><span class="lang-de">Dokumentationsgetriebene Umsetzung</span></strong><span class="lang-en">Brief, spec, build, review — the same cycle works well beyond a website</span><span class="lang-de">Briefing, Spezifikation, Umsetzung, Review – derselbe Zyklus funktioniert weit über eine Website hinaus</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Small, static builds</span><span class="lang-de">Kleine, statische Projekte</span></strong><span class="lang-en">Landing pages and internal tools that need to ship fast without a dev team</span><span class="lang-de">Landingpages und interne Tools, die schnell entstehen müssen – ohne Entwicklungsteam</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Any solo-maintained content site</span><span class="lang-de">Jede allein gepflegte Content-Seite</span></strong><span class="lang-en">A dated log instead of tribal knowledge in one person's head</span><span class="lang-de">Ein datiertes Protokoll statt stillem Wissen im Kopf einer einzelnen Person</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="kontakt">
+    <div class="contact-card">
+      <div>
+        <h2>
+          <span class="lang-en">Curious how an AI-assisted build like this could work for you?</span>
+          <span class="lang-de">Neugierig, wie ein solcher KI-unterstützter Aufbau auch für dich funktionieren könnte?</span>
+        </h2>
+        <p>
+          <span class="lang-en">Let's talk about where a documented, brief-first process could speed up your own projects — on the web or elsewhere.</span>
+          <span class="lang-de">Lass uns besprechen, wo ein dokumentierter, briefinggetriebener Prozess deine eigenen Projekte beschleunigen könnte – im Web oder anderswo.</span>
+        </p>
+      </div>
+      <div class="contact-ctas">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary">
+          <span class="lang-en">Get in Touch</span>
+          <span class="lang-de">Kontakt aufnehmen</span>
+        </a>
+        <a href="index.html#portfolio" class="btn-pill btn-pill-outline">
+          <span class="lang-en">Back to Portfolio</span>
+          <span class="lang-de">Zurück zum Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand-group">
+      <span class="brand-name">MARTINA HANNER</span>
+      <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    </span>
+    <span><a href="impressum.html" style="color: inherit;">Impressum</a> · <a href="datenschutz.html" style="color: inherit;">Datenschutz</a></span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>
