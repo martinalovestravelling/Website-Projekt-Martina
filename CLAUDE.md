@@ -492,6 +492,100 @@ grid, the "Portfolio" burger-menu sub-link order on all 9 pages that have it, an
 for `portfolio-leasing-calculator.html`), so the numbering matches reading/visual order rather than
 creation order.
 
+**Third Portfolio work sample added: the live FAQ chat assistant, explicitly marked as a first draft
+(2026-11-09).** The user asked for a work sample about the site's own chat widget (`chat-widget.js` →
+Cloudflare Worker → Gemini API, see "Chat-Widget-Ausnahme" in `tech-spec.md` and `/chatbot/`), with
+one hard requirement: it had to be very clearly flagged as a first draft/prototype, not a finished
+product — the user's own wording was "sehr klar darauf hingewiesen ... dass dieser nur ein erster
+Entwurf ist." Built as `portfolio-chat-assistant.html` (same shell as the other two work samples),
+content drawn only from what's already documented (`tech-spec.md`, `chatbot/README.md`,
+`chatbot/SETUP.md`, `chatbot/worker/src/index.js`) — the four-step round trip (ask → Worker builds
+the prompt → Gemini API, retried across two model candidates → answer or an explicit "not
+published"), the knowledge-base scope table, and the three real, already-documented limitations
+(knowledge base synced by hand across two files; tested so far on only three cases per `SETUP.md`'s
+own test plan; no analytics or review queue; dependent on two free tiers) — no invented limitations
+or capabilities. The "first draft" framing is repeated in four places, not just once: a new,
+deliberately prominent `.ws-draft-notice` banner (new CSS, a bigger standalone variant of the
+existing `.ws-io-callout` component) directly under the hero, "· FIRST DRAFT" / "· ERSTER ENTWURF" in
+the hero eyebrow itself, "(Draft)" / "(Entwurf)" in the breadcrumb and every nav/burger-menu link to
+this page across all 10 pages that now have one, and a dedicated "04 — First Draft: What's Still
+Rough" section (reusing the `.ws-learning-grid` card layout) that states the limitations above
+instead of glossing over them. The homepage `#portfolio` card for this sample carries the same
+"Work sample · Prototype" tag and the same one-line draft framing in its own card text.
+`.portfolio-grid`'s max-width was widened from 820px to 1180px to fit three real cards per row
+instead of two. A photo background (`ai-assistant-tile.png`, renamed from `AI-Assistent tile.png`
+for the filename convention — same stock-photo series as the other two tile images, no identifiable
+people) was added for this card shortly after, via a `.portfolio-card-photo-assistant` modifier
+following the same pattern as `.portfolio-card-photo-website`.
+
+**New `community-and-peers.html` page added, turning the last homepage placeholder tile live
+(2026-11-09).** The homepage's "Community & Peers" overview tile had been a disabled "Coming soon"
+placeholder since the tile grid was rebuilt (see "Homepage trimmed to five sections..." above). The
+user asked for a deliberately simple subpage — explicitly "super simple," styled like the Toolkit's
+round icon-bubble grid (see `about.html`'s `.tools-grid`) but with real photos instead of icons, each
+linked straight to the person's LinkedIn profile, with no LinkedIn badge/icon overlay on the photo
+itself (unlike the user's reference screenshot, which had one). New CSS: `.peer-grid`/`.peer-item`/
+`.peer-photo`/`.peer-name` in styles.css, directly modeled on `.tools-grid`. Content is seven real
+people the user supplied (photos pasted into chat, saved as `peer-<firstname>.png`, lowercase
+no-spaces convention) with first names shown under every photo; only four of the seven have a
+LinkedIn profile to link to (Judith, the two people named Stefan, and Jonas — Chris, Nazan and Simone
+don't), so three bubbles are plain (no link, no hover state). The exact photo-to-name mapping was
+confirmed explicitly with the user turn-by-turn rather than guessed, since misattributing a real
+person's name to the wrong photo would be a correctness/identity error, not just a cosmetic one.
+**Note on the no-personal-data rule:** this is a new category the existing rule (Briefing.md-derived,
+about the site owner's own data) doesn't cover — these are other people's names, photos and profile
+links, supplied directly by the user. Flagged to the user that this is third-party personal data and
+they may want those people's okay before it's public; publishing it was the user's own call to make,
+not something to second-guess once they've decided. If asked to add more people here later, the same
+confirm-the-mapping-explicitly approach applies, and the same consent flag should be raised once per
+batch of new additions (not repeated for people already live). The page was wired into the "About Me"
+nav/burger-menu group (sub-link "Community & Peers") on all 10 other live pages, following the
+established pattern of keeping nav in sync with real content — the three internal
+`erste-schritte-*.html` pages were left untouched per their existing "old header" status.
+
+**Correction pass (same day): confirmed the data/consent, fixed the 6-then-1 wrap, added real
+"What Connects Us" content.** The user confirmed they have the other six people's okay and that the
+photo-to-name mapping above is correct. Two fixes followed. First, `.peer-grid`'s layout looked
+wrong with seven people (6 wrapped onto one row, 1 alone on the next) — switched from CSS grid
+auto-fit to flexbox with a tuned `max-width: 620px` (just wide enough for 4 columns at the existing
+104px photo / 130px item width, too narrow for a 5th), so it now wraps a deliberate 4-then-3 instead.
+Second, the user supplied `community-peers-input.html`, a self-contained preview file (kept in the
+repo as a reference export, same status as `offering_section_v2.html`/`services_section_v2.html`)
+with real additional content and explicit instructions on how to merge it: a tagline + intro
+paragraph replacing the page's generic intro (the real story — everyone met through the AI Manager
+programme, backgrounds spanning sales, finance, change, communication and research), and a new
+"What Connects Us" section directly after the portrait grid — three strength columns (Business &
+Steering / Transformation & People / AI in Practice, each with five real bullet points) plus a
+closing "What connects us" banner paragraph. Followed the file's own merge notes: only its
+"NEU"-marked CSS (`.peer-tagline`, `.peer-intro`, `.strength-*`, `.peer-bond`) was added to
+styles.css, converted from rem/clamp to the px-based units the rest of styles.css uses but with no
+new hex values — the file's preview-only chrome (its own `:root` token copy, Google Fonts link,
+mini language toggle, placeholder initial-avatars) was not carried over, since all of that already
+exists for real elsewhere on the page/site.
+
+**Homepage tile order, nav tab swap, and a real width-consistency bug fixed (same day).** Three more
+fixes from user feedback. First, on `index.html`'s "Everything at a Glance" tile grid, "Community &
+Peers" and "News" swapped positions (Community now before News), since Community is live content and
+News is still a placeholder. Second, the top `.site-nav` tab bar's disabled "News" placeholder tab
+was replaced outright with a real, enabled "Community" tab linking to `community-and-peers.html`, on
+all 11 live pages that have this nav bar (the three internal `erste-schritte-*.html` pages were left
+untouched, per their usual "old header" exemption) — the user's instruction was specifically about
+this flat tab list, not the burger-menu's existing "About Me → Community & Peers" sub-link, which
+stays as an additional path to the same page. On `community-and-peers.html` itself, this created a
+redundant double "current page" marker (the About Me dropdown and its sub-link were also marked
+`aria-current`) — resolved by leaving `aria-current="page"` only on the new standalone "Community"
+tab, since that's now the page's own top-level nav identity, same as how Portfolio's work-sample
+subpages mark only the flat "Portfolio" tab current, not any dropdown. Third, a real layout bug the
+user's screenshot made clear: `.peer-grid`'s `max-width: 620px` (added for the 4-then-3 wrap fix
+above) and `.peer-intro`'s `max-width: 640px` made the hero text and photo grid look squeezed into a
+narrow left-hand column, while `.peer-strengths` right below had no cap and used the full `.dh-section`
+content width (1120px) — two different column widths stacked on one page. Fix: removed both caps.
+At `.dh-section`'s actual 1120px max-width (1072px inside its padding), all 7 photos now fit on a
+single centered row (910px + 120px of gaps ≈ 1030px) instead of wrapping at all, and the intro
+paragraph now spans the same width as the strength columns below it — one consistent column width
+top to bottom, matching the user's ask, with no reliance on a magic number tuned to force a specific
+wrap pattern.
+
 ## Document Map
 
 Read these in this order to understand the project; each builds on the previous one:
@@ -506,7 +600,7 @@ Read these in this order to understand the project; each builds on the previous 
 - **No hallucinated content.** Only use content that the user has explicitly provided (currently: `Briefing.md`). Never invent bios, skills, project descriptions, testimonials, or other factual content. If something needs to be added that isn't already given, ask the user first.
 - **No personal data on the page**, per `Briefing.md`: no name, photo, date of birth, phone number, email address, postal address, place of residence, employer names, university names, or references to specific job applications/target companies. Employers are described only by industry/type, **except where explicitly overridden below.** **Exceptions (see `Briefing.md` Section 2):** the full name "Martina Hanner" and the city "Munich/München" are approved to appear (extended from first-name-only on 2026-11-02); a professional portrait photo is approved and supplied (`Foto.webp`, plus `about-me-tile.png` for the Discover tile only). **As of 2026-11-04, the employer names "Accenture" and "IABG" are also explicitly approved** (currently used on `about.html` only) — this was a deliberate policy change the user confirmed after being told it reverses a repeatedly-reinforced rule; it does not extend to any other employer or to anything else on the no-personal-data list.
 - **Static only, no framework, no build step, no JavaScript — except two scoped, documented exceptions.** Per `tech-spec.md`, the site must be plain HTML and CSS so it runs directly on GitHub Pages. The EN/DE language toggle itself must be implemented with a CSS-only checkbox hack (hidden `<input type="checkbox">` + `<label>`, visibility controlled via `:checked` and sibling selectors), not JavaScript. Every piece of text exists twice in the HTML (`.lang-en` / `.lang-de` classes), with English visible by default. The two deliberate exceptions are `chat-widget.js` (the FAQ chat bubble, see "Chat-Widget-Ausnahme") and `lang-toggle.js` (persists the EN/DE choice across page loads via `localStorage` and scrolls to top on toggle, added 2026-11-04, see "Sprachpräferenz-Ausnahme") — both documented in `tech-spec.md`. Don't use either as precedent for adding JavaScript elsewhere on the page.
-- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section now holds two real work samples — `portfolio-leasing-calculator.html` (added 2026-11-04) and `portfolio-this-website.html` (added 2026-11-09, about the site's own build process) — and no remaining "coming soon" card; don't fabricate a third sample. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
+- **Placeholder sections stay placeholders.** The Portfolio/"Arbeitsproben" section now holds three real work samples — `portfolio-this-website.html` (the site's own build process), `portfolio-leasing-calculator.html` (the n8n workflow), and `portfolio-chat-assistant.html` (the live FAQ chat widget, added 2026-11-09 and explicitly marked throughout as a first draft/prototype, not a finished feature) — and no remaining "coming soon" card; don't fabricate a fourth sample, and don't soften or remove the chat-assistant sample's "first draft" framing without the user asking. The contact link is no longer a placeholder: the user's real LinkedIn URL (`linkedin.com/in/martina-hanner`) is live on every contact section as of 2026-11-04; no contact form or phone number is used, per the user's explicit choice.
 - **Color and font tokens are fixed CSS custom properties**, defined in `design.md`: two house colors (`--color-brand-primary`, `--color-brand-secondary`) plus neutral support tokens, and a dependency-free sans-serif font stack (`--font-sans`). Use these token names consistently rather than hardcoding color/font values.
 
 ## Acceptance Criteria

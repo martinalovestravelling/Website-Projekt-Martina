@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Sample — The FAQ Chat Assistant (First Draft)</title>
+<meta name="description" content="A first-draft FAQ chat assistant, scoped to only answer from already-published content: a static front-end script, a Cloudflare Worker, and the Gemini API.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="lang-toggle" class="lang-toggle-input">
+<script src="lang-toggle.js"></script>
+<div class="page">
+
+  <header class="site-header">
+    <a href="index.html" class="brand-link">
+      <img src="logo-transparent.png" alt="Martina Hanner logo" class="brand-logo-image">
+      <span class="brand-name">MARTINA HANNER</span>
+    </a>
+    <div class="header-actions">
+      <a href="index.html#kontakt" class="btn-pill btn-pill-primary header-contact-btn">
+        <span class="lang-en">Contact</span>
+        <span class="lang-de">Kontakt</span>
+      </a>
+      <label for="lang-toggle" class="lang-switch" aria-label="Toggle between English and German">
+        <span class="lang-switch-option lang-en-option">EN</span>
+        <span class="lang-switch-option lang-de-option">DE</span>
+      </label>
+      <input type="checkbox" id="nav-menu-toggle" class="nav-menu-toggle-input">
+      <label for="nav-menu-toggle" class="nav-menu-toggle-label" aria-label="Open section menu / Abschnittsmenü öffnen">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-menu-panel">
+        <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+        <div class="nav-menu-panel-group">
+          <a href="offering.html" class="nav-menu-panel-group-label"><span class="lang-en">OFFERING</span><span class="lang-de">ANGEBOT</span></a>
+          <a href="offering.html#where" class="nav-menu-panel-sub-link"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+          <a href="offering.html#journey" class="nav-menu-panel-sub-link"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+          <a href="offering.html#formats" class="nav-menu-panel-sub-link"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#capabilities" class="nav-menu-panel-group-label"><span class="lang-en">SERVICES</span><span class="lang-de">LEISTUNGEN</span></a>
+          <a href="services.html#pillars" class="nav-menu-panel-sub-link"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+          <a href="services.html#foundation" class="nav-menu-panel-sub-link"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#portfolio" class="nav-menu-panel-group-label"><span class="lang-en">PORTFOLIO</span><span class="lang-de">PORTFOLIO</span></a>
+          <a href="portfolio-this-website.html" class="nav-menu-panel-sub-link"><span class="lang-en">Built with Claude Code</span><span class="lang-de">Gebaut mit Claude Code</span></a>
+          <a href="portfolio-leasing-calculator.html" class="nav-menu-panel-sub-link"><span class="lang-en">Automation with n8n</span><span class="lang-de">Automatisierung mit n8n</span></a>
+          <a href="portfolio-chat-assistant.html" class="nav-menu-panel-sub-link" aria-current="page"><span class="lang-en">FAQ Chat Assistant (Draft)</span><span class="lang-de">FAQ-Chat-Assistent (Entwurf)</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#about" class="nav-menu-panel-group-label"><span class="lang-en">ABOUT ME</span><span class="lang-de">ÜBER MICH</span></a>
+          <a href="about.html" class="nav-menu-panel-sub-link"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+          <a href="about.html#werkzeugkasten" class="nav-menu-panel-sub-link"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+          <a href="community-and-peers.html" class="nav-menu-panel-sub-link"><span class="lang-en">Community &amp; Peers</span><span class="lang-de">Community &amp; Kolleg:innen</span></a>
+        </div>
+        <div class="nav-menu-panel-group">
+          <a href="index.html#kontakt"><span class="lang-en">Contact</span><span class="lang-de">Kontakt</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <a href="index.html#home"><span class="lang-en">Home</span><span class="lang-de">Home</span></a>
+    <div class="nav-item">
+      <a href="offering.html" class="nav-item-toggle"><span class="lang-en">Offering</span><span class="lang-de">Angebot</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="offering.html#where"><span class="lang-en">Starting Point</span><span class="lang-de">Ausgangslage</span></a>
+        <a href="offering.html#journey"><span class="lang-en">Accelerator</span><span class="lang-de">Accelerator</span></a>
+        <a href="offering.html#formats"><span class="lang-en">Delivery</span><span class="lang-de">Delivery</span></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="index.html#capabilities" class="nav-item-toggle"><span class="lang-en">Services</span><span class="lang-de">Leistungen</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="services.html#pillars"><span class="lang-en">Pillars</span><span class="lang-de">Säulen</span></a>
+        <a href="services.html#foundation"><span class="lang-en">Foundation</span><span class="lang-de">Fundament</span></a>
+      </div>
+    </div>
+    <a href="index.html#portfolio" aria-current="page"><span class="lang-en">Portfolio</span><span class="lang-de">Portfolio</span></a>
+    <div class="nav-item">
+      <a href="index.html#about" class="nav-item-toggle"><span class="lang-en">About Me</span><span class="lang-de">Über mich</span><span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-submenu">
+        <a href="about.html"><span class="lang-en">Full Profile</span><span class="lang-de">Vollständiges Profil</span></a>
+        <a href="about.html#werkzeugkasten"><span class="lang-en">Tools</span><span class="lang-de">Werkzeugkasten</span></a>
+        <a href="community-and-peers.html"><span class="lang-en">Community &amp; Peers</span><span class="lang-de">Community &amp; Kolleg:innen</span></a>
+      </div>
+    </div>
+    <a href="community-and-peers.html"><span class="lang-en">Community</span><span class="lang-de">Community</span></a>
+  </nav>
+
+  <div class="dh-hero">
+    <p class="ws-breadcrumb">
+      <a href="index.html#portfolio">Portfolio</a> /
+      <span class="lang-en">FAQ Chat Assistant (Draft)</span><span class="lang-de">FAQ-Chat-Assistent (Entwurf)</span>
+    </p>
+
+    <section class="ws-hero">
+      <div class="ws-hero-text">
+        <p class="eyebrow">
+          <span class="lang-en">FAQ CHAT ASSISTANT — WORK SAMPLE 03 · FIRST DRAFT</span>
+          <span class="lang-de">FAQ-CHAT-ASSISTENT — ARBEITSPROBE 03 · ERSTER ENTWURF</span>
+        </p>
+        <h1 class="section-heading">
+          <span class="lang-en">A chat assistant that only knows what's published here</span>
+          <span class="lang-de">Ein Chat-Assistent, der nur kennt, was hier veröffentlicht ist</span>
+        </h1>
+        <p class="ws-hero-lead">
+          <span class="lang-en">The chat bubble on this site (bottom right, on every page) answers questions about its own content — bio, skills, certifications, the n8n work sample — from a fixed knowledge base, through a small Cloudflare Worker that calls the Gemini API. It's live on this site right now, and it's an early, first-draft prototype, not a finished product.</span>
+          <span class="lang-de">Die Chat-Bubble auf dieser Seite (unten rechts, auf jeder Seite) beantwortet Fragen zu ihren eigenen Inhalten – Lebenslauf, Skills, Zertifizierungen, die n8n-Arbeitsprobe – aus einer festen Wissensbasis, über einen kleinen Cloudflare Worker, der die Gemini-API aufruft. Sie läuft bereits live auf dieser Seite und ist ein früher, erster Entwurf, kein fertiges Produkt.</span>
+        </p>
+        <div class="ws-tag-row">
+          <span class="ws-tag">Cloudflare Workers</span>
+          <span class="ws-tag">Google Gemini API</span>
+          <span class="ws-tag">JavaScript</span>
+          <span class="ws-tag"><span class="lang-en">Prototype</span><span class="lang-de">Prototyp</span></span>
+        </div>
+      </div>
+      <div class="ws-stats">
+        <div class="ws-stat">
+          <div class="ws-stat-number">3</div>
+          <div class="ws-stat-label"><span class="lang-en">Parts: widget, Worker, Gemini API</span><span class="lang-de">Teile: Widget, Worker, Gemini-API</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">0</div>
+          <div class="ws-stat-label"><span class="lang-en">Ongoing hosting cost (free tiers)</span><span class="lang-de">Laufende Hosting-Kosten (Free-Tiers)</span></div>
+        </div>
+        <div class="ws-stat">
+          <div class="ws-stat-number">12</div>
+          <div class="ws-stat-label"><span class="lang-en">Messages kept as conversation memory</span><span class="lang-de">Nachrichten als Gesprächsgedächtnis</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ws-draft-notice">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8C6E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"></path><path d="M12 10v4M12 17.5v.01"></path></svg>
+      <p>
+        <strong><span class="lang-en">First draft, not a finished feature</span><span class="lang-de">Erster Entwurf, kein fertiges Feature</span></strong>
+        <span class="lang-en">This assistant has so far been tested on only a handful of questions, and its knowledge base is kept in sync by hand. Treat anything it says as a prototype answer, not a guarantee — see "First draft" below for exactly what's still rough.</span>
+        <span class="lang-de">Dieser Assistent wurde bisher nur an einer Handvoll Fragen getestet, und seine Wissensbasis wird von Hand synchron gehalten. Alles, was er sagt, ist eine Prototyp-Antwort, keine Garantie – siehe „Erster Entwurf" weiter unten für die konkreten Schwachstellen.</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="dh-section" style="border-top: none;">
+    <div class="ws-principle">
+      <p class="ws-principle-label">
+        <span class="lang-en">THE CORE PRINCIPLE</span>
+        <span class="lang-de">DAS KERNPRINZIP</span>
+      </p>
+      <div class="ws-principle-statements">
+        <p><span class="lang-en">It only says what's already published.</span><span class="lang-de">Es sagt nur, was bereits veröffentlicht ist.</span></p>
+        <p><span class="lang-en">If it doesn't know, it says so — it doesn't invent an answer.</span><span class="lang-de">Wenn es etwas nicht weiß, sagt es das – statt zu raten.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="starting-point-ws">
+    <p class="eyebrow">
+      <span class="lang-en">01 — STARTING POINT</span>
+      <span class="lang-de">01 — AUSGANGSLAGE</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Why try a chat assistant at all</span>
+      <span class="lang-de">Warum überhaupt ein Chat-Assistent</span>
+    </h2>
+    <p class="dh-lead">
+      <span class="lang-en">This site has grown into several pages with a fair amount of detail. A visitor looking for one specific fact — a certification, a tool, what n8n actually is — has to know where to click. The question was whether a small, tightly scoped assistant could answer that faster, without turning the site into something dynamic or giving it a backend of its own to maintain.</span>
+      <span class="lang-de">Diese Seite ist auf mehrere, recht detailreiche Unterseiten angewachsen. Wer eine einzelne, konkrete Angabe sucht – eine Zertifizierung, ein Tool, was n8n eigentlich ist – muss wissen, wo geklickt werden muss. Die Frage war, ob ein kleiner, eng begrenzter Assistent das schneller beantworten kann, ohne die Seite dynamisch zu machen oder ihr ein eigenes Backend aufzubürden.</span>
+    </p>
+    <p class="dh-lead">
+      <span class="lang-en">The answer had to keep the same no-hallucination rule as the rest of the site: the assistant may only draw on content that's already published, and has to say plainly when something isn't — not guess. That's a narrower, safer job than a general-purpose chatbot, and it's the first thing this work sample checks.</span>
+      <span class="lang-de">Die Lösung musste dieselbe Kein-Hallucination-Regel wie der Rest der Seite einhalten: Der Assistent darf nur auf bereits veröffentlichte Inhalte zugreifen und muss klar sagen, wenn etwas nicht veröffentlicht ist – statt zu raten. Das ist eine engere, sicherere Aufgabe als ein allgemeiner Chatbot, und genau das prüft diese Arbeitsprobe zuerst.</span>
+    </p>
+  </section>
+
+  <section class="dh-section" id="workflow">
+    <p class="eyebrow">
+      <span class="lang-en">02 — HOW A QUESTION GETS ANSWERED</span>
+      <span class="lang-de">02 — WIE EINE FRAGE BEANTWORTET WIRD</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Four steps, one round trip</span>
+      <span class="lang-de">Vier Schritte, ein Durchlauf</span>
+    </h2>
+    <div class="ws-steps">
+      <div class="ws-step">
+        <div class="ws-step-number">01</div>
+        <h3><span class="lang-en">Ask</span><span class="lang-de">Fragen</span></h3>
+        <p><span class="lang-en">The visitor types a question into the chat bubble, available on every page.</span><span class="lang-de">Die besuchende Person tippt eine Frage in die Chat-Bubble, verfügbar auf jeder Seite.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-highlight">
+        <span class="ws-step-highlight-badge"><span class="lang-en">NO API KEY IN THE BROWSER</span><span class="lang-de">KEIN API-KEY IM BROWSER</span></span>
+        <div class="ws-step-number">02</div>
+        <h3><span class="lang-en">Build the prompt</span><span class="lang-de">Prompt aufbauen</span></h3>
+        <p><span class="lang-en">A Cloudflare Worker combines a fixed system prompt with the knowledge base — the only place the Gemini key is ever used.</span><span class="lang-de">Ein Cloudflare Worker kombiniert einen festen System-Prompt mit der Wissensbasis – die einzige Stelle, an der der Gemini-Key überhaupt genutzt wird.</span></p>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step-group">
+        <div class="ws-step">
+          <div class="ws-step-number">03</div>
+          <h3><span class="lang-en">Call the model</span><span class="lang-de">Modell aufrufen</span></h3>
+          <p><span class="lang-en">The Worker calls the Gemini API; if one model is overloaded, it retries with a second candidate before giving up.</span><span class="lang-de">Der Worker ruft die Gemini-API auf; ist ein Modell überlastet, wird ein zweiter Kandidat versucht, bevor aufgegeben wird.</span></p>
+        </div>
+        <div class="ws-step-model-note">Free tier: Gemini Flash / Flash-Lite</div>
+      </div>
+      <div class="ws-step-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </div>
+      <div class="ws-step ws-step-dark">
+        <div class="ws-step-number">04</div>
+        <h3><span class="lang-en">Answer, or a clear "not published"</span><span class="lang-de">Antwort oder klares „nicht veröffentlicht"</span></h3>
+        <p><span class="lang-en">The reply is shown in the visitor's current site language — or the assistant says the fact isn't published, instead of inventing one.</span><span class="lang-de">Die Antwort erscheint in der aktuellen Sprache der Seite – oder der Assistent sagt, dass die Angabe nicht veröffentlicht ist, statt sie zu erfinden.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="scope">
+    <p class="eyebrow">
+      <span class="lang-en">03 — WHAT IT'S BOUNDED TO</span>
+      <span class="lang-de">03 — WORAUF ES BEGRENZT IST</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">A narrow knowledge base, on purpose</span>
+      <span class="lang-de">Eine bewusst enge Wissensbasis</span>
+    </h2>
+    <p class="dh-lead">
+      <span class="lang-en">The system prompt points the model at a fixed set of already-published documents and nothing else. That's a deliberate limit, not a gap to be filled in later.</span>
+      <span class="lang-de">Der System-Prompt verweist das Modell auf eine feste Menge bereits veröffentlichter Dokumente – und sonst nichts. Das ist eine bewusste Grenze, keine später zu schließende Lücke.</span>
+    </p>
+    <table class="dh-info-table">
+      <thead>
+        <tr>
+          <th scope="col"><span class="lang-en">Can answer from</span><span class="lang-de">Kann antworten aus</span></th>
+          <th scope="col"><span class="lang-en">Always declines</span><span class="lang-de">Lehnt immer ab</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><span class="lang-en">Briefing.md facts</span><span class="lang-de">Fakten aus Briefing.md</span></th>
+          <td><span class="lang-en">Anything not published on the site (e.g. a phone number)</span><span class="lang-de">Alles, was auf der Seite nicht veröffentlicht ist (z. B. eine Telefonnummer)</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="lang-en">The n8n course notes behind Work Sample 02</span><span class="lang-de">Die n8n-Kursnotizen hinter Arbeitsprobe 02</span></th>
+          <td><span class="lang-en">Guesses or invented specifics</span><span class="lang-de">Vermutungen oder erfundene Details</span></td>
+        </tr>
+        <tr>
+          <th scope="row"><span class="lang-en">Publicly visible page content</span><span class="lang-de">Öffentlich sichtbarer Seiteninhalt</span></th>
+          <td><span class="lang-en">Anything outside its fixed knowledge base</span><span class="lang-de">Alles außerhalb seiner festen Wissensbasis</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="dh-section" id="first-draft">
+    <p class="eyebrow">
+      <span class="lang-en">04 — FIRST DRAFT: WHAT'S STILL ROUGH</span>
+      <span class="lang-de">04 — ERSTER ENTWURF: WAS NOCH ROH IST</span>
+    </p>
+    <h2 class="section-heading">
+      <span class="lang-en">Why this counts as a prototype, not a finished feature</span>
+      <span class="lang-de">Warum das ein Prototyp ist, kein fertiges Feature</span>
+    </h2>
+    <div class="ws-learning-grid">
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">01</div>
+        <h3><span class="lang-en">Kept in sync by hand</span><span class="lang-de">Von Hand synchron gehalten</span></h3>
+        <p><span class="lang-en">The knowledge base exists in two places — a human-readable file and the version the Worker actually uses — and has to be updated manually whenever the site's content changes. Nothing keeps them in sync automatically yet.</span><span class="lang-de">Die Wissensbasis existiert an zwei Stellen – einer lesbaren Datei und der Version, die der Worker tatsächlich nutzt – und muss bei Inhaltsänderungen manuell aktualisiert werden. Noch hält nichts beide automatisch synchron.</span></p>
+      </div>
+      <div class="ws-learning-card ws-learning-card-highlight">
+        <div class="ws-learning-number">02</div>
+        <h3><span class="lang-en">Tested on a handful of questions, not a full QA pass</span><span class="lang-de">An einer Handvoll Fragen getestet, kein vollständiger Testlauf</span></h3>
+        <p><span class="lang-en">So far it's been checked against three cases: an n8n question, a profile question, and one deliberately unanswerable question. It hasn't been tested against many phrasings, edge cases, or attempts to steer it off its knowledge base.</span><span class="lang-de">Bisher wurde es an drei Fällen geprüft: einer n8n-Frage, einer Profil-Frage und einer bewusst unbeantwortbaren Frage. Viele Formulierungen, Randfälle oder Versuche, es von seiner Wissensbasis abzubringen, wurden noch nicht getestet.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">03</div>
+        <h3><span class="lang-en">No analytics, no review queue</span><span class="lang-de">Keine Auswertung, keine Prüf-Warteschlange</span></h3>
+        <p><span class="lang-en">There's currently no way to see what visitors actually ask, or to catch and fix a wrong answer after the fact — a gap a production version would need to close.</span><span class="lang-de">Es gibt aktuell keine Möglichkeit zu sehen, was Besuchende tatsächlich fragen, oder eine falsche Antwort im Nachhinein zu erkennen und zu korrigieren – eine Lücke, die eine Produktionsversion schließen müsste.</span></p>
+      </div>
+      <div class="ws-learning-card">
+        <div class="ws-learning-number">04</div>
+        <h3><span class="lang-en">Depends on two free tiers</span><span class="lang-de">Hängt von zwei Free-Tiers ab</span></h3>
+        <p><span class="lang-en">It relies on free quotas (Cloudflare Workers, Gemini API) that could change or get rate-limited under real traffic. Beyond retrying a second model candidate, nothing handles that yet.</span><span class="lang-de">Es stützt sich auf kostenlose Kontingente (Cloudflare Workers, Gemini-API), die sich ändern oder bei echtem Traffic ein Limit erreichen könnten. Außer dem Versuch mit einem zweiten Modell-Kandidaten fängt das noch nichts ab.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dh-section" id="transferable">
+    <div class="ws-transfer">
+      <div class="ws-transfer-text">
+        <p class="eyebrow">
+          <span class="lang-en">05 — TRANSFERABLE TO</span>
+          <span class="lang-de">05 — ÜBERTRAGBAR AUF</span>
+        </p>
+        <h2 class="section-heading" style="margin-bottom: 0;">
+          <span class="lang-en">Anywhere a narrow, honest assistant beats a wide, confident one</span>
+          <span class="lang-de">Überall, wo ein enger, ehrlicher Assistent besser ist als ein breiter, selbstsicherer</span>
+        </h2>
+      </div>
+      <div class="ws-transfer-grid">
+        <div class="ws-transfer-item"><strong><span class="lang-en">Static sites wanting an FAQ assistant</span><span class="lang-de">Statische Seiten mit FAQ-Bedarf</span></strong><span class="lang-en">A scoped assistant without hosting a backend of your own</span><span class="lang-de">Ein begrenzter Assistent, ohne eigenes Backend zu hosten</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Prototyping before committing</span><span class="lang-de">Prototyping vor der Entscheidung</span></strong><span class="lang-en">Testing an AI feature cheaply before investing in a production version</span><span class="lang-de">Ein KI-Feature günstig testen, bevor in eine Produktionsversion investiert wird</span></div>
+        <div class="ws-transfer-item"><strong><span class="lang-en">Internal knowledge bots</span><span class="lang-de">Interne Wissens-Bots</span></strong><span class="lang-en">Same pattern, scoped to a policy doc or handbook instead of a bio</span><span class="lang-de">Gleiches Muster, begrenzt auf ein Regelwerk oder Handbuch statt auf einen Lebenslauf</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="kontakt">
+    <div class="contact-card">
+      <div>
+        <h2>
+          <span class="lang-en">Considering a scoped AI assistant for your own content?</span>
+          <span class="lang-de">Überlegst du einen begrenzten KI-Assistenten für deine eigenen Inhalte?</span>
+        </h2>
+        <p>
+          <span class="lang-en">Let's talk about what a safe, honest first draft could look like for you — and what it would take to move it beyond prototype.</span>
+          <span class="lang-de">Lass uns besprechen, wie ein sicherer, ehrlicher erster Entwurf für dich aussehen könnte – und was nötig wäre, um ihn über den Prototyp hinauszubringen.</span>
+        </p>
+      </div>
+      <div class="contact-ctas">
+        <a href="index.html#kontakt" class="btn-pill btn-pill-primary">
+          <span class="lang-en">Get in Touch</span>
+          <span class="lang-de">Kontakt aufnehmen</span>
+        </a>
+        <a href="index.html#portfolio" class="btn-pill btn-pill-outline">
+          <span class="lang-en">Back to Portfolio</span>
+          <span class="lang-de">Zurück zum Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand-group">
+      <span class="brand-name">MARTINA HANNER</span>
+      <span><span class="lang-en">Munich</span><span class="lang-de">München</span></span>
+    </span>
+    <span><a href="impressum.html" style="color: inherit;">Impressum</a> · <a href="datenschutz.html" style="color: inherit;">Datenschutz</a></span>
+  </footer>
+
+  <!-- Chat widget: the one scoped exception to the "no JavaScript" rule, see tech-spec.md -->
+  <div class="chat-widget" id="chat-widget">
+    <button type="button" class="chat-widget-button" id="chat-toggle-button" aria-expanded="false" aria-controls="chat-panel" aria-label="Ask a question / Frage stellen">?</button>
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-panel-header">
+        <span><span class="lang-en">FAQ Assistant</span><span class="lang-de">FAQ-Assistent</span></span>
+        <button type="button" class="chat-panel-close" id="chat-close-button" aria-label="Close chat">&times;</button>
+      </div>
+      <p class="chat-panel-disclaimer">
+        <span class="lang-en">Demo assistant — answers are limited to the information published on this page and may be imperfect.</span>
+        <span class="lang-de">Demo-Assistent — Antworten beschränken sich auf die auf dieser Seite veröffentlichten Informationen und können unvollständig sein.</span>
+      </p>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-input-row" id="chat-form">
+        <label class="visually-hidden" for="chat-input">
+          <span class="lang-en">Your question</span>
+          <span class="lang-de">Deine Frage</span>
+        </label>
+        <input type="text" id="chat-input" autocomplete="off" placeholder="Type your question… / Frage eingeben…" required>
+        <button type="submit">
+          <span class="lang-en">Send</span>
+          <span class="lang-de">Senden</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="chat-widget.js"></script>
+</body>
+</html>
